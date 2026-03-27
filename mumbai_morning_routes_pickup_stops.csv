@@ -1,0 +1,258 @@
+﻿#,Route Name,Departure,First Pickup Stop,Last Pickup Stop
+1,PCL - PCL,00:00:00,Deepak Fertiliser K1 PCL,Deepak Fertiliser K1 PCL
+2,Chirner - K1,05:30:00,"Chirner, Kharpada DFPCL",Trombay Koliwada DFPCL
+3,Sakinaka - Bhiwandi,05:30:00,Luthra Industrial Estate,Luthra Industrial Estate
+4,Badlapur- PCL,05:40:00,Katrap DFPCL,Khoni Palava Main gate DFPCL
+5,Downtown 2 - Hub,06:00:00,Premier Loadha,Premier Loadha
+6,Premier - Manpada Road,06:00:00,Premier ,Premier 
+7,Chembur - BKC,06:01:00,Amar Mahal Junction,Swastik Park
+8,Kalyan - Powai,06:01:00,Prem Auto,Tagore Nagar junction
+9,New Panvel - K1,06:05:00,Dmart New panvel,"Asudgaon depot, Sec-18 DFPCL"
+10,Downtown - HUB,06:10:00,Premier ,Premier 
+11,Badlapur Ambarnath - Vikhroli,06:15:00,"Ganesh Ghat, Badlapur West","Ganesh Ghat, Badlapur West"
+12,Downtown 3 - HUB,06:15:00,Premier ,Premier 
+13,Badlapur - Andheri,06:20:00,Navy Nagar,Navy Nagar
+14,South Bombay - Andheri,06:20:00,Chembur Naka,Chembur Naka
+15,Mira Bhayander - Vikhroli,06:30:00,Golden Nest Circle B&V,L & T B&V
+16,Wise City To Panvel station,06:30:00,Wadhwa wise City,Wadhwa wise City
+17,Dombivali Station West - Vikhroli,06:35:00,Dombivali Station West ,Dombivali Station West 
+18,Badlapur station - Vikhroli,06:40:00,"Badlapur east, Ganesh ghat (B&V)",Empire Plaza (B&V)
+19,Borivali 1 (Borivali - Mindspace Juinagar),06:40:00,National Park  ISEC,"Garam Masala , Airoli ISEC"
+20,Dombivali/Kalyan - Vikhroli,06:40:00,Dombivali Station B&V,Lodha Thane B&V
+21,Kalwa - Andheri,06:40:00,Kalwa Naka Indofil,Kanjurmarg Railway Station Indofil
+22,Panvel - Vikhroli,06:40:00,Panvel Railway Station  B&V,Mankhurd
+23,Borivali West - BKC,06:45:00,"McDonald's, Kandaharpada",Pathanwadi
+24,Dombivali Manpada - Vikhroli,06:45:00,Regency Anantam,Regency Anantam
+25,Panvel - Andheri,06:45:00,HDFC circle Panvel,"Garam Masala , Airoli"
+26,Panvel - Vikhroli,06:45:00,Panvel Railway Station  B&V,Govandi Clock Tower (B&V)
+27,Thane - Andheri,06:45:00,Lodha Splendora,RTO Kamraj Nagar
+28,Thane GB Road - Andheri,06:45:00,Lodha Splendora Indofil,Tagore Nagar junction Indofil
+29,Borivali (Via Andheri2) - Mindspace Juinagar,06:50:00,Maxus Mall Bayer,Chedda Nagar Signal ISEC
+30,Dombivali Palava Phase 1 - Vikhroli,06:50:00,Xperia Mall,Xperia Mall
+31,Dombivali Palava Phase 2 - Vikhroli,06:50:00,Palava Phase 2 Main Gate,Palava Phase 2 Main Gate
+32,Kalyan - BKC,06:50:00,"Kalyan (STFC,BKC)","Kalyan (STFC,BKC)"
+33,Kalyan  - Powai (start Kalyan),06:50:00,Prem Auto   TATA Projects,Bhandup Pumping Station Tata Projects
+34,Mira road - Andheri,06:50:00,Maxus Mall Indofil,Virwani Estate Indofil
+35,Panvel - Andheri,06:50:00,Navy Nagar,Navy Nagar
+36,PANVEL - ANDHERI,06:50:00,Chembur Naka,Chembur Naka
+37,Thane - Marol,06:50:00,Lodha Splendora,Mulund Mhada
+38,Kapurbavadi - Andheri,06:55:00, Lodha Amara gate no 4 Indofil,Louis wadi Indofil
+39,Panvel - Powai (start Panvel),06:55:00,Panvel Railway Station  TATA Projects,Hotel Praveen (TATA projects)
+40,Thane - Vikhroli,06:55:00,lodha splendora B&V,Mulund Check Naka
+41,Ashok Deluxe - ICICI Bank,07:00:00,Ashok deluxe apartments UNext,Ashok deluxe apartments UNext
+42,BADLAPUR- ANDHERI,07:00:00,Chembur Naka,Chembur Naka
+43,Bhiwandi - Vikhroli,07:00:00,Kalher Naka B&V,Dhokali Naka B&V
+44,Borivali - Andheri,07:00:00,Navy Nagar,Navy Nagar
+45,BORIVALI - ANDHERI,07:00:00,Chembur Naka,Chembur Naka
+46,Borivali Station (East) 01 - Godrej IT Park,07:00:00,Borivali station east BMI,National Park BMI
+47,Borivali station east 02 Pushpa park - Godrej IT Park,07:00:00,Pushpa Park bus stop BMI,Hiranandani MTNL BMI
+48,BORIVALI -Wadala,07:00:00,Panvel,Panvel
+49,Borivali west - Godrej IT park BMI,07:00:00,"Bosco Signal, Link Rd, Borivali BMI","Orbit Hospital, S V Rd, Goregaon BMI"
+50,Borivalli Station (East) 03 National Park - Godrej IT Park,07:00:00,National Park BMI,Hiranandani MTNL BMI
+51,Dadar - Malad,07:00:00,Srishti Complex,Srishti Complex
+52,Dombivali - Andheri,07:00:00,Navy Nagar,Navy Nagar
+53,Dombivali - ANDHERI,07:00:00,Chembur Naka,Chembur Naka
+54,Ghansoli station  - Mahape,07:00:00,"Dmart, Ghansoli","Dmart, Ghansoli"
+55,K1 - New Panvel,07:00:00,Deepak Fertiliser K1 PCL,Deepak Fertiliser K1 PCL
+56,Kalyan 1 (Kalyan - Mindspace Juinagar),07:00:00,Shivaji Nagar ISEC,"Mindspace, Juinagar ISEC"
+57,Kalyan - Andheri,07:00:00,Navy Nagar,Navy Nagar
+58,KALYAN - ANDHERI,07:00:00,Chembur Naka,Chembur Naka
+59,Mahim - Vikhroli,07:00:00,Mahim Xavier College B&V,Black & Veatch Vikhroli
+60,Mira Bhayander Station - Godrej IT Park,07:00:00,"Bhayander , Indra lok Police chowki BMI",Dahisar Tollplaza BMI
+61,Mira Bhyander - Malad,07:00:00,Srishti Complex,Srishti Complex
+62,Mira Road 1 (Bhayander - Andheri),07:00:00,Jogeshwari Metro Station ISEC,Brilanto Andheri ISEC
+63,Mira Road - Powai,07:00:00,Maxus Mall TATA Projects,Virwani Estate TATA Projects
+64,Mistry Apartment - ICICI Bank,07:00:00,Mistry appartments (Unext),Mistry appartments (Unext)
+65,PANVEL - WADALA,07:00:00,Panvel,Panvel
+66,South mumbai - Andheri,07:00:00,Navy Nagar,Navy Nagar
+67,Thane - Andheri,07:00:00,Navy Nagar,Navy Nagar
+68,Thane - ANDHERI,07:00:00,Chembur Naka,Chembur Naka
+69,Thane - Goregaon East (STH),07:00:00,Lodha Splendora,Poonam nagar
+70,Thane - wadala,07:00:00,Panvel,Panvel
+71,Byculla - Vikhroli,07:05:00,Byculla Station B & V,Kannamwar Nagar B&V
+72,Andheri 1 (Andheri - Mindspace Juinagar),07:10:00,Teli Gali,Chedda Nagar Signal ISEC
+73,Bhiwandi - Sakinaka,07:10:00,Bhumi World,Bhumi World
+74,Ghansoli - Vikhroli,07:10:00,Dombivali Station West ,Dombivali Station West 
+75,Panvel - Powai (start CBD),07:10:00,"Delta Tower, Ulwe TATA Projects",Ghatkopar Bridge TATA Projects
+76,Airoli 04 - Vikhroli,07:15:00,Green World Building Main Gate,Green World Building Main Gate
+77,Dombivali - Thane,07:15:00,90 Feet road Bayer ,"Patri Pool, East Bayer"
+78,K1 - Chirner,07:15:00,Deepak Fertiliser K1 PCL,Deepak Fertiliser K1 PCL
+79,K1 - CIDCO Thane,07:15:00,Deepak Fertiliser K1 PCL,Deepak Fertiliser K1 PCL
+80,K1 - Dadar,07:15:00,Deepak Fertiliser K1 PCL,Deepak Fertiliser K1 PCL
+81,K1 - JNPT,07:15:00,JNPT DFPCL,JNPT DFPCL
+82,K1 - Kalyan khadakpada circle,07:15:00,Deepak Fertiliser Plant K8,Deepak Fertiliser Plant K8
+83,K1 - Khopoli,07:15:00,Deepak Fertiliser K1 PCL,Deepak Fertiliser K1 PCL
+84,K1 - Nere,07:15:00,Deepak Fertiliser K1 PCL,Deepak Fertiliser K1 PCL
+85,K8 - Dombivali/Vithalwadi,07:15:00,Deepak Fertiliser Plant K8,Deepak Fertiliser Plant K8
+86,K8 - Vashi Railway station,07:15:00,Deepak Fertiliser Plant K8,Deepak Fertiliser Plant K8
+87,K8 - Wadkhal,07:15:00,Deepak Fertiliser Plant K8 DFPCL,Deepak Fertiliser Plant K8 DFPCL
+88,Kalyan Maxi Ground - K1 (General),07:15:00,Kalyan Maxi ground -,"Antarli, Khoni-Taloja road DFPCL"
+89,Khopoli -K1 (General),07:15:00,Khopoli Bus stop East DFPCL,"Aspire building, Vijay marg, Sec-6, New Panvel-East DFPCL"
+90,PCL - Badlapur,07:15:00,Deepak Fertiliser Plant K8 DFPCL,Deepak Fertiliser Plant K8 DFPCL
+91,Thane-Lower Parel(Loreal),07:15:00,Patlipada Junction,Patlipada Junction
+92,Thane - Powai ( start Lodha Splendora),07:15:00,Lodha Splendora TATA Projects,Rmall TATA Projects
+93,Thane - Turbhe,07:15:00,Kasarvadavali,Saket Complex
+94,Wadkhal - K8 (General),07:15:00,Wadkhal bus stand  DPFCL,"Bima complex, Kalamboli DPFCL"
+95,Airoli 03 - Vikhroli,07:20:00,Airoli Station - Priyanka hotel,Airoli Station - Priyanka hotel
+96,Airoli - Vikhroli,07:20:00,Vitawa Bridge,Black & Veatch Vikhroli
+97,Bandra - Thane,07:20:00,Kalanagar Bayer,Dahisar Checknaka Bayer
+98,Dadar - K1 (General),07:20:00,Dadar TT Circle,"Kharghar, Sec-7 DFPCL"
+99,Kharghar-Lower Parel(Loreal),07:20:00,"35, Kharghar station","35, Kharghar station"
+100,Mira Bhayandar - BKC,07:20:00,Maxus Mall,Akurli Road
+101,Ravet-Commerzone,07:20:00,Punawale-Rawet-Nigadi B&V,Dapodi B&V
+102,Thane - Worli (GE),07:20:00,Borivali Railway Station,Borivali Railway Station
+103,Vashi - BKC,07:20:00,Reliance Smart Point,Vashi Gaon 
+104,Byculla - Thane,07:20:38,Byculla Bayer,Mulund Mhada Singal Bayer
+105,Ambernath - Thane,07:25:00,Ambernath Station Bayer,Mankoli Bayer
+106,Navi Mumbai - South Mumbai (Atal Setu),07:28:25,Balaji Heights,Kharkopar Railway station
+107,Airoli 01 - Vikhroli,07:30:00,Airoli - Mcdonalds,Airoli - Mcdonalds
+108,Borivali- Lower Parel(Loreal),07:30:00,Borivali national park,Borivali national park
+109,Borivali - Worli (GE),07:30:00,Borivali Railway Station,Borivali Railway Station
+110,CIDCO Thane - K1 (General),07:30:00,"Cidco bus stop, Chendani Koliwada DFPCL","Pendhar phata, Taloja byepass, Panvel road DFPCL"
+111,Dahisar - Wadala,07:30:00,Millenium Business Park,Millenium Business Park
+112,Kharghar - Wadala,07:30:00,Millenium Business Park,Millenium Business Park
+113,Kharghar - Worli,07:30:00,Borivali Railway Station,Borivali Railway Station
+114,Navi Mumbai - South Mumbai,07:30:00,Balaji Heights,Vashi Highway
+115,Navi Mumbai - Worli,07:30:00,Balaji Heights,Vashi Highway
+116,Palm Beach (Nerul) - BKC,07:30:00,McDonalds Belapur,Shivaji Chowk
+117,Panvel - BKC,07:30:00,Satyaketu Complex,Kharkopar Railway station
+118,Panvel station To Wise city,07:30:00,Panvel Station wadhwa,Panvel Station wadhwa
+119,Santacruz - Andheri,07:30:00,Navy Nagar,Navy Nagar
+120,Thane Cidco - PCL (General),07:30:00,Thane - Cidco DFPCL,Navada Phata DFPCL
+121,Thane - Lower Parel,07:30:00,Lodha Splendora,Mulund Mhada
+122,Thane - Powai (start RMall),07:30:00,Lodha Amara Gate 1 TATA Projects,Tagore Nagar junction TATA Project
+123,Thane - Powai ( via LBS),07:30:00,Tip Top Plaza TATA Projects,Runwal Forest TATA Projects
+124,Thane - Wadala,07:30:00,Millenium Business Park,Millenium Business Park
+125,Tulip D1 To Panvel Station,07:30:00,Tulip D1 Wadhwa,Tulip D1 Wadhwa
+126,Thane Kopari - Azad Nagar,07:30:59,Thane Kopari Indofil,Thane Kopari Indofil
+127,Kalyan 2 (Kalyan - Mindspace Juinagar),07:35:00,Shivaji Nagar ISEC,Shilphata ISEC
+128,Nerul - Thane,07:35:00,Nerul Station (E) Bayer,Balkum Bayer
+129,Thane 2 (Thane - Mindspace Juinagar),07:35:00,Vihang Nova (ISEC),"Garam Masala , Airoli ISEC"
+130,Palm Beach Road - South Mumbai,07:35:23,Inorbit Mall,Kharkopar Railway station
+131,Andheri - Thane (B),07:40:00,Andheri Teli Galli Opp Hubtown Solaris Signal Bayer,Viviana Mall Bayer
+132,Dange Chowk-Commerzone,07:40:00,Bhoomkar chowk B&V,Breman Chowk B&V
+133,Ghatkopar West - Thane,07:40:00,Ghatkopar pipe line Bayer,Patlipada Junction Bayer
+134,Katai 1 (Katai Naka - Mindspace Juinagar),07:40:00,Gurudev Hotel ISEC,"Mindspace, Juinagar ISEC"
+135,Katraj - Commerzone,07:40:00,Dattanagar Chowk B&V,Shaniwar Wada B&V
+136,Mira Road - BKC,07:40:00,"Kalyan (STFC,BKC)","Kalyan (STFC,BKC)"
+137,Moshi - Commerzone,07:40:00,Sardar Chowk B&V,Vishrantwadi B&V
+138,Nanded City - Commerzone,07:40:00,Rajaram pool bridge B&V,Sangamwadi B&V
+139,Navi Mumbai - Lower Parel (Atal Setu),07:40:00,Balaji Heights,"Delta Tower, Ulwe"
+140,Panvel - South Mumbai (Via Atal Setu),07:40:00,Satyaketu Complex,"Delta Tower, Ulwe"
+141,SANTACRUZ-ANDHERI,07:40:00,Chembur Naka,Chembur Naka
+142,Thane (Wagbil) - Solitaire park Andheri,07:40:00,Thane Waghbil (D decor),Thane Waghbil (D decor)
+143,Undri - Commerzone,07:40:00,Aero East Society B&V,SAFA Motors B&V
+144,Vashi - Goregaon East (STH),07:40:00,"DMART, Ghansoli",Vashi Highway
+145,Warje - Commerzone,07:40:00,Aditya Garden City,Deccan B&V
+146,Andheri East - South Mumbai,07:45:00,Kanakia Seven,Bisleri Junction
+147,Bhayander - Thane,07:45:00,Bhayander Station(W) Bayer, Waghbil Stop Bayer
+148,Chembur - Powai,07:45:00,BARC Main Gate,Vikhroli Station
+149,Ghansoli - Powai,07:45:00,Ghansoli West   TATA Projects,Bhandup Pumping Station TATA Projects
+150,Kalyan khadakpada circle - K8 (General),07:45:00,Khadakpada circle,Usaatane Gaon
+151,Karanjade - K1 [General (Saturday)],07:45:00,"Karanjade, Vadghar DFPCL",Navde phata DFPCL
+152,Mulund 2 (Thane - Mindspace Juinagar),07:45:00,Nitin Signal ISEC,"Garam Masala , Airoli ISEC"
+153,Panvel 1 (Panvel - Mindspace Juinagar),07:45:00,Takka Road (ISEC),CBD highway ISEC
+154,Charoli-Commerzone,07:50:00,Tanish Park Chowk B&V,Vishrantwadi B&V
+155,Dadar 2 (Dadar TT - Mindspace Juinagar),07:50:00,Lower Parel,Mankhurd
+156,Dombivali Gharda - Mindspace (Juinagar),07:50:00,New Kalyan Road (ISEC),Manpada ISEC
+157,Hadapsar - Commerzone,07:50:00,Manjari Stud Farm B&V,Jail Road B&V
+158,Panvel - Lower Parel (Via Atal Setu),07:50:00,Satyaketu Complex,Kharkopar Railway station
+159,Wagholi - Commerzone,07:50:00,Bakori Phata B&V,Jail Road B&V
+160,Andheri East - Powai,08:00:00,Andheri east station - Ackruti center TATA Projects,Pratap Nagar TATA Projects
+161,Ashok Deluxe - Mahalakshmi,08:00:00,Ashok deluxe apartments UNext,Ashok deluxe apartments UNext
+162,Ghatkopar - Powai,08:00:00,Ghatkopar Station  TATA Projects,Vikhroli Station LBS  TATA Projects
+163,K8 - K8,08:00:00,Deepak Fertiliser Plant K8,Deepak Fertiliser Plant K8
+164,Karanjade - K1 (General),08:00:00,"Karanjade, Vadghar DFPCL",Trombay Koliwada DFPCL
+165,Katai 2 (Katai Naka - Mindspace Juinagar),08:00:00,Katai Naka ISEC,Shilphata ISEC
+166,Mulund - Andheri,08:00:00,Tirumala Habitats,Bhandup Pumping Bus Stop
+167,New Panvel - K1 ( General),08:00:00,Dmart New panvel,"Asudgaon depot, Sec-18 DFPCL"
+168,Thane - Navi Mumbai,08:00:00,Lodha Splendora,Saket
+169,Vashi - South Mumbai,08:00:00,Reliance Smart Point,Vashi Gaon 
+170,Ashok Deluxe - Santacruz,08:01:00,Ashok deluxe apartments UNext,Ashok deluxe apartments UNext
+171,Nanded City - Commerzone,08:05:00,Asawari gate (B&V),Sangamwadi B&V
+172,Shuttle 1 (Juinagar station - Mindspace),08:05:00,Juinagar station service road,Juinagar station service road
+173,Shuttle 2 (Juinagar station - Mindspace),08:05:00,Juinagar station service road,Juinagar station service road
+174,Shuttle 3 (Juinagar station - Mindspace),08:05:00,Juinagar station service road,Juinagar station service road
+175,Andheri (W) - BKC,08:10:00,Lokhandwala Circle,Shree Ram Nagar
+176,JNPT - K1 (General),08:10:00,Pallavi hotel,Gavhan Phata
+177,Kamothe - K1 (General),08:10:00,Central bank of india Kamothe DFPCL,Navde phata DFPCL
+178,Kanjurmarg - Powai,08:10:00,Suncity Highway Tata Project,Suncity Highway Tata Project
+179,Mulund - BKC,08:10:00,City of Joy, Kannamwar Nagar
+180,Thane - BKC,08:10:00,Lodha Splendora,Godrej One
+181,BANDRA - BKC (Pfizer) (1),08:15:00,Bandra Station Skywalk (Pfizer),Bandra Station Skywalk (Pfizer)
+182,Mira Bhayandar - Powai,08:15:00,Maxus Mall,Jogeshwari Metro Station
+183,Mistry Apartment - Time Square,08:15:00,Mistry appartments (Unext),Mistry appartments (Unext)
+184,Mulund - Goregaon East (STH),08:15:00,Tirumala Habitats,Bhandup Pumping Bus Stop
+185,Mulund - Lower Parel,08:15:00,Tirumala Habitats,Police Stn Walk Bridge
+186,Navi Mumbai - BKC,08:15:00,Balaji Heights,Shivaji Chowk
+187,Kopri - Thane,08:15:56,Sai Baba Mandir Thane Stn.(E) Bayer,Brahmand Bayer
+188,CBD Railway station - K8 (General),08:20:00,Asud gaon DFPCL,Dmart DFPCL
+189,Vashi - Andheri,08:20:00,Vashi Railway Station,Bhandup Pumping Bus Stop
+190,Palm Beach Road - Lower Parel,08:20:45,Inorbit Mall,"Delta Tower, Ulwe"
+191,Thane - Santacruz,08:25:00,Lodha Splendora,Godrej One
+192,Andheri Station - Ackruti Trade Center (O),08:30:00,Andheri station east,Andheri station east
+193,Ashok Deluxe - Time square (2),08:30:00,Ashok deluxe apartments UNext,Ashok deluxe apartments UNext
+194,BANDRA - BKC (Pfizer) (3),08:30:00,Bandra Station Skywalk (Pfizer),Bandra Station Skywalk (Pfizer)
+195,Kandivali - BKC,08:30:00,Mineral house ,Mineral house 
+196,Kandivali - BKC (Cabs),08:30:00,Kandivali West Metro Station ,Evershine Nagar 
+197,kurla station - BKC (Pfizer),08:30:00,Orchid school (Pfizer),Orchid school (Pfizer)
+198,Thane - Goregaon East (NTH),08:30:00,Majiwada Bus Stop,Opposite Lodha Splendora
+199,Chembur - Powai (Emerson),08:40:00,BARC Main Gate Emerson,BARC Main Gate Emerson
+200,Mulund - South Mumbai,08:40:00,Tirumala Habitats,Indian Oil Nagar
+201,Navi Mumbai - Andheri,08:40:00,Balaji Heights,Vashi Highway
+202,Palava - PCL (General),08:40:00,Khoni Palava Main gate DFPCL,Khoni Palava Main gate DFPCL
+203,Andheri station - Bay99,08:45:00,Andheri Station,Andheri Station
+204,BANDRA - BKC (Pfizer) (2),08:45:00,Bandra Station Skywalk (Pfizer),Bandra Station Skywalk (Pfizer)
+205,Andheri West - Worli,08:50:00,Shantivan Mhada ,Bisleri Junction
+206,Ashok deluxe - Time square,09:00:00,Ashok deluxe apartments UNext,Ashok deluxe apartments UNext
+207,Oboroi Splender - Aarey Aqua Metro station,09:00:00,Oberoi Splendor,Aarey JVLR metro station
+208,Chembur - Worli,09:10:00,Amar Mahal Junction,Dadar TT Circle
+209,CST - NARIMAN POINT,09:10:00,Maxus Mall,Maxus Mall
+210,Ghatkopar - BKC,09:10:00,Vikhroli Depot,Postal colony
+211,Navi Mumbai - Powai,09:10:00,Balaji Heights,Airoli Circle
+212,Belapur station - Mindspace,09:15:00,Belapur station,Belapur station
+213,Dadar Station - Lodha Office,09:15:00,Dadar Station,Dadar Station
+214,Dadar Station - Lodha Office  (2),09:15:00,Dadar Station,Dadar Station
+215,Malad Station - Sony Office (Mindspace Malad),09:15:00,Malad Station,Malad Station
+216,Thane kopari station - Centrum IT park,09:15:00,Kopari thane station - Wagle estate ,Kopari thane station - Wagle estate 
+217,Andheri Station - Seepz,09:20:00,Andheri Railway Station,Gundavali Bus stop
+218,Kalyan - Powai (Emerson),09:20:00,Prem auto emerson,Prem auto emerson
+219,Andehri - Powai,09:30:00,Powai Plaza,Powai Plaza
+220,Juinagar station - Mindspace,09:30:00,Juinagar Station,Juinagar Station
+221,Panvel station To Tulip D1,09:35:00,Panvel Station wadhwa,Panvel Station wadhwa
+222,Thane - Powai,09:40:00,Lodha Splendora,Mulund Mhada
+223,Vashi station - Mindspace,09:40:00,Raghuleela Mall - Vashi,Raghuleela Mall - Vashi
+224,Chembur - South Mumbai,09:45:00,Amar Mahal Junction,Bhakti Park
+225,Dadar Station - Lodha Office (3),09:45:00,Dadar Station,Dadar Station
+226,Worli - Lower Parel (Metro Loop),09:45:00,Worli Metro Station (Old),Peninsula Corporate Park
+227,Chembur - Goregaon East,10:10:00,Swastik Park,Amar Mahal
+228,BKC - Metro Loop,10:22:00,BKC Metro Gate A2,Kalanagar
+229,Mira Bhayandar - Saki Naka,10:25:00,Maxus Mall,Sai Dham
+230,Bhayander station - Solitaire park Andheri,10:30:00,150 feet road (D decor),150 feet road (D decor)
+231,Dadar Station - Lodha Office (4),10:30:00,Dadar Station,Dadar Station
+232,Aarey  - Powai (Metro Loop),10:40:00,Olympia 1,One South Avenue
+233,Dadar station - Lodha Office (5),10:45:00,Dadar Station,Dadar Station
+234,Vashi - Worli,10:45:00,Reliance Smart Point,Vashi Gaon 
+235,Vithalwadi/Dombivali - K8,11:15:00,Vitthalwadi Station,"Antarli, Khoni-Taloja road"
+236,Thane - South Mumbai,11:30:00,Lodha Splendora,RTO Kamraj Nagar
+237,JNPT - K1,11:45:00,Pallavi hotel DPFCL,Gavhan Phata DPFCL
+238,Nere - K1,11:45:00,"Nere, Panvel Matheran road DFCPL","Navde gaon, panvel DFCPL"
+239,Vashi Railway station - K8,11:45:00,New Vashi station DFPCL,Dmart DFPCL
+240,Powai - Vikhroli ,12:00:00,Kensington SEZ ,Kensington SEZ 
+241,Andheri Station - Cignus,12:05:01,Andheri station east,Andheri station east
+242,Dadar - K1,13:00:00,Dadar TT DFPCL,"Kharghar, Sec-7 DFPCL"
+243,Wadkhal - K8,13:05:00,Wadkhal bus stand  DPFCL,"Bima complex, Kalamboli DPFCL"
+244,CIDCO Thane - K1,13:15:00,"Cidco bus stop, Chendani Koliwada DFPCL","Pendhar phata, Taloja byepass, Panvel road DFPCL"
+245,Khopoli - K1,13:15:00,Khopoli Bus stop East DPFCL,"Aspire building, Vijay marg, Sec-6, New Panvel-East DPFCL"
+246,Kalyan khadakpada circle - K1,13:20:00,Khadakpada circle DPFCL,Usaatane Gaon DPFCL
+247,Andheri station - Cignus (B2B),13:30:00,Andheri station east,Andheri station east
+248,Kanjurmarg Station - Cignus (B2B),13:30:00,Kanjur Huma cinema,Kanjur Huma cinema
+249,Belapur - Lowe Parel,14:00:00,Lower Parel (ATG),Lower Parel (ATG)
+250,Navi mumbai - Event,14:30:00,Balaji Heights,Vashi Highway
+251,South Mumbai - DY Patil,14:30:00,N/A,N/A
+252,Thane - Event,14:30:00,Lodha Splendora,Mulund Mhada
+253,Andheri East - Event,14:40:00,Virwani Estate,"Domestic Airport Junction, Vile Parle East "
+254,Tower A1 - Main Gate,15:00:00,Wise City Panvel,Wise City Panvel
+255,Vikhroli - Powai (2),16:05:00,Vikkhroli Station,Vikkhroli Station
+256,Kanjurmarg Station - Cignus,16:05:01,Kanjur Huma cinema,Kanjur Huma cinema
+257,Thane - Worli,16:45:00,"Vijay Sales, Thane","Vijay Sales, Thane"

@@ -1,0 +1,57 @@
+Total repeated open tickets: 654
+
+================================================================================
+  LOST & FOUND — REPEATED TICKETS  (36 confirmed)
+  All MANUAL: customer's item still missing, needs driver/ops coordination
+================================================================================
+
+  #    Ticket ID     Date          Customer's Actual Message
+  -----------------------------------------------------------------------------
+  1    #12008852     26 Mar 2026   i lost or found something 9:54 am i lost something 9:54 am yes 9:55 am i lost my pouc
+  2    #12008668     26 Mar 2026   i lost or found something 9:34 am i lost something 9:34 am yes 9:34 am i have lost on
+  3    #12008479     26 Mar 2026   i lost or found something 9:15 am i lost something 9:15 am yes 9:15 am i forgot my wi
+  4    #12008234     26 Mar 2026   i lost or found something 8:54 am i lost something 8:54 am yes 8:55 am my lunch was l
+  5    #12008171     26 Mar 2026   i lost or found something 8:50 am i lost something 8:50 am yes 8:50 am i logged in to
+  6    #12008059     26 Mar 2026   i lost or found something 8:43 am i lost something 8:43 am yes 8:43 am i forgot my ea
+  7    #12006934     26 Mar 2026   i lost or found something 7:39 am i lost something 7:39 am yes 7:40 am i have lost st
+  8    #12006429     26 Mar 2026   i lost or found something 7:15 am i lost something 7:15 am yes 7:15 am i left my bott
+  9    #12002818     25 Mar 2026   i lost or found something 9:00 pm i lost something 9:00 pm yes 9:00 pm can i collect 
+  10   #12001844     25 Mar 2026   i lost or found something 7:32 pm i lost something 7:32 pm yes 7:32 pm hi
+  11   #11997803     25 Mar 2026   i lost or found something 4:00 pm i lost something 4:00 pm yes 4:00 pm i left my wire
+  12   #11994915     25 Mar 2026   i lost or found something 10:38 am i lost something 10:38 am yes 10:38 am earpods 10:
+  13   #11994823     25 Mar 2026   i lost or found something 10:30 am i lost something 10:30 am yes 10:30 am i forgot my
+  14   #11993412     25 Mar 2026   i lost or found something 8:37 am i lost something 8:37 am yes 8:37 am i lost my spec
+  15   #11992243     25 Mar 2026   i lost or found something 7:48 am i lost something 7:48 am yes 7:48 am i lost my pink
+  16   #11989896     24 Mar 2026   i lost or found something 5:25 am i lost something 5:25 am yes 5:25 am 5:29 am i lost
+  17   #11988234     24 Mar 2026   i lost or found something 10:27 pm i lost something 10:27 pm yes 10:27 pm hi can you 
+  18   #11986359     24 Mar 2026   i lost or found something 7:53 pm i lost something 7:53 pm yes 7:53 pm i lost my jbl 
+  19   #11984400     24 Mar 2026   i lost or found something 6:00 pm i lost something 6:00 pm yes 6:00 pm forgot earbuds
+  20   #11984389     24 Mar 2026   i lost or found something 6:00 pm i lost something 6:00 pm yes 6:00 pm hi i have kept
+  21   #11980818     24 Mar 2026   i lost or found something 2:13 pm i lost something 2:13 pm yes 2:13 pm i lost my earp
+  22   #11979074     24 Mar 2026   i lost or found something 10:22 am i lost something 10:22 am yes 10:23 am earbuds 10:
+  23   #11978782     24 Mar 2026   i lost or found something 9:51 am i lost something 9:51 am yes 9:52 am i accidentally
+  24   #11978724     24 Mar 2026   i lost or found something 9:45 am i lost something 9:45 am yes 9:45 am i left my tiff
+  25   #11977843     24 Mar 2026   i lost or found something 8:40 am i lost something 8:40 am yes 8:40 am i lost my empl
+  26   #11975490     24 Mar 2026   i lost or found something 7:28 am i lost something 7:28 am yes 7:29 am i lost my earb
+  27   #11973437     23 Mar 2026   i lost or found something 12:19 am i lost something 12:19 am yes 12:19 am forgot my l
+  28   #11971823     23 Mar 2026   i lost or found something 9:57 pm i lost something 9:57 pm yes 9:57 pm boat ear buds 
+  29   #11968778     23 Mar 2026   i lost or found something 6:02 pm i lost something 6:02 pm yes 6:03 pm i have forgott
+  30   #11954187     20 Mar 2026   i lost or found something 7:56 pm i lost something 7:56 pm yes 7:56 pm i lost my ear 
+  31   #11938944     18 Mar 2026   i lost or found something 5:58 pm i lost something 5:58 pm yes 5:58 pm i lost or foun
+  32   #11936131     18 Mar 2026   i lost or found something 2:54 pm i lost something 2:54 pm yes 2:55 pm i have lost my
+  33   #11934205     18 Mar 2026   i lost or found something 10:35 am i lost something 10:35 am yes 10:35 am hello, i wo
+  34   #11919836     17 Mar 2026   i lost or found something 2:10 pm i lost something 2:10 pm yes 2:10 pm i forgot my re
+  35   #11918185     17 Mar 2026   i lost or found something 10:08 am i lost something 10:08 am yes 10:09 am hi, i lost 
+  36   #11917553     17 Mar 2026   i lost or found something 9:07 am i lost something 9:07 am yes 9:07 am i forgot my wa
+
+================================================================================
+  TICKET IDs ONLY:
+================================================================================
+  #12008852   #12008668   #12008479   #12008234   #12008171   #12008059   #12006934   #12006429
+  #12002818   #12001844   #11997803   #11994915   #11994823   #11993412   #11992243   #11989896
+  #11988234   #11986359   #11984400   #11984389   #11980818   #11979074   #11978782   #11978724
+  #11977843   #11975490   #11973437   #11971823   #11968778   #11954187   #11938944   #11936131
+  #11934205   #11919836   #11918185   #11917553
+
+
+  (Remaining 618 repeated tickets are other issue types — not L&F)

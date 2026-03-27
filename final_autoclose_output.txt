@@ -1,0 +1,1269 @@
+Total open tickets (excl. 54 ghost tickets): 1381
+
+========================================================================
+  OPEN TICKET BREAKDOWN  (excl. 54 ghost tickets)
+  Classified using CUSTOMER messages only
+========================================================================
+  Category                             Action       Total  Repeated
+  ----------------------------------------------------------------
+  Lost and Found                       MANUAL          58        37
+  Driver Behaviour Issue               MANUAL          93        83
+  Payment / Refund / Invoice           REVIEW          61        14
+  Reschedule / Cancellation            REVIEW          18         5
+  App / Booking Issue                  REVIEW          82        25
+  Other / Unclear                      REVIEW          30         1
+  AC Issue                             AUTO-CLOSE      63        44
+  Seat / Hardware Issue                AUTO-CLOSE      88        71
+  Bus Quality / Hygiene                AUTO-CLOSE     194       157
+  Tracking Issue                       AUTO-CLOSE      81        46
+  Route / Timing Suggestion            AUTO-CLOSE     226        50
+  No Issue Stated (Dropped Off)        AUTO-CLOSE     387        92
+  ----------------------------------------------------------------
+  TOTAL (excl. ghost)                                1381
+
+  AUTO-CLOSE (excl. ghost) : 1039 tickets (75.2%)
+  REVIEW needed            : 191 tickets (13.8%)
+  MANUAL required          : 151 tickets (10.9%)
+
+  + Ghost tickets (auto)   : 54 tickets
+  GRAND TOTAL AUTO-CLOSE   : 1093 tickets
+========================================================================
+
+========================================================================
+  AUTO-CLOSE TICKET IDs — BY CATEGORY
+========================================================================
+
+========================================================================
+  AC ISSUE  --  63 tickets
+========================================================================
+  Customer Message                             Date           Ticket ID
+  ----------------------------------------------------------------------
+  i had an issue with ac 11:40 am ac was ver.. 26 Mar 2026   #12009713 [R]
+  i had an issue with ac 11:36 am ac was not.. 26 Mar 2026   #12009690 [R]
+  i had an issue with ac 10:52 am ac was not.. 26 Mar 2026   #12009326 [R]
+  i had an issue with ac 10:49 am ac was not.. 26 Mar 2026   #12009300 [R]
+  i had an issue with ac 10:41 am ac was ver.. 26 Mar 2026   #12009229 [R]
+  i have an issue with ac 9:20 am ac is not .. 26 Mar 2026   #12008547 [R]
+  i had an issue with ac 9:17 am ac was very.. 26 Mar 2026   #12008511 [R]
+  i have an issue with ac 8:10 am ac vent is.. 26 Mar 2026   #12007536    
+  i have an issue with ac 8:08 am ac is not .. 26 Mar 2026   #12007505 [R]
+  i had an issue with ac 8:00 am ac was very.. 26 Mar 2026   #12007375 [R]
+  i have an issue with ac 7:52 am ac vent is.. 26 Mar 2026   #12007197    
+  i have an issue with ac 7:45 am ac vent is.. 26 Mar 2026   #12007057    
+  i have an issue with ac 7:32 am ac is not .. 26 Mar 2026   #12006771    
+  i had an issue with ac 7:30 am ac was very.. 26 Mar 2026   #12006709 [R]
+  i had an issue with ac 7:28 am ac was not .. 26 Mar 2026   #12006681 [R]
+  i have an issue with ac 7:23 am ac vent is.. 26 Mar 2026   #12006595 [R]
+  i had an issue with ac 6:21 am ac was very.. 26 Mar 2026   #12005728 [R]
+  i had an issue with ac 10:31 pm ac was not.. 25 Mar 2026   #12004090 [R]
+  i have an issue with ac 7:30 pm ac is not .. 25 Mar 2026   #12001816    
+  i have an issue with ac 7:25 pm ac is not .. 25 Mar 2026   #12001737    
+  i have an issue with ac 7:23 pm ac is not .. 25 Mar 2026   #12001708    
+  i have an issue with ac 7:22 pm decrease t.. 25 Mar 2026   #12001697 [R]
+  i have an issue with ac 5:59 pm ac is not .. 25 Mar 2026   #12000264 [R]
+  i have an issue with ac 5:50 pm ac vent is.. 25 Mar 2026   #12000084 [R]
+  bus quality and hygiene issue 5:40 pm bus .. 25 Mar 2026   #11999866 [R]
+  i have an issue with ac 5:30 pm ac is not .. 25 Mar 2026   #11999655    
+  i have an issue with ac 5:13 pm ac vent is.. 25 Mar 2026   #11999240 [R]
+  i had an issue with ac 3:59 pm ac was not .. 25 Mar 2026   #11997796 [R]
+  i had an issue with ac 12:48 pm ac vent wa.. 25 Mar 2026   #11995931    
+  i have an issue with ac 8:43 am ac vent is.. 25 Mar 2026   #11993508    
+  i have an issue with ac 8:38 am main menu .. 25 Mar 2026   #11993422    
+  where is my bus 8:25 am main menu 8:28 am .. 25 Mar 2026   #11993165 [R]
+  i had an issue with ac 8:22 am ac was not .. 25 Mar 2026   #11993097 [R]
+  i had an issue with ac 12:44 am ac was not.. 24 Mar 2026   #11989594 [R]
+  i had an issue with ac 7:04 pm ac was very.. 24 Mar 2026   #11985678 [R]
+  i had an issue with ac 4:37 pm ac was very.. 24 Mar 2026   #11982671 [R]
+  i have an issue with ac 4:12 pm ac is not .. 24 Mar 2026   #11982215 [R]
+  i have an issue with ac 3:56 pm ac is not .. 24 Mar 2026   #11981965    
+  i have an issue with ac 9:50 am ac is not .. 24 Mar 2026   #11978761 [R]
+  i have an issue with ac 9:04 pm ac vent is.. 23 Mar 2026   #11971239    
+  i had an issue with ac 7:51 pm ac was not .. 23 Mar 2026   #11970491 [R]
+  i have an issue with ac 7:50 pm ac is not .. 23 Mar 2026   #11970477 [R]
+  i have an issue with ac 9:04 am ac is not .. 23 Mar 2026   #11962581    
+  i have an issue with ac 7:59 am ac vent is.. 23 Mar 2026   #11961198    
+  i had an issue with ac 6:26 pm ac was not .. 18 Mar 2026   #11939453 [R]
+  i had an issue with ac 10:37 am ac vent wa.. 18 Mar 2026   #11934220 [R]
+  i have an issue with ac 8:22 am ac vent is.. 18 Mar 2026   #11932522    
+  i had an issue with ac 7:01 am ac vent was.. 18 Mar 2026   #11930135 [R]
+  i had an issue with ac 9:26 pm ac was not .. 17 Mar 2026   #11926870 [R]
+  i have an issue with ac 6:32 pm ac is maki.. 17 Mar 2026   #11924704 [R]
+  i have an issue with ac 9:06 am ac vent is.. 17 Mar 2026   #11917527    
+  i had an issue with ac 7:56 am ac vent was.. 17 Mar 2026   #11916031 [R]
+  i have an issue with ac 10:38 am ac vent i.. 13 Mar 2026   #11887023 [R]
+  i have an issue with ac 5:11 pm increase t.. 12 Mar 2026   #11876721 [R]
+  my seat had a problem 11:44 am slider was .. 11 Mar 2026   #11858551 [R]
+  bus quality and hygiene issue 9:28 am bus .. 11 Mar 2026   #11857214    
+  bus quality and hygiene issue 11:17 pm bus.. 10 Mar 2026   #11851919 [R]
+  i had an issue with ac 11:10 pm ac vent wa.. 09 Mar 2026   #11836328 [R]
+  i had an issue with ac 9:07 pm ac vent was.. 09 Mar 2026   #11834800 [R]
+  bus quality and hygiene issue 9:44 am bus .. 09 Mar 2026   #11826455 [R]
+  i have an issue with ac 9:36 am ac vent is.. 09 Mar 2026   #11826374 [R]
+  i have an issue with ac 8:13 pm ac vent is.. 06 Mar 2026   #11817129 [R]
+  i have an issue with ac 9:48 am ac vent is.. 27 Feb 2026   #11754199    
+
+  IDs only:
+  #12009713   #12009690   #12009326   #12009300   #12009229   #12008547   #12008511   #12007536
+  #12007505   #12007375   #12007197   #12007057   #12006771   #12006709   #12006681   #12006595
+  #12005728   #12004090   #12001816   #12001737   #12001708   #12001697   #12000264   #12000084
+  #11999866   #11999655   #11999240   #11997796   #11995931   #11993508   #11993422   #11993165
+  #11993097   #11989594   #11985678   #11982671   #11982215   #11981965   #11978761   #11971239
+  #11970491   #11970477   #11962581   #11961198   #11939453   #11934220   #11932522   #11930135
+  #11926870   #11924704   #11917527   #11916031   #11887023   #11876721   #11858551   #11857214
+  #11851919   #11836328   #11834800   #11826455   #11826374   #11817129   #11754199
+
+========================================================================
+  SEAT / HARDWARE ISSUE  --  88 tickets
+========================================================================
+  Customer Message                             Date           Ticket ID
+  ----------------------------------------------------------------------
+  my seat had a problem 10:43 am recliner wa.. 26 Mar 2026   #12009252 [R]
+  my seat had a problem 9:54 am slider was n.. 26 Mar 2026   #12008850 [R]
+  my seat had a problem 9:13 am footrest was.. 26 Mar 2026   #12008454 [R]
+  my seat has a problem 8:26 am recliner is .. 26 Mar 2026   #12007793 [R]
+  my seat has a problem 8:20 am recliner is .. 26 Mar 2026   #12007705    
+  my seat had a problem 11:15 pm slider was .. 25 Mar 2026   #12004606 [R]
+  my seat had a problem 10:48 pm recliner wa.. 25 Mar 2026   #12004303 [R]
+  my seat had a problem 10:16 pm recliner wa.. 25 Mar 2026   #12003863 [R]
+  my seat had a problem 9:50 pm recliner was.. 25 Mar 2026   #12003458 [R]
+  my seat had a problem 9:44 pm recliner was.. 25 Mar 2026   #12003377 [R]
+  my seat had a problem 8:51 pm recliner was.. 25 Mar 2026   #12002723 [R]
+  bus quality and hygiene issue 8:28 pm main.. 25 Mar 2026   #12002491 [R]
+  my seat has a problem 8:27 pm charging poi.. 25 Mar 2026   #12002481 [R]
+  my seat had a problem 7:20 pm recliner was.. 25 Mar 2026   #12001680    
+  my seat has a problem 6:47 pm 6:47 pm seat.. 25 Mar 2026   #12001164    
+  my seat has a problem 6:38 pm slider is no.. 25 Mar 2026   #12001003    
+  my seat had a problem 6:04 pm recliner was.. 25 Mar 2026   #12000366    
+  my seat has a problem 5:15 pm recliner is .. 25 Mar 2026   #11999289    
+  my seat had a problem 4:40 pm slider was n.. 25 Mar 2026   #11998550 [R]
+  my seat has a problem 4:29 pm recliner is .. 25 Mar 2026   #11998362 [R]
+  my seat had a problem 3:15 pm recliner was.. 25 Mar 2026   #11997177 [R]
+  my seat had a problem 2:28 pm footrest was.. 25 Mar 2026   #11996678 [R]
+  my seat had a problem 10:51 am slider was .. 25 Mar 2026   #11995013 [R]
+  my seat had a problem 10:35 am recliner wa.. 25 Mar 2026   #11994870 [R]
+  my seat had a problem 9:50 am footrest was.. 25 Mar 2026   #11994401 [R]
+  my seat has a problem 8:30 am recliner is .. 25 Mar 2026   #11993254    
+  my seat has a problem 8:04 am recliner is .. 25 Mar 2026   #11992669 [R]
+  my seat has a problem 7:47 am slider is no.. 25 Mar 2026   #11992211    
+  my seat had a problem 7:36 am slider was n.. 25 Mar 2026   #11991881 [R]
+  my seat had a problem 6:56 am recliner was.. 25 Mar 2026   #11990689 [R]
+  my seat had a problem 11:31 pm recliner wa.. 24 Mar 2026   #11989066 [R]
+  my seat had a problem 10:36 pm slider was .. 24 Mar 2026   #11988364 [R]
+  my seat has a problem 8:49 pm slider is no.. 24 Mar 2026   #11987000    
+  my seat had a problem 7:35 pm seat pocket .. 24 Mar 2026   #11986117 [R]
+  my seat has a problem 6:36 pm handrest is .. 24 Mar 2026   #11985195    
+  my seat has a problem 5:13 pm slider is no.. 24 Mar 2026   #11983364    
+  my seat has a problem 10:43 am recliner is.. 24 Mar 2026   #11979220    
+  my seat had a problem 9:48 am slider was n.. 24 Mar 2026   #11978734 [R]
+  my seat has a problem 9:32 am recliner is .. 24 Mar 2026   #11978602 [R]
+  my seat has a problem 9:15 am recliner is .. 24 Mar 2026   #11978435 [R]
+  my seat had a problem 8:20 am recliner was.. 24 Mar 2026   #11977293 [R]
+  my seat has a problem 8:19 am handrest is .. 24 Mar 2026   #11977277 [R]
+  my seat has a problem 7:40 am recliner is .. 24 Mar 2026   #11975853 [R]
+  my seat had a problem 10:38 pm slider was .. 23 Mar 2026   #11972391 [R]
+  my seat had a problem 10:34 pm seat pocket.. 23 Mar 2026   #11972332 [R]
+  my seat had a problem 6:09 pm slider was n.. 23 Mar 2026   #11968943 [R]
+  my seat had a problem 5:25 pm slider was n.. 23 Mar 2026   #11968065 [R]
+  my seat had a problem 1:10 pm main menu 1:.. 23 Mar 2026   #11964660 [R]
+  my seat had a problem 11:19 am slider was .. 23 Mar 2026   #11963860 [R]
+  my seat had a problem 11:15 am slider was .. 23 Mar 2026   #11963829 [R]
+  my seat had a problem 11:04 am recliner wa.. 23 Mar 2026   #11963729 [R]
+  my seat has a problem 8:12 am seat pocket .. 23 Mar 2026   #11961718    
+  my seat had a problem 11:04 pm slider was .. 22 Mar 2026   #11959032 [R]
+  my seat had a problem 10:15 pm footrest wa.. 22 Mar 2026   #11958721 [R]
+  my seat had a problem 7:22 pm recliner was.. 22 Mar 2026   #11957782 [R]
+  my seat had a problem 6:01 pm handrest was.. 20 Mar 2026   #11953271 [R]
+  my seat had a problem 11:46 am slider was .. 20 Mar 2026   #11950628 [R]
+  my seat has a problem 7:57 am handrest is .. 20 Mar 2026   #11949094 [R]
+  bus quality and hygiene issue 9:47 pm main.. 18 Mar 2026   #11941439    
+  my seat had a problem 8:24 pm seat pocket .. 18 Mar 2026   #11940878 [R]
+  my seat has a problem 6:46 pm recliner is .. 18 Mar 2026   #11939768    
+  my seat had a problem 4:49 pm recliner was.. 18 Mar 2026   #11937651 [R]
+  my seat had a problem 4:39 pm slider was n.. 18 Mar 2026   #11937480 [R]
+  my seat had a problem 3:53 pm recliner was.. 18 Mar 2026   #11936806 [R]
+  my seat had a problem 3:06 pm footrest was.. 18 Mar 2026   #11936265 [R]
+  my seat had a problem 10:38 am recliner wa.. 18 Mar 2026   #11934224 [R]
+  my seat has a problem 9:21 am handrest is .. 18 Mar 2026   #11933536 [R]
+  my seat has a problem 8:48 am seat pocket .. 18 Mar 2026   #11933052 [R]
+  my seat had a problem 6:58 am recliner was.. 18 Mar 2026   #11930070 [R]
+  my seat had a problem 10:17 pm recliner wa.. 17 Mar 2026   #11927519 [R]
+  my seat had a problem 7:59 pm handrest was.. 17 Mar 2026   #11925937 [R]
+  my seat had a problem 6:28 pm slider was n.. 17 Mar 2026   #11924630 [R]
+  my seat has a problem 4:57 pm recliner is .. 17 Mar 2026   #11922264 [R]
+  my seat has a problem 9:08 am recliner is .. 17 Mar 2026   #11917558 [R]
+  my seat has a problem 8:12 am recliner is .. 17 Mar 2026   #11916439 [R]
+  my seat had a problem 10:38 pm slider was .. 16 Mar 2026   #11911884 [R]
+  my seat had a problem 5:20 pm recliner was.. 16 Mar 2026   #11907121 [R]
+  my seat had a problem 12:10 am main menu 1.. 15 Mar 2026   #11898360 [R]
+  my seat has a problem 5:49 pm seat pocket .. 12 Mar 2026   #11877628    
+  my seat had a problem 6:48 pm recliner was.. 11 Mar 2026   #11863830 [R]
+  my seat had a problem 7:40 am recliner was.. 11 Mar 2026   #11854972 [R]
+  my seat has a problem 7:43 am handrest is .. 10 Mar 2026   #11839657    
+  my seat had a problem 10:21 am recliner wa.. 09 Mar 2026   #11826797 [R]
+  my seat had a problem 3:38 pm footrest was.. 06 Mar 2026   #11813764 [R]
+  my seat had a problem 7:42 am seat pocket .. 05 Mar 2026   #11795583 [R]
+  my seat had a problem 10:49 am footrest wa.. 04 Mar 2026   #11785299 [R]
+  my seat had a problem 3:47 pm recliner was.. 03 Mar 2026   #11778704 [R]
+  my seat had a problem 3:37 pm recliner was.. 25 Feb 2026   #11729397 [R]
+
+  IDs only:
+  #12009252   #12008850   #12008454   #12007793   #12007705   #12004606   #12004303   #12003863
+  #12003458   #12003377   #12002723   #12002491   #12002481   #12001680   #12001164   #12001003
+  #12000366   #11999289   #11998550   #11998362   #11997177   #11996678   #11995013   #11994870
+  #11994401   #11993254   #11992669   #11992211   #11991881   #11990689   #11989066   #11988364
+  #11987000   #11986117   #11985195   #11983364   #11979220   #11978734   #11978602   #11978435
+  #11977293   #11977277   #11975853   #11972391   #11972332   #11968943   #11968065   #11964660
+  #11963860   #11963829   #11963729   #11961718   #11959032   #11958721   #11957782   #11953271
+  #11950628   #11949094   #11941439   #11940878   #11939768   #11937651   #11937480   #11936806
+  #11936265   #11934224   #11933536   #11933052   #11930070   #11927519   #11925937   #11924630
+  #11922264   #11917558   #11916439   #11911884   #11907121   #11898360   #11877628   #11863830
+  #11854972   #11839657   #11826797   #11813764   #11795583   #11785299   #11778704   #11729397
+
+========================================================================
+  BUS QUALITY / HYGIENE  --  194 tickets
+========================================================================
+  Customer Message                             Date           Ticket ID
+  ----------------------------------------------------------------------
+  bus quality and hygiene issue 11:55 am bus.. 26 Mar 2026   #12009816 [R]
+  bus quality and hygiene issue 11:02 am fli.. 26 Mar 2026   #12009413 [R]
+  bus quality and hygiene issue 9:31 am flie.. 26 Mar 2026   #12008645 [R]
+  bus quality and hygiene issue 9:02 am bus .. 26 Mar 2026   #12008338    
+  bus quality and hygiene issue 9:02 am flie.. 26 Mar 2026   #12008332    
+  bus quality and hygiene issue 8:38 am flie.. 26 Mar 2026   #12007991 [R]
+  bus quality and hygiene issue 7:44 am bus .. 26 Mar 2026   #12007042    
+  bus quality and hygiene issue 7:31 am bus .. 26 Mar 2026   #12006745 [R]
+  bus quality and hygiene issue 7:27 am bus .. 26 Mar 2026   #12006678    
+  bus quality and hygiene issue 7:29 am bus .. 26 Mar 2026   #12006663    
+  bus quality and hygiene issue 6:22 am bus .. 26 Mar 2026   #12005738 [R]
+  bus quality and hygiene issue 6:15 am bus .. 26 Mar 2026   #12005696 [R]
+  bus quality and hygiene issue 9:59 pm bus .. 25 Mar 2026   #12003567 [R]
+  bus quality and hygiene issue 9:17 pm bus .. 25 Mar 2026   #12003030    
+  bus quality and hygiene issue 8:02 pm bus .. 25 Mar 2026   #12002185 [R]
+  bus quality and hygiene issue 5:46 pm bus .. 25 Mar 2026   #11999983 [R]
+  bus quality and hygiene issue 5:32 pm bus .. 25 Mar 2026   #11999693    
+  bus quality and hygiene issue 4:59 pm bus .. 25 Mar 2026   #11998900 [R]
+  bus quality and hygiene issue 4:44 pm bus .. 25 Mar 2026   #11998624 [R]
+  bus quality and hygiene issue 4:29 pm bus .. 25 Mar 2026   #11998340    
+  bus quality and hygiene issue 4:18 pm bus .. 25 Mar 2026   #11998133 [R]
+  bus quality and hygiene issue 3:12 pm flie.. 25 Mar 2026   #11997137 [R]
+  bus quality and hygiene issue 2:19 pm bus .. 25 Mar 2026   #11996572 [R]
+  bus quality and hygiene issue 10:14 am bus.. 25 Mar 2026   #11994675 [R]
+  bus quality and hygiene issue 10:00 am bus.. 25 Mar 2026   #11994509 [R]
+  bus quality and hygiene issue 9:46 am bus .. 25 Mar 2026   #11994358 [R]
+  bus quality and hygiene issue 9:43 am bus .. 25 Mar 2026   #11994327 [R]
+  bus quality and hygiene issue 8:59 am bus .. 25 Mar 2026   #11993803 [R]
+  bus quality and hygiene issue 8:48 am flie.. 25 Mar 2026   #11993610    
+  bus quality and hygiene issue 8:32 am bus .. 25 Mar 2026   #11993322 [R]
+  bus quality and hygiene issue 8:04 am bus .. 25 Mar 2026   #11992685 [R]
+  bus quality and hygiene issue 7:54 am bus .. 25 Mar 2026   #11992415 [R]
+  bus quality and hygiene issue 7:52 am bus .. 25 Mar 2026   #11992350 [R]
+  bus quality and hygiene issue 7:49 am bus .. 25 Mar 2026   #11992270 [R]
+  bus quality and hygiene issue 7:49 am bus .. 25 Mar 2026   #11992260 [R]
+  bus quality and hygiene issue 7:47 am bus .. 25 Mar 2026   #11992208 [R]
+  main menu 6:57 am bus quality and hygiene .. 25 Mar 2026   #11990563 [R]
+  bus quality and hygiene issue 6:50 am flie.. 25 Mar 2026   #11990562    
+  bus quality and hygiene issue 6:17 am bus .. 25 Mar 2026   #11990116 [R]
+  bus quality and hygiene issue 12:30 am bus.. 24 Mar 2026   #11989524 [R]
+  bus quality and hygiene issue 11:45 pm bus.. 24 Mar 2026   #11989212 [R]
+  bus quality and hygiene issue 11:34 pm bus.. 24 Mar 2026   #11989099 [R]
+  bus quality and hygiene issue 11:33 pm bus.. 24 Mar 2026   #11989092 [R]
+  bus quality and hygiene issue 10:37 pm bus.. 24 Mar 2026   #11988385 [R]
+  bus quality and hygiene issue 10:25 pm bus.. 24 Mar 2026   #11988210 [R]
+  bus quality and hygiene issue 9:17 pm flie.. 24 Mar 2026   #11987336 [R]
+  bus quality and hygiene issue 6:54 pm bus .. 24 Mar 2026   #11985515    
+  bus quality and hygiene issue 6:08 pm bus .. 24 Mar 2026   #11984580 [R]
+  bus quality and hygiene issue 6:00 pm bus .. 24 Mar 2026   #11984393    
+  bus quality and hygiene issue 5:58 pm bus .. 24 Mar 2026   #11984347    
+  bus quality and hygiene issue 5:31 pm flie.. 24 Mar 2026   #11983775    
+  bus quality and hygiene issue 3:33 pm bus .. 24 Mar 2026   #11981615 [R]
+  bus quality and hygiene issue 1:45 pm bus .. 24 Mar 2026   #11980565 [R]
+  bus quality and hygiene issue 12:22 pm bus.. 24 Mar 2026   #11979999 [R]
+  bus quality and hygiene issue 11:53 am bus.. 24 Mar 2026   #11979785 [R]
+  bus quality and hygiene issue 11:42 am wat.. 24 Mar 2026   #11979709 [R]
+  bus quality and hygiene issue 11:04 am bus.. 24 Mar 2026   #11979409 [R]
+  bus quality and hygiene issue 9:59 am bus .. 24 Mar 2026   #11978852 [R]
+  bus quality and hygiene issue 9:13 am bus .. 24 Mar 2026   #11978408 [R]
+  the bus door is non functional               24 Mar 2026   #11977684    
+  bus quality and hygiene issue 8:23 am bus .. 24 Mar 2026   #11977429    
+  bus quality and hygiene issue 8:20 am bus .. 24 Mar 2026   #11977311 [R]
+  bus quality and hygiene issue 7:59 am bus .. 24 Mar 2026   #11976562 [R]
+  bus quality and hygiene issue 7:24 am bus .. 24 Mar 2026   #11975372 [R]
+  bus quality and hygiene issue 7:14 am bus .. 24 Mar 2026   #11975062 [R]
+  bus quality and hygiene issue 6:26 am bus .. 24 Mar 2026   #11974167 [R]
+  bus quality and hygiene issue 11:44 pm bus.. 23 Mar 2026   #11973196 [R]
+  bus quality and hygiene issue 10:48 pm bus.. 23 Mar 2026   #11972541 [R]
+  bus quality and hygiene issue 10:03 pm bus.. 23 Mar 2026   #11971911 [R]
+  bus quality and hygiene issue 9:35 pm flie.. 23 Mar 2026   #11971561 [R]
+  bus quality and hygiene issue 9:34 pm bus .. 23 Mar 2026   #11971545 [R]
+  bus quality and hygiene issue 9:02 pm flie.. 23 Mar 2026   #11971221 [R]
+  bus quality and hygiene issue 8:50 pm bus .. 23 Mar 2026   #11971121 [R]
+  bus quality and hygiene issue 7:44 pm bus .. 23 Mar 2026   #11970395    
+  bus quality and hygiene issue 6:59 pm bus .. 23 Mar 2026   #11969788    
+  bus quality and hygiene issue 6:57 pm bus .. 23 Mar 2026   #11969750    
+  bus quality and hygiene issue 6:56 pm bus .. 23 Mar 2026   #11969730    
+  bus quality and hygiene issue 6:23 pm caus.. 23 Mar 2026   #11969194 [R]
+  bus quality and hygiene issue 4:49 pm bus .. 23 Mar 2026   #11967384 [R]
+  bus quality and hygiene issue 2:50 pm flie.. 23 Mar 2026   #11965877 [R]
+  bus quality and hygiene issue 2:22 pm flie.. 23 Mar 2026   #11965482 [R]
+  bus quality and hygiene issue 2:15 pm bus .. 23 Mar 2026   #11965393 [R]
+  bus quality and hygiene issue 2:05 pm flie.. 23 Mar 2026   #11965180 [R]
+  bus quality and hygiene issue 11:12 am bus.. 23 Mar 2026   #11963795 [R]
+  bus quality and hygiene issue 10:56 am bus.. 23 Mar 2026   #11963658 [R]
+  bus quality and hygiene issue 9:31 am bus .. 23 Mar 2026   #11962877 [R]
+  bus quality and hygiene issue 9:18 am bus .. 23 Mar 2026   #11962721    
+  bus quality and hygiene issue 8:56 am bus .. 23 Mar 2026   #11962448 [R]
+  bus quality and hygiene issue 8:55 am bus .. 23 Mar 2026   #11962430 [R]
+  bus quality and hygiene issue 8:12 am        23 Mar 2026   #11961194 [R]
+  bus quality and hygiene issue 7:58 am flie.. 23 Mar 2026   #11961144 [R]
+  bus quality and hygiene issue 7:57 am bus .. 23 Mar 2026   #11961103    
+  bus quality and hygiene issue 7:54 am bus .. 23 Mar 2026   #11961039 [R]
+  bus quality and hygiene issue 7:51 am bus .. 23 Mar 2026   #11960979 [R]
+  bus quality and hygiene issue 5:26 pm bus .. 22 Mar 2026   #11957278 [R]
+  bus quality and hygiene issue 11:16 am fli.. 22 Mar 2026   #11956478 [R]
+  bus quality and hygiene issue 6:49 pm bus .. 21 Mar 2026   #11955767 [R]
+  bus quality and hygiene issue 4:54 pm bus .. 20 Mar 2026   #11952494 [R]
+  bus quality and hygiene issue 4:35 pm bus .. 20 Mar 2026   #11952303 [R]
+  bus quality and hygiene issue 11:39 am bus.. 20 Mar 2026   #11950603 [R]
+  bus quality and hygiene issue 10:56 am bus.. 20 Mar 2026   #11950384 [R]
+  bus quality and hygiene issue 10:52 am bus.. 20 Mar 2026   #11950354    
+  main menu 9:04 am bus quality and hygiene .. 20 Mar 2026   #11949702 [R]
+  bus quality and hygiene issue 8:54 am bus .. 20 Mar 2026   #11949686 [R]
+  bus quality and hygiene issue 7:57 am wate.. 20 Mar 2026   #11949096    
+  bus quality and hygiene issue 7:52 am bus .. 20 Mar 2026   #11949029 [R]
+  bus quality and hygiene issue 7:46 am flie.. 20 Mar 2026   #11948944    
+  bus quality and hygiene issue 7:30 am flie.. 20 Mar 2026   #11948715 [R]
+  bus quality and hygiene issue 7:24 am flie.. 20 Mar 2026   #11948643 [R]
+  bus quality and hygiene issue 11:11 pm bus.. 19 Mar 2026   #11947520 [R]
+  bus quality and hygiene issue 1:48 pm bus .. 19 Mar 2026   #11944252 [R]
+  bus quality and hygiene issue 11:18 pm mai.. 18 Mar 2026   #11941995    
+  bus quality and hygiene issue 9:31 pm flie.. 18 Mar 2026   #11941337 [R]
+  bus quality and hygiene issue 8:16 pm bus .. 18 Mar 2026   #11940804 [R]
+  bus quality and hygiene issue 7:03 pm bus .. 18 Mar 2026   #11940024 [R]
+  bus quality and hygiene issue 4:40 pm flie.. 18 Mar 2026   #11937498 [R]
+  bus quality and hygiene issue 12:53 pm bus.. 18 Mar 2026   #11935141 [R]
+  bus quality and hygiene issue 11:45 am bus.. 18 Mar 2026   #11934708 [R]
+  bus quality and hygiene issue 10:32 am bus.. 18 Mar 2026   #11934186 [R]
+  bus quality and hygiene issue 9:11 am bus .. 18 Mar 2026   #11933424    
+  bus quality and hygiene issue 9:50 pm bus .. 17 Mar 2026   #11927164 [R]
+  bus quality and hygiene issue 9:26 pm bus .. 17 Mar 2026   #11926862 [R]
+  bus quality and hygiene issue 9:25 pm bus .. 17 Mar 2026   #11926853 [R]
+  bus quality and hygiene issue 9:24 pm bus .. 17 Mar 2026   #11926839 [R]
+  bus quality and hygiene issue 8:54 pm bus .. 17 Mar 2026   #11926525 [R]
+  bus quality and hygiene issue 8:49 pm bus .. 17 Mar 2026   #11926474 [R]
+  bus quality and hygiene issue 7:00 pm bus .. 17 Mar 2026   #11925157 [R]
+  bus quality and hygiene issue 5:42 pm bus .. 17 Mar 2026   #11923646 [R]
+  bus quality and hygiene issue 5:20 pm bus .. 17 Mar 2026   #11922882 [R]
+  bus quality and hygiene issue 1:58 pm bus .. 17 Mar 2026   #11919742 [R]
+  bus quality and hygiene issue 9:23 am bus .. 17 Mar 2026   #11917755    
+  bus quality and hygiene issue 9:18 am bus .. 17 Mar 2026   #11917692    
+  bus quality and hygiene issue 8:48 am bus .. 17 Mar 2026   #11917239 [R]
+  bus quality and hygiene issue 8:28 am wate.. 17 Mar 2026   #11916857 [R]
+  bus quality and hygiene issue 8:14 am bus .. 17 Mar 2026   #11916510 [R]
+  bus quality and hygiene issue 8:05 am bus .. 17 Mar 2026   #11916282 [R]
+  bus quality and hygiene issue 8:02 am bus .. 17 Mar 2026   #11916187 [R]
+  bus quality and hygiene issue 7:42 am bus .. 17 Mar 2026   #11915543    
+  bus quality and hygiene issue 7:21 am flie.. 17 Mar 2026   #11914852 [R]
+  bus quality and hygiene issue 7:09 am bus .. 17 Mar 2026   #11914416 [R]
+  bus quality and hygiene issue 6:15 am bus .. 17 Mar 2026   #11913489 [R]
+  bus quality and hygiene issue 11:33 pm wat.. 16 Mar 2026   #11912511 [R]
+  bus quality and hygiene issue 11:30 pm bus.. 16 Mar 2026   #11912479 [R]
+  bus quality and hygiene issue 8:49 pm bus .. 16 Mar 2026   #11910491 [R]
+  bus quality and hygiene issue 8:09 pm bus .. 16 Mar 2026   #11910047 [R]
+  bus quality and hygiene issue 5:55 pm main.. 16 Mar 2026   #11907863 [R]
+  bus quality and hygiene issue 10:30 am bus.. 16 Mar 2026   #11902706    
+  bus quality and hygiene issue 9:29 am bus .. 16 Mar 2026   #11902023 [R]
+  bus quality and hygiene issue 7:48 am wate.. 16 Mar 2026   #11900290    
+  bus quality and hygiene issue 7:40 am bus .. 16 Mar 2026   #11900104 [R]
+  bus quality and hygiene issue 7:00 am wate.. 16 Mar 2026   #11899246 [R]
+  bus quality and hygiene issue 6:16 am wate.. 14 Mar 2026   #11893137 [R]
+  bus quality and hygiene issue 11:00 pm bus.. 13 Mar 2026   #11892892 [R]
+  bus quality and hygiene issue 7:12 pm bus .. 13 Mar 2026   #11891930 [R]
+  bus quality and hygiene issue 12:46 pm bus.. 13 Mar 2026   #11887813 [R]
+  bus quality and hygiene issue 11:50 am bus.. 13 Mar 2026   #11887510 [R]
+  bus quality and hygiene issue 11:16 am bus.. 13 Mar 2026   #11887320 [R]
+  bus quality and hygiene issue 9:13 am bus .. 13 Mar 2026   #11886291 [R]
+  bus quality and hygiene issue 7:33 am bus .. 13 Mar 2026   #11884355    
+  bus quality and hygiene issue 6:51 am bus .. 13 Mar 2026   #11883228 [R]
+  bus quality and hygiene issue 6:08 am bus .. 13 Mar 2026   #11882798 [R]
+  bus quality and hygiene issue 11:54 pm bus.. 12 Mar 2026   #11882132 [R]
+  bus quality and hygiene issue 8:33 pm bus .. 12 Mar 2026   #11879935 [R]
+  bus quality and hygiene issue 5:20 pm bus .. 12 Mar 2026   #11876884 [R]
+  bus quality and hygiene issue 1:58 pm bus .. 12 Mar 2026   #11874227 [R]
+  bus quality and hygiene issue 9:38 am bus .. 12 Mar 2026   #11872255 [R]
+  bus quality and hygiene issue 10:27 pm bus.. 11 Mar 2026   #11866343 [R]
+  bus quality and hygiene issue 8:16 pm bus .. 11 Mar 2026   #11864901 [R]
+  bus quality and hygiene issue 5:53 pm bus .. 11 Mar 2026   #11862797 [R]
+  bus quality and hygiene issue 1:08 pm bus .. 11 Mar 2026   #11859072 [R]
+  bus quality and hygiene issue 10:45 am bus.. 11 Mar 2026   #11858002 [R]
+  bus quality and hygiene issue 9:31 am bus .. 11 Mar 2026   #11857261    
+  bus quality and hygiene issue 8:35 am bus .. 11 Mar 2026   #11856435 [R]
+  bus quality and hygiene issue 7:16 am bus .. 11 Mar 2026   #11854207    
+  bus quality and hygiene issue 8:45 pm bus .. 10 Mar 2026   #11849969    
+  bus quality and hygiene issue 8:04 pm bus .. 10 Mar 2026   #11849532 [R]
+  bus quality and hygiene issue 5:28 pm bus .. 10 Mar 2026   #11846727 [R]
+  bus quality and hygiene issue 4:23 pm bus .. 10 Mar 2026   #11845442 [R]
+  bus quality and hygiene issue 8:18 am bus .. 10 Mar 2026   #11840573 [R]
+  bus quality and hygiene issue 7:40 am bus .. 10 Mar 2026   #11839548    
+  bus quality and hygiene issue 12:05 am bus.. 09 Mar 2026   #11836853 [R]
+  bus quality and hygiene issue 11:29 pm bus.. 09 Mar 2026   #11836537 [R]
+  bus quality and hygiene issue 11:14 pm bus.. 09 Mar 2026   #11836391 [R]
+  bus quality and hygiene issue 12:17 pm bus.. 09 Mar 2026   #11827718 [R]
+  bus quality and hygiene issue 9:32 am main.. 09 Mar 2026   #11826335 [R]
+  bus quality and hygiene issue 9:12 am bus .. 05 Mar 2026   #11797192 [R]
+  bus quality and hygiene issue 6:51 am bus .. 05 Mar 2026   #11794281 [R]
+  bus quality and hygiene issue 9:21 pm bus .. 04 Mar 2026   #11791447 [R]
+  bus quality and hygiene issue 2:55 pm bus .. 04 Mar 2026   #11786869 [R]
+  bus quality and hygiene issue 11:32 am bus.. 04 Mar 2026   #11785594 [R]
+  bus quality and hygiene issue 10:54 pm bus.. 03 Mar 2026   #11781586 [R]
+  bus quality and hygiene issue 4:34 pm bus .. 02 Mar 2026   #11771825 [R]
+  bus quality and hygiene issue 11:22 pm bus.. 27 Feb 2026   #11760363 [R]
+  bus quality and hygiene issue 9:08 am bus .. 25 Feb 2026   #11726229 [R]
+
+  IDs only:
+  #12009816   #12009413   #12008645   #12008338   #12008332   #12007991   #12007042   #12006745
+  #12006678   #12006663   #12005738   #12005696   #12003567   #12003030   #12002185   #11999983
+  #11999693   #11998900   #11998624   #11998340   #11998133   #11997137   #11996572   #11994675
+  #11994509   #11994358   #11994327   #11993803   #11993610   #11993322   #11992685   #11992415
+  #11992350   #11992270   #11992260   #11992208   #11990563   #11990562   #11990116   #11989524
+  #11989212   #11989099   #11989092   #11988385   #11988210   #11987336   #11985515   #11984580
+  #11984393   #11984347   #11983775   #11981615   #11980565   #11979999   #11979785   #11979709
+  #11979409   #11978852   #11978408   #11977684   #11977429   #11977311   #11976562   #11975372
+  #11975062   #11974167   #11973196   #11972541   #11971911   #11971561   #11971545   #11971221
+  #11971121   #11970395   #11969788   #11969750   #11969730   #11969194   #11967384   #11965877
+  #11965482   #11965393   #11965180   #11963795   #11963658   #11962877   #11962721   #11962448
+  #11962430   #11961194   #11961144   #11961103   #11961039   #11960979   #11957278   #11956478
+  #11955767   #11952494   #11952303   #11950603   #11950384   #11950354   #11949702   #11949686
+  #11949096   #11949029   #11948944   #11948715   #11948643   #11947520   #11944252   #11941995
+  #11941337   #11940804   #11940024   #11937498   #11935141   #11934708   #11934186   #11933424
+  #11927164   #11926862   #11926853   #11926839   #11926525   #11926474   #11925157   #11923646
+  #11922882   #11919742   #11917755   #11917692   #11917239   #11916857   #11916510   #11916282
+  #11916187   #11915543   #11914852   #11914416   #11913489   #11912511   #11912479   #11910491
+  #11910047   #11907863   #11902706   #11902023   #11900290   #11900104   #11899246   #11893137
+  #11892892   #11891930   #11887813   #11887510   #11887320   #11886291   #11884355   #11883228
+  #11882798   #11882132   #11879935   #11876884   #11874227   #11872255   #11866343   #11864901
+  #11862797   #11859072   #11858002   #11857261   #11856435   #11854207   #11849969   #11849532
+  #11846727   #11845442   #11840573   #11839548   #11836853   #11836537   #11836391   #11827718
+  #11826335   #11797192   #11794281   #11791447   #11786869   #11785594   #11781586   #11771825
+  #11760363   #11726229
+
+========================================================================
+  TRACKING ISSUE  --  81 tickets
+========================================================================
+  Customer Message                             Date           Ticket ID
+  ----------------------------------------------------------------------
+  tracking issue 10:45 am i couldn't track t.. 26 Mar 2026   #12009268 [R]
+  where is my bus 9:34 am the bus is not mov.. 26 Mar 2026   #12008677    
+  where is my bus 9:34 am the bus is not mov.. 26 Mar 2026   #12008666 [R]
+  where is my bus 9:12 am the bus is not mov.. 26 Mar 2026   #12008447 [R]
+  where is my bus 8:42 am i can't track the .. 26 Mar 2026   #12008034    
+  where is my bus 8:27 am the bus is not mov.. 26 Mar 2026   #12007817    
+  where is my bus 8:24 am the bus is not mov.. 26 Mar 2026   #12007757    
+  where is my bus 8:15 am tracking is wrong .. 26 Mar 2026   #12007626 [R]
+  where is my bus 8:15 am the bus is not mov.. 26 Mar 2026   #12007613    
+  where is my bus 8:11 am tracking is wrong .. 26 Mar 2026   #12007551    
+  where is my bus 8:07 am the bus is not mov.. 26 Mar 2026   #12007487 [R]
+  where is my bus 8:01 am i can't track the .. 26 Mar 2026   #12007398 [R]
+  where is my bus 7:57 am the bus is not mov.. 26 Mar 2026   #12007319 [R]
+  where is my bus 7:54 am i can't track the .. 26 Mar 2026   #12007248 [R]
+  where is my bus 7:52 am main menu 8:03 am .. 26 Mar 2026   #12007208    
+  where is my bus 7:39 am i can't track the .. 26 Mar 2026   #12006936 [R]
+  where is my bus 7:26 am the bus is not mov.. 26 Mar 2026   #12006651    
+  where is my bus 6:47 am the bus is not mov.. 26 Mar 2026   #12005990    
+  tracking issue 6:23 am i couldn't track th.. 26 Mar 2026   #12005741    
+  tracking issue 12:10 am i couldn't track t.. 25 Mar 2026   #12005077 [R]
+  tracking issue 10:38 pm tracking was wrong.. 25 Mar 2026   #12004183 [R]
+  tracking issue 9:59 pm i couldn't track th.. 25 Mar 2026   #12003562 [R]
+  where is my bus 8:50 pm tracking is wrong .. 25 Mar 2026   #12002709 [R]
+  where is my bus 8:10 pm the bus is not mov.. 25 Mar 2026   #12002264    
+  where is my bus 7:56 pm the bus is not mov.. 25 Mar 2026   #12002130 [R]
+  where is my bus 7:55 pm i can't track the .. 25 Mar 2026   #12002114    
+  tracking issue 7:52 pm tracking was wrong .. 25 Mar 2026   #12002085    
+  where is my bus 7:43 pm i can't track the .. 25 Mar 2026   #12001972    
+  where is my bus 7:33 pm i can't track the .. 25 Mar 2026   #12001858    
+  where is my bus 7:31 pm the bus is not mov.. 25 Mar 2026   #12001824 [R]
+  i want to reschedule my ride 7:19 pm main .. 25 Mar 2026   #12001668 [R]
+  where is my bus 7:07 pm i can't track the .. 25 Mar 2026   #12001480    
+  where is my bus 7:05 pm i can't track the .. 25 Mar 2026   #12001447    
+  where is my bus 7:02 pm tracking is wrong .. 25 Mar 2026   #12001394 [R]
+  where is my bus 7:00 pm the bus is not mov.. 25 Mar 2026   #12001360 [R]
+  i missed my bus 6:42 pm main menu 6:48 pm .. 25 Mar 2026   #12001091 [R]
+  where is my bus 6:39 pm i can't track the .. 25 Mar 2026   #12001022    
+  where is my bus 6:37 pm i can't track the .. 25 Mar 2026   #12000991    
+  where is my bus 6:02 pm the bus is not mov.. 25 Mar 2026   #12000336 [R]
+  where is my bus 5:45 pm tracking is wrong .. 25 Mar 2026   #11999965    
+  where is my bus 5:42 pm i can't track the .. 25 Mar 2026   #11999907 [R]
+  where is my bus 5:02 pm the bus is not mov.. 25 Mar 2026   #11999001    
+  where is my bus 5:00 pm the bus is not mov.. 25 Mar 2026   #11998941    
+  where is my bus 4:40 pm the bus is not mov.. 25 Mar 2026   #11998557    
+  tracking issue 9:34 am tracking was wrong .. 25 Mar 2026   #11994228 [R]
+  where is my bus 8:34 am i can't track the .. 25 Mar 2026   #11993365    
+  where is my bus 8:33 am tracking is wrong .. 25 Mar 2026   #11993343 [R]
+  tracking issue 7:57 am i couldn't track th.. 25 Mar 2026   #11992497 [R]
+  where is my bus 7:22 am tracking is wrong .. 25 Mar 2026   #11991457    
+  where is my bus 6:58 am the bus is not mov.. 25 Mar 2026   #11990715    
+  tracking issue 8:30 pm the bus was not mov.. 24 Mar 2026   #11986749 [R]
+  tracking issue 7:59 pm i couldn't track th.. 24 Mar 2026   #11986442 [R]
+  where is my bus 7:16 pm tracking is wrong .. 24 Mar 2026   #11985866    
+  where is my bus 7:04 pm i can't track the .. 24 Mar 2026   #11985679 [R]
+  tracking issue 4:28 pm the bus was not mov.. 24 Mar 2026   #11982512 [R]
+  tracking issue 2:47 pm i couldn't track th.. 24 Mar 2026   #11981137 [R]
+  tracking issue 10:34 am tracking was wrong.. 24 Mar 2026   #11979167 [R]
+  where is my bus 8:44 am i can't track the .. 24 Mar 2026   #11977933    
+  where is my bus 8:11 am tracking is wrong .. 24 Mar 2026   #11977011 [R]
+  where is my bus 8:04 am i can't track the .. 24 Mar 2026   #11976773 [R]
+  where is my bus 7:55 am i can't track the .. 24 Mar 2026   #11976435    
+  where is my bus 7:45 am i can't track the .. 24 Mar 2026   #11976048    
+  where is my bus 7:43 am i can't track the .. 24 Mar 2026   #11975957    
+  where is my bus 7:32 am the bus is not mov.. 24 Mar 2026   #11975616 [R]
+  tracking issue 3:33 pm tracking was wrong .. 23 Mar 2026   #11966375 [R]
+  tracking issue 2:41 pm i couldn't track th.. 23 Mar 2026   #11965760 [R]
+  tracking issue 9:41 am the bus was not mov.. 23 Mar 2026   #11962979 [R]
+  tracking issue 11:13 am i couldn't track t.. 23 Mar 2026   #11962777 [R]
+  where is my bus 8:05 am i can't track the .. 23 Mar 2026   #11961404 [R]
+  where is my bus 8:05 am i can't track the .. 23 Mar 2026   #11961380    
+  where is my bus 8:00 am i can't track the .. 23 Mar 2026   #11961215 [R]
+  where is my bus 7:52 am i can't track the .. 23 Mar 2026   #11960996 [R]
+  tracking issue 6:37 am tracking was wrong .. 23 Mar 2026   #11959953    
+  tracking issue 11:04 am the bus was not mo.. 19 Mar 2026   #11943895 [R]
+  where is my bus 9:04 am i can't track the .. 18 Mar 2026   #11933317 [R]
+  where is my bus 8:26 am i can't track the .. 18 Mar 2026   #11932637 [R]
+  where is my bus 7:47 am i can't track the .. 17 Mar 2026   #11915707 [R]
+  tracking issue 5:39 pm i couldn't track th.. 16 Mar 2026   #11907543 [R]
+  where is my bus 9:08 am the bus is not mov.. 16 Mar 2026   #11901738    
+  where is my bus 6:14 pm tracking is wrong .. 12 Mar 2026   #11878176 [R]
+  where is my bus 8:31 am i can't track the .. 12 Mar 2026   #11871340    
+
+  IDs only:
+  #12009268   #12008677   #12008666   #12008447   #12008034   #12007817   #12007757   #12007626
+  #12007613   #12007551   #12007487   #12007398   #12007319   #12007248   #12007208   #12006936
+  #12006651   #12005990   #12005741   #12005077   #12004183   #12003562   #12002709   #12002264
+  #12002130   #12002114   #12002085   #12001972   #12001858   #12001824   #12001668   #12001480
+  #12001447   #12001394   #12001360   #12001091   #12001022   #12000991   #12000336   #11999965
+  #11999907   #11999001   #11998941   #11998557   #11994228   #11993365   #11993343   #11992497
+  #11991457   #11990715   #11986749   #11986442   #11985866   #11985679   #11982512   #11981137
+  #11979167   #11977933   #11977011   #11976773   #11976435   #11976048   #11975957   #11975616
+  #11966375   #11965760   #11962979   #11962777   #11961404   #11961380   #11961215   #11960996
+  #11959953   #11943895   #11933317   #11932637   #11915707   #11907543   #11901738   #11878176
+  #11871340
+
+========================================================================
+  ROUTE / TIMING SUGGESTION  --  226 tickets
+========================================================================
+  Customer Message                             Date           Ticket ID
+  ----------------------------------------------------------------------
+  suggestions: route, timing, stop 12:03 pm .. 26 Mar 2026   #12009867    
+  suggestions: route, timing, stop 11:31 am .. 26 Mar 2026   #12009655 [R]
+  suggestions: route, timing, stop 11:30 am .. 26 Mar 2026   #12009648    
+  suggestions: route, timing, stop 11:29 am .. 26 Mar 2026   #12009643    
+  suggestions: route, timing, stop 11:24 am .. 26 Mar 2026   #12009606 [R]
+  suggestions: route, timing, stop 11:12 am .. 26 Mar 2026   #12009519    
+  suggestions: route, timing, stop 11:12 am .. 26 Mar 2026   #12009517    
+  suggestions: route, timing, stop 11:10 am .. 26 Mar 2026   #12009504    
+  suggestions: route, timing, stop 11:08 am .. 26 Mar 2026   #12009476    
+  suggestions: route, timing, stop 11:03 am .. 26 Mar 2026   #12009427    
+  suggestions: route, timing, stop 10:55 am .. 26 Mar 2026   #12009359    
+  suggestions: route, timing, stop 10:47 am .. 26 Mar 2026   #12009284    
+  suggestions: route, timing, stop 10:38 am .. 26 Mar 2026   #12009207    
+  suggestions: route, timing, stop 10:33 am .. 26 Mar 2026   #12009178    
+  suggestions: route, timing, stop 10:32 am .. 26 Mar 2026   #12009170    
+  suggestions: route, timing, stop 10:22 am .. 26 Mar 2026   #12009079    
+  suggestions: route, timing, stop 10:05 am .. 26 Mar 2026   #12008952    
+  suggestions: route, timing, stop 10:01 am .. 26 Mar 2026   #12008927    
+  suggestions: route, timing, stop 10:01 am .. 26 Mar 2026   #12008919    
+  suggestions: route, timing, stop 10:00 am .. 26 Mar 2026   #12008909    
+  suggestions: route, timing, stop 9:57 am s.. 26 Mar 2026   #12008872    
+  suggestions: route, timing, stop 9:54 am e.. 26 Mar 2026   #12008842    
+  suggestions: route, timing, stop 9:48 am e.. 26 Mar 2026   #12008803    
+  suggestions: route, timing, stop 9:46 am e.. 26 Mar 2026   #12008764    
+  suggestions: route, timing, stop 9:44 am s.. 26 Mar 2026   #12008762 [R]
+  suggestions: route, timing, stop 9:35 am e.. 26 Mar 2026   #12008685    
+  suggestions: route, timing, stop 9:34 am e.. 26 Mar 2026   #12008676    
+  suggestions: route, timing, stop 9:34 am e.. 26 Mar 2026   #12008661 [R]
+  suggestions: route, timing, stop 9:31 am o.. 26 Mar 2026   #12008644    
+  suggestions: route, timing, stop 9:31 am e.. 26 Mar 2026   #12008637    
+  suggestions: route, timing, stop 9:26 am o.. 26 Mar 2026   #12008592    
+  suggestions: route, timing, stop 9:18 am e.. 26 Mar 2026   #12008518    
+  suggestions: route, timing, stop 9:16 am s.. 26 Mar 2026   #12008492    
+  suggestions: route, timing, stop 9:15 am e.. 26 Mar 2026   #12008481    
+  suggestions: route, timing, stop 8:43 am o.. 26 Mar 2026   #12008055    
+  suggestions: route, timing, stop 8:27 am e.. 26 Mar 2026   #12007814    
+  suggestions: route, timing, stop 8:27 am s.. 26 Mar 2026   #12007803    
+  suggestions: route, timing, stop 8:25 am e.. 26 Mar 2026   #12007787    
+  suggestions: route, timing, stop 8:19 am o.. 26 Mar 2026   #12007689 [R]
+  suggestions: route, timing, stop 8:18 am s.. 26 Mar 2026   #12007683    
+  suggestions: route, timing, stop 8:07 am s.. 26 Mar 2026   #12007469    
+  suggestions: route, timing, stop 8:04 am s.. 26 Mar 2026   #12007431    
+  my ride was not added back in the subscrip.. 26 Mar 2026   #12007392    
+  suggestions: route, timing, stop 7:54 am e.. 26 Mar 2026   #12007249    
+  suggestions: route, timing, stop 7:54 am e.. 26 Mar 2026   #12007243    
+  suggestions: route, timing, stop 7:34 am o.. 26 Mar 2026   #12006816    
+  suggestions: route, timing, stop 7:34 am o.. 26 Mar 2026   #12006806 [R]
+  suggestions: route, timing, stop 7:26 am e.. 26 Mar 2026   #12006645    
+  suggestions: route, timing, stop 7:20 am o.. 26 Mar 2026   #12006510 [R]
+  suggestions: route, timing, stop 7:14 am e.. 26 Mar 2026   #12006406    
+  suggestions: route, timing, stop 7:05 am e.. 26 Mar 2026   #12006252 [R]
+  suggestions: route, timing, stop 6:45 am o.. 26 Mar 2026   #12005959    
+  suggestions: route, timing, stop 6:45 am s.. 26 Mar 2026   #12005957    
+  suggestions: route, timing, stop 6:40 am s.. 26 Mar 2026   #12005906    
+  suggestions: route, timing, stop 5:50 am o.. 26 Mar 2026   #12005586    
+  suggestions: route, timing, stop 5:20 am s.. 25 Mar 2026   #12005529    
+  suggestions: route, timing, stop 12:42 am .. 25 Mar 2026   #12005241    
+  suggestions: route, timing, stop 12:12 am .. 25 Mar 2026   #12005089    
+  suggestions: route, timing, stop 11:57 pm .. 25 Mar 2026   #12004981    
+  suggestions: route, timing, stop 11:53 pm .. 25 Mar 2026   #12004955 [R]
+  suggestions: route, timing, stop 11:53 pm .. 25 Mar 2026   #12004949    
+  suggestions: route, timing, stop 11:40 pm .. 25 Mar 2026   #12004862    
+  suggestions: route, timing, stop 11:32 pm .. 25 Mar 2026   #12004784    
+  suggestions: route, timing, stop 11:13 pm .. 25 Mar 2026   #12004582    
+  suggestions: route, timing, stop 11:12 pm .. 25 Mar 2026   #12004570    
+  suggestions: route, timing, stop 11:12 pm .. 25 Mar 2026   #12004566    
+  main menu 11:13 pm suggestions: route, tim.. 25 Mar 2026   #12004530    
+  suggestions: route, timing, stop 11:03 pm .. 25 Mar 2026   #12004476    
+  suggestions: route, timing, stop 11:01 pm .. 25 Mar 2026   #12004459    
+  suggestions: route, timing, stop 10:59 pm .. 25 Mar 2026   #12004429    
+  suggestions: route, timing, stop 10:59 pm .. 25 Mar 2026   #12004428    
+  suggestions: route, timing, stop 10:58 pm .. 25 Mar 2026   #12004427    
+  main menu 10:37 pm suggestions: route, tim.. 25 Mar 2026   #12004110    
+  suggestions: route, timing, stop 10:13 pm .. 25 Mar 2026   #12003797    
+  suggestions: route, timing, stop 10:10 pm .. 25 Mar 2026   #12003740    
+  suggestions: route, timing, stop 10:09 pm .. 25 Mar 2026   #12003734    
+  suggestions: route, timing, stop 10:07 pm .. 25 Mar 2026   #12003705    
+  suggestions: route, timing, stop 10:00 pm .. 25 Mar 2026   #12003569    
+  suggestions: route, timing, stop 9:50 pm o.. 25 Mar 2026   #12003453 [R]
+  suggestions: route, timing, stop 9:49 pm s.. 25 Mar 2026   #12003451    
+  suggestions: route, timing, stop 9:49 pm e.. 25 Mar 2026   #12003440    
+  suggestions: route, timing, stop 9:39 pm e.. 25 Mar 2026   #12003309    
+  suggestions: route, timing, stop 9:21 pm s.. 25 Mar 2026   #12003075    
+  main menu 9:16 pm suggestions: route, timi.. 25 Mar 2026   #12002983    
+  suggestions: route, timing, stop 8:59 pm e.. 25 Mar 2026   #12002822    
+  suggestions: route, timing, stop 8:59 pm s.. 25 Mar 2026   #12002807    
+  suggestions: route, timing, stop 8:58 pm e.. 25 Mar 2026   #12002800    
+  suggestions: route, timing, stop 8:46 pm e.. 25 Mar 2026   #12002674 [R]
+  suggestions: route, timing, stop 8:34 pm o.. 25 Mar 2026   #12002559    
+  suggestions: route, timing, stop 8:28 pm s.. 25 Mar 2026   #12002483    
+  suggestions: route, timing, stop 7:33 pm s.. 25 Mar 2026   #12001857    
+  suggestions: route, timing, stop 7:32 pm e.. 25 Mar 2026   #12001853    
+  suggestions: route, timing, stop 7:29 pm s.. 25 Mar 2026   #12001802    
+  suggestions: route, timing, stop 7:28 pm e.. 25 Mar 2026   #12001786    
+  suggestions: route, timing, stop 7:26 pm s.. 25 Mar 2026   #12001751 [R]
+  suggestions: route, timing, stop 7:20 pm e.. 25 Mar 2026   #12001678    
+  suggestions: route, timing, stop 7:17 pm e.. 25 Mar 2026   #12001634    
+  suggestions: route, timing, stop 7:12 pm e.. 25 Mar 2026   #12001550    
+  suggestions: route, timing, stop 7:11 pm m.. 25 Mar 2026   #12001542    
+  suggestions: route, timing, stop 7:05 pm e.. 25 Mar 2026   #12001451    
+  suggestions: route, timing, stop 7:04 pm e.. 25 Mar 2026   #12001432    
+  suggestions: route, timing, stop 7:03 pm e.. 25 Mar 2026   #12001400    
+  i want to cancel my subscription can i 6:5.. 25 Mar 2026   #12001328    
+  suggestions: route, timing, stop 6:49 pm o.. 25 Mar 2026   #12001194    
+  suggestions: route, timing, stop 6:38 pm s.. 25 Mar 2026   #12001019    
+  suggestions: route, timing, stop 6:27 pm o.. 25 Mar 2026   #12000771    
+  suggestions: route, timing, stop 6:11 pm s.. 25 Mar 2026   #12000515    
+  suggestions: route, timing, stop 6:12 pm o.. 25 Mar 2026   #12000514 [R]
+  suggestions: route, timing, stop 6:07 pm e.. 25 Mar 2026   #12000435 [R]
+  suggestions: route, timing, stop 6:06 pm e.. 25 Mar 2026   #12000405    
+  suggestions: route, timing, stop 5:55 pm s.. 25 Mar 2026   #12000184    
+  suggestions: route, timing, stop 5:48 pm o.. 25 Mar 2026   #12000020    
+  suggestions: route, timing, stop 5:42 pm e.. 25 Mar 2026   #11999894    
+  suggestions: route, timing, stop 5:38 pm o.. 25 Mar 2026   #11999808    
+  suggestions: route, timing, stop 5:36 pm s.. 25 Mar 2026   #11999767    
+  suggestions: route, timing, stop 5:27 pm s.. 25 Mar 2026   #11999586    
+  suggestions: route, timing, stop 5:23 pm o.. 25 Mar 2026   #11999499    
+  suggestions: route, timing, stop 5:22 pm s.. 25 Mar 2026   #11999475    
+  suggestions: route, timing, stop 5:21 pm o.. 25 Mar 2026   #11999448    
+  main menu 5:21 pm suggestions: route, timi.. 25 Mar 2026   #11999367    
+  suggestions: route, timing, stop 5:17 pm e.. 25 Mar 2026   #11999360    
+  main menu 5:14 pm suggestions: route, timi.. 25 Mar 2026   #11999182    
+  suggestions: route, timing, stop 4:55 pm e.. 25 Mar 2026   #11998843    
+  suggestions: route, timing, stop 4:27 pm e.. 25 Mar 2026   #11998308    
+  suggestions: route, timing, stop 4:27 pm s.. 25 Mar 2026   #11998296    
+  suggestions: route, timing, stop 4:17 pm e.. 25 Mar 2026   #11998116    
+  suggestions: route, timing, stop 4:13 pm s.. 25 Mar 2026   #11998047    
+  suggestions: route, timing, stop 4:05 pm e.. 25 Mar 2026   #11997912    
+  suggestions: route, timing, stop 2:56 pm o.. 25 Mar 2026   #11996950    
+  suggestions: route, timing, stop 2:37 pm o.. 25 Mar 2026   #11996762    
+  suggestions: route, timing, stop 2:34 pm s.. 25 Mar 2026   #11996729    
+  suggestions: route, timing, stop 2:11 pm s.. 25 Mar 2026   #11996491    
+  suggestions: route, timing, stop 1:41 pm s.. 25 Mar 2026   #11996260 [R]
+  suggestions: route, timing, stop 12:48 pm .. 25 Mar 2026   #11995934    
+  main menu 10:43 am suggestions: route, tim.. 25 Mar 2026   #11994877 [R]
+  suggestions: route, timing, stop 9:26 am e.. 25 Mar 2026   #11994141    
+  suggestions: route, timing, stop 9:19 am e.. 25 Mar 2026   #11994067 [R]
+  suggestions: route, timing, stop 9:19 am e.. 25 Mar 2026   #11994061    
+  suggestions: route, timing, stop 9:03 am o.. 25 Mar 2026   #11993878    
+  yesterday i cancelled my ride because bus .. 25 Mar 2026   #11993782    
+  suggestions: route, timing, stop 8:51 am o.. 25 Mar 2026   #11993668 [R]
+  main menu 8:50 am suggestions: route, timi.. 25 Mar 2026   #11993578    
+  suggestions: route, timing, stop 8:42 am o.. 25 Mar 2026   #11993493 [R]
+  suggestions: route, timing, stop 7:51 am e.. 25 Mar 2026   #11992318 [R]
+  suggestions: route, timing, stop 7:50 am o.. 25 Mar 2026   #11992286 [R]
+  suggestions: route, timing, stop 6:37 am s.. 25 Mar 2026   #11990355 [R]
+  suggestions: route, timing, stop 5:43 am o.. 25 Mar 2026   #11989945    
+  suggestions: route, timing, stop 11:59 pm .. 24 Mar 2026   #11989328    
+  suggestions: route, timing, stop 11:25 pm .. 24 Mar 2026   #11988982    
+  suggestions: route, timing, stop 11:23 pm .. 24 Mar 2026   #11988956    
+  suggestions: route, timing, stop 11:18 pm .. 24 Mar 2026   #11988906    
+  suggestions: route, timing, stop 11:11 pm .. 24 Mar 2026   #11988826 [R]
+  suggestions: route, timing, stop 10:28 pm .. 24 Mar 2026   #11988254    
+  suggestions: route, timing, stop 10:25 pm .. 24 Mar 2026   #11988216    
+  suggestions: route, timing, stop 10:24 pm .. 24 Mar 2026   #11988196    
+  suggestions: route, timing, stop 10:18 pm .. 24 Mar 2026   #11988095    
+  suggestions: route, timing, stop 9:44 pm r.. 24 Mar 2026   #11987660    
+  suggestions: route, timing, stop 9:32 pm o.. 24 Mar 2026   #11987526 [R]
+  suggestions: route, timing, stop 9:15 pm e.. 24 Mar 2026   #11987302 [R]
+  suggestions: route, timing, stop 9:13 pm s.. 24 Mar 2026   #11987276 [R]
+  suggestions: route, timing, stop 9:06 pm e.. 24 Mar 2026   #11987199    
+  suggestions: route, timing, stop 9:05 pm o.. 24 Mar 2026   #11987174    
+  suggestions: route, timing, stop 8:52 pm o.. 24 Mar 2026   #11987015    
+  suggestions: route, timing, stop 8:17 pm o.. 24 Mar 2026   #11986666    
+  suggestions: route, timing, stop 7:41 pm e.. 24 Mar 2026   #11986214    
+  suggestions: route, timing, stop 7:29 pm s.. 24 Mar 2026   #11986037    
+  main menu 7:29 pm suggestions: route, timi.. 24 Mar 2026   #11985993    
+  suggestions: route, timing, stop 6:24 pm o.. 24 Mar 2026   #11984915    
+  suggestions: route, timing, stop 5:58 pm o.. 24 Mar 2026   #11984334 [R]
+  suggestions: route, timing, stop 2:40 pm o.. 24 Mar 2026   #11981066 [R]
+  suggestions: route, timing, stop 11:17 am .. 24 Mar 2026   #11979514 [R]
+  suggestions: route, timing, stop 10:43 am .. 24 Mar 2026   #11979219    
+  suggestions: route, timing, stop 8:49 am e.. 24 Mar 2026   #11978041    
+  suggestions: route, timing, stop 8:10 am e.. 24 Mar 2026   #11976988    
+  suggestions: route, timing, stop 7:24 am e.. 24 Mar 2026   #11975355 [R]
+  suggestions: route, timing, stop 10:15 pm .. 23 Mar 2026   #11972069    
+  suggestions: route, timing, stop 6:00 pm e.. 23 Mar 2026   #11968731    
+  suggestions: route, timing, stop 2:48 pm s.. 23 Mar 2026   #11965849 [R]
+  suggestions: route, timing, stop 2:21 pm e.. 23 Mar 2026   #11965465    
+  suggestions: route, timing, stop 12:27 pm .. 23 Mar 2026   #11964381 [R]
+  suggestions: route, timing, stop 11:10 am .. 23 Mar 2026   #11963781 [R]
+  suggestions: route, timing, stop 10:52 am .. 23 Mar 2026   #11963623    
+  suggestions: route, timing, stop 10:17 am .. 23 Mar 2026   #11963291    
+  main menu 9:50 pm suggestions: route, timi.. 23 Mar 2026   #11961313    
+  main menu 8:04 am suggestions: route, timi.. 23 Mar 2026   #11961091 [R]
+  suggestions: route, timing, stop 7:48 am o.. 23 Mar 2026   #11960911    
+  i have been complaining about this driver .. 23 Mar 2026   #11960650 [R]
+  suggestions: route, timing, stop 11:30 am .. 21 Mar 2026   #11955312    
+  suggestions: route, timing, stop 8:09 pm s.. 20 Mar 2026   #11954256    
+  suggestions: route, timing, stop 7:13 pm s.. 20 Mar 2026   #11953966    
+  suggestions: route, timing, stop 6:54 pm s.. 20 Mar 2026   #11953822    
+  suggestions: route, timing, stop 6:25 pm o.. 20 Mar 2026   #11953538 [R]
+  suggestions: route, timing, stop 5:58 pm o.. 20 Mar 2026   #11953244 [R]
+  suggestions: route, timing, stop 8:20 am s.. 20 Mar 2026   #11949390    
+  suggestions: route, timing, stop 6:04 pm s.. 19 Mar 2026   #11945217    
+  suggestions: route, timing, stop 2:28 pm o.. 19 Mar 2026   #11944366    
+  suggestions: route, timing, stop 8:36 am e.. 19 Mar 2026   #11943370 [R]
+  suggestions: route, timing, stop 2:07 pm s.. 19 Mar 2026   #11943013    
+  suggestions: route, timing, stop 11:21 pm .. 18 Mar 2026   #11942012 [R]
+  suggestions: route, timing, stop 8:59 pm o.. 18 Mar 2026   #11941135    
+  suggestions: route, timing, stop 7:24 pm o.. 18 Mar 2026   #11940283 [R]
+  suggestions: route, timing, stop 11:28 am .. 18 Mar 2026   #11934611    
+  suggestions: route, timing, stop 9:43 am o.. 18 Mar 2026   #11933774 [R]
+  suggestions: route, timing, stop 7:33 am s.. 18 Mar 2026   #11931139    
+  suggestions: route, timing, stop 9:24 am m.. 17 Mar 2026   #11917695 [R]
+  suggestions: route, timing, stop 8:59 am o.. 17 Mar 2026   #11917436    
+  suggestions: route, timing, stop 7:42 am e.. 17 Mar 2026   #11915540 [R]
+  suggestions: route, timing, stop 7:33 pm o.. 16 Mar 2026   #11909602    
+  suggestions: route, timing, stop 1:01 pm o.. 16 Mar 2026   #11903878 [R]
+  suggestions: route, timing, stop 11:54 am .. 16 Mar 2026   #11903454 [R]
+  suggestions: route, timing, stop 9:17 am e.. 16 Mar 2026   #11901870 [R]
+  suggestions: route, timing, stop 4:37 pm e.. 12 Mar 2026   #11876104    
+  suggestions: route, timing, stop 7:13 pm e.. 11 Mar 2026   #11864197 [R]
+  suggestions: route, timing, stop 6:43 pm s.. 11 Mar 2026   #11863729    
+  suggestions: route, timing, stop 8:16 am e.. 11 Mar 2026   #11856006    
+  suggestions: route, timing, stop 3:10 pm e.. 10 Mar 2026   #11844398    
+  main menu 2:37 am suggestions: route, timi.. 09 Mar 2026   #11837241    
+  suggestions: route, timing, stop 11:05 pm .. 09 Mar 2026   #11836267 [R]
+  suggestions: route, timing, stop 8:49 pm o.. 09 Mar 2026   #11834149    
+  suggestions: route, timing, stop 6:29 pm o.. 09 Mar 2026   #11832720    
+  suggestions: route, timing, stop 8:21 pm e.. 07 Mar 2026   #11819590    
+  suggestions: route, timing, stop 1:08 pm o.. 05 Mar 2026   #11798971    
+  suggestions: route, timing, stop 6:04 pm s.. 04 Mar 2026   #11789247 [R]
+  suggestions: route, timing, stop 11:29 pm .. 03 Mar 2026   #11781819    
+  suggestions: route, timing, stop 10:13 pm .. 24 Feb 2026   #11720584 [R]
+  suggestions: route, timing, stop 2:22 pm e.. 24 Feb 2026   #11713770    
+
+  IDs only:
+  #12009867   #12009655   #12009648   #12009643   #12009606   #12009519   #12009517   #12009504
+  #12009476   #12009427   #12009359   #12009284   #12009207   #12009178   #12009170   #12009079
+  #12008952   #12008927   #12008919   #12008909   #12008872   #12008842   #12008803   #12008764
+  #12008762   #12008685   #12008676   #12008661   #12008644   #12008637   #12008592   #12008518
+  #12008492   #12008481   #12008055   #12007814   #12007803   #12007787   #12007689   #12007683
+  #12007469   #12007431   #12007392   #12007249   #12007243   #12006816   #12006806   #12006645
+  #12006510   #12006406   #12006252   #12005959   #12005957   #12005906   #12005586   #12005529
+  #12005241   #12005089   #12004981   #12004955   #12004949   #12004862   #12004784   #12004582
+  #12004570   #12004566   #12004530   #12004476   #12004459   #12004429   #12004428   #12004427
+  #12004110   #12003797   #12003740   #12003734   #12003705   #12003569   #12003453   #12003451
+  #12003440   #12003309   #12003075   #12002983   #12002822   #12002807   #12002800   #12002674
+  #12002559   #12002483   #12001857   #12001853   #12001802   #12001786   #12001751   #12001678
+  #12001634   #12001550   #12001542   #12001451   #12001432   #12001400   #12001328   #12001194
+  #12001019   #12000771   #12000515   #12000514   #12000435   #12000405   #12000184   #12000020
+  #11999894   #11999808   #11999767   #11999586   #11999499   #11999475   #11999448   #11999367
+  #11999360   #11999182   #11998843   #11998308   #11998296   #11998116   #11998047   #11997912
+  #11996950   #11996762   #11996729   #11996491   #11996260   #11995934   #11994877   #11994141
+  #11994067   #11994061   #11993878   #11993782   #11993668   #11993578   #11993493   #11992318
+  #11992286   #11990355   #11989945   #11989328   #11988982   #11988956   #11988906   #11988826
+  #11988254   #11988216   #11988196   #11988095   #11987660   #11987526   #11987302   #11987276
+  #11987199   #11987174   #11987015   #11986666   #11986214   #11986037   #11985993   #11984915
+  #11984334   #11981066   #11979514   #11979219   #11978041   #11976988   #11975355   #11972069
+  #11968731   #11965849   #11965465   #11964381   #11963781   #11963623   #11963291   #11961313
+  #11961091   #11960911   #11960650   #11955312   #11954256   #11953966   #11953822   #11953538
+  #11953244   #11949390   #11945217   #11944366   #11943370   #11943013   #11942012   #11941135
+  #11940283   #11934611   #11933774   #11931139   #11917695   #11917436   #11915540   #11909602
+  #11903878   #11903454   #11901870   #11876104   #11864197   #11863729   #11856006   #11844398
+  #11837241   #11836267   #11834149   #11832720   #11819590   #11798971   #11789247   #11781819
+  #11720584   #11713770
+
+========================================================================
+  NO ISSUE STATED (DROPPED OFF)  --  387 tickets
+========================================================================
+  Customer Message                             Date           Ticket ID
+  ----------------------------------------------------------------------
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009854    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009814    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009794    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009777    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009695    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009658    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009639    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009599    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009560    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009479    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009477    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009390    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009311    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009203    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009146    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009121    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12009031    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008960    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008953    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008942    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008848    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008847    
+  9:50 am                                      26 Mar 2026   #12008823    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008749    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008742    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008689 [R]
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008663    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008642    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008509    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008422    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008315    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008314    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008105    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12008075    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007960    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007939    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007799    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007670    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007625    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007621    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007519 [R]
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007495    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007260    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007205    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12007049    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12006777    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12006708 [R]
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12006683    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12006680    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12006509 [R]
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12006250 [R]
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12006025 [R]
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12005844    
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12005730 [R]
+  No Issue Stated (Dropped Off)                26 Mar 2026   #12005727    
+  10:56 pm                                     25 Mar 2026   #12004387    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12004228 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12004089 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12004012    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003862 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003728 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003713    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003642 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003584 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003566 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003561 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003478 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003456    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003452 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003432    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003396 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003272 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12003126    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002981 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002847    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002833 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002762 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002650    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002537 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002495    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002471    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002414    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002268 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002225    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002215    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12002192    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001999 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001778    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001703    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001607    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001594 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001478 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001473    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001223 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001127    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001054 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12001053    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12000645    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12000551    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12000450    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12000213    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12000191    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12000170    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #12000104 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999946    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999705    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999639    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999496    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999386    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999247    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999236 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999227    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11999080    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11998739    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11998737 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11998655 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11998549 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11998393    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11998386    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11998132 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11997856 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11997831 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11997811 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11997788    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11997754 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11997596 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11997283    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996991 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996906    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996844 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996767    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996677    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996571 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996481 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996464    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11996158    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995826    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995643 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995601 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995419    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995226 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995192    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995096 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995032 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11995023    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11994998 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11994956    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11994864    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11994669 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11994488    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11994285    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11994097    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11993848    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11993762    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11993603    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11993376    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11993263    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11993003    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992996    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992961    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992765    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992691    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992659    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992646 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992631    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992541    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992496 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992485 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992414    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992348    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11992124 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991983    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991966    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991954    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991932    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991729    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991714 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991605    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991453    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11991183    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11990589    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11990392 [R]
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11990342    
+  No Issue Stated (Dropped Off)                25 Mar 2026   #11990115    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11989829    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11989402    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11989121    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11989091    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11988919    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11988694    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11988157 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11987968 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11987500    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11987370    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11987335 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11987173    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11987165    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11987123    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986991    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986873 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986872    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986553    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986381    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986321    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986221    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986103    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11986083    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11985942    
+  6:51 pm                                      24 Mar 2026   #11985450    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11985118    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11984725 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11984512    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11984441    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11984375    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11984344    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11984020    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11983757 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11983641    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11982834    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11982507    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11982170    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11982066    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11981754    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11981406    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11981181 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11980711 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11980289    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11980179    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11980099 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11980073    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11979752    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11979695    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11979200    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11979181 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11979104    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11979085    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11979056    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11978971    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11978952    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11978930 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11978621    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11978404 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11978316    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11978227    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11977917    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11977832 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11977696    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11977536    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11977520    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11976805    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11976561 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11976544    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11976507    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11976318 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11976232    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11976084    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11975485    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11975307 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11975212 [R]
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11974910    
+  No Issue Stated (Dropped Off)                24 Mar 2026   #11974166 [R]
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11972493    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11971831    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11970989    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11970533    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11968884    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11968811    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11968686    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11968326 [R]
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11967502    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11965422    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11965326    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11965245    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11964105    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11963726    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11963067    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11962984    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11962834    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11962754    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11962735    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11962465    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11962458    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11962449    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11961990    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11961808    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11961372    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11961237    
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11961032 [R]
+  No Issue Stated (Dropped Off)                23 Mar 2026   #11961021    
+  No Issue Stated (Dropped Off)                22 Mar 2026   #11958693    
+  No Issue Stated (Dropped Off)                21 Mar 2026   #11955113    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11954276    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11954158    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11954157    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11953977    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11953950    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11953948    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11953775    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11953595    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11953589    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11952841    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11950748    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11950558    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11950447    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11950042    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11949839    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11949739    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11949479    
+  No Issue Stated (Dropped Off)                20 Mar 2026   #11949261    
+  No Issue Stated (Dropped Off)                19 Mar 2026   #11946716    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11941330    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11940803 [R]
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11940449    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11940006    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11939992    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11939880    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11939852    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11939846    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11939546    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11939365    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11937563    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11934523    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11934441    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11933798    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11933779    
+  No Issue Stated (Dropped Off)                18 Mar 2026   #11933757    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11926105    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11925568    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11925054    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11921172    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11918674    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11918461 [R]
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11918117    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11917745    
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11915110 [R]
+  No Issue Stated (Dropped Off)                17 Mar 2026   #11914802 [R]
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11910092    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11909888    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11908547    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11906542    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11906379    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11905009    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11904843    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11903474    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11903164 [R]
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11902838    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11902830    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11901217    
+  No Issue Stated (Dropped Off)                16 Mar 2026   #11899097 [R]
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11892187    
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11891662    
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11888459 [R]
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11887369 [R]
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11886901    
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11886440    
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11886265    
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11885785 [R]
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11884353    
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11883181    
+  No Issue Stated (Dropped Off)                13 Mar 2026   #11883146 [R]
+  No Issue Stated (Dropped Off)                12 Mar 2026   #11880594    
+  No Issue Stated (Dropped Off)                12 Mar 2026   #11878884 [R]
+  No Issue Stated (Dropped Off)                12 Mar 2026   #11878131 [R]
+  No Issue Stated (Dropped Off)                12 Mar 2026   #11875613    
+  No Issue Stated (Dropped Off)                12 Mar 2026   #11871078    
+  No Issue Stated (Dropped Off)                12 Mar 2026   #11870217    
+  No Issue Stated (Dropped Off)                11 Mar 2026   #11863686    
+  No Issue Stated (Dropped Off)                11 Mar 2026   #11862856    
+  No Issue Stated (Dropped Off)                11 Mar 2026   #11855796    
+  No Issue Stated (Dropped Off)                10 Mar 2026   #11843182    
+  No Issue Stated (Dropped Off)                09 Mar 2026   #11833330    
+  No Issue Stated (Dropped Off)                09 Mar 2026   #11832104    
+  No Issue Stated (Dropped Off)                09 Mar 2026   #11826466    
+  No Issue Stated (Dropped Off)                06 Mar 2026   #11815070    
+  No Issue Stated (Dropped Off)                05 Mar 2026   #11804804    
+  No Issue Stated (Dropped Off)                05 Mar 2026   #11804639    
+  No Issue Stated (Dropped Off)                05 Mar 2026   #11802594    
+  No Issue Stated (Dropped Off)                05 Mar 2026   #11801206    
+  No Issue Stated (Dropped Off)                04 Mar 2026   #11789314    
+  No Issue Stated (Dropped Off)                04 Mar 2026   #11786420    
+  No Issue Stated (Dropped Off)                04 Mar 2026   #11785874 [R]
+  No Issue Stated (Dropped Off)                04 Mar 2026   #11785305 [R]
+  No Issue Stated (Dropped Off)                02 Mar 2026   #11775843    
+  No Issue Stated (Dropped Off)                02 Mar 2026   #11769286    
+  No Issue Stated (Dropped Off)                27 Feb 2026   #11756278 [R]
+  No Issue Stated (Dropped Off)                27 Feb 2026   #11753813    
+  No Issue Stated (Dropped Off)                25 Feb 2026   #11733214    
+
+  IDs only:
+  #12009854   #12009814   #12009794   #12009777   #12009695   #12009658   #12009639   #12009599
+  #12009560   #12009479   #12009477   #12009390   #12009311   #12009203   #12009146   #12009121
+  #12009031   #12008960   #12008953   #12008942   #12008848   #12008847   #12008823   #12008749
+  #12008742   #12008689   #12008663   #12008642   #12008509   #12008422   #12008315   #12008314
+  #12008105   #12008075   #12007960   #12007939   #12007799   #12007670   #12007625   #12007621
+  #12007519   #12007495   #12007260   #12007205   #12007049   #12006777   #12006708   #12006683
+  #12006680   #12006509   #12006250   #12006025   #12005844   #12005730   #12005727   #12004387
+  #12004228   #12004089   #12004012   #12003862   #12003728   #12003713   #12003642   #12003584
+  #12003566   #12003561   #12003478   #12003456   #12003452   #12003432   #12003396   #12003272
+  #12003126   #12002981   #12002847   #12002833   #12002762   #12002650   #12002537   #12002495
+  #12002471   #12002414   #12002268   #12002225   #12002215   #12002192   #12001999   #12001778
+  #12001703   #12001607   #12001594   #12001478   #12001473   #12001223   #12001127   #12001054
+  #12001053   #12000645   #12000551   #12000450   #12000213   #12000191   #12000170   #12000104
+  #11999946   #11999705   #11999639   #11999496   #11999386   #11999247   #11999236   #11999227
+  #11999080   #11998739   #11998737   #11998655   #11998549   #11998393   #11998386   #11998132
+  #11997856   #11997831   #11997811   #11997788   #11997754   #11997596   #11997283   #11996991
+  #11996906   #11996844   #11996767   #11996677   #11996571   #11996481   #11996464   #11996158
+  #11995826   #11995643   #11995601   #11995419   #11995226   #11995192   #11995096   #11995032
+  #11995023   #11994998   #11994956   #11994864   #11994669   #11994488   #11994285   #11994097
+  #11993848   #11993762   #11993603   #11993376   #11993263   #11993003   #11992996   #11992961
+  #11992765   #11992691   #11992659   #11992646   #11992631   #11992541   #11992496   #11992485
+  #11992414   #11992348   #11992124   #11991983   #11991966   #11991954   #11991932   #11991729
+  #11991714   #11991605   #11991453   #11991183   #11990589   #11990392   #11990342   #11990115
+  #11989829   #11989402   #11989121   #11989091   #11988919   #11988694   #11988157   #11987968
+  #11987500   #11987370   #11987335   #11987173   #11987165   #11987123   #11986991   #11986873
+  #11986872   #11986553   #11986381   #11986321   #11986221   #11986103   #11986083   #11985942
+  #11985450   #11985118   #11984725   #11984512   #11984441   #11984375   #11984344   #11984020
+  #11983757   #11983641   #11982834   #11982507   #11982170   #11982066   #11981754   #11981406
+  #11981181   #11980711   #11980289   #11980179   #11980099   #11980073   #11979752   #11979695
+  #11979200   #11979181   #11979104   #11979085   #11979056   #11978971   #11978952   #11978930
+  #11978621   #11978404   #11978316   #11978227   #11977917   #11977832   #11977696   #11977536
+  #11977520   #11976805   #11976561   #11976544   #11976507   #11976318   #11976232   #11976084
+  #11975485   #11975307   #11975212   #11974910   #11974166   #11972493   #11971831   #11970989
+  #11970533   #11968884   #11968811   #11968686   #11968326   #11967502   #11965422   #11965326
+  #11965245   #11964105   #11963726   #11963067   #11962984   #11962834   #11962754   #11962735
+  #11962465   #11962458   #11962449   #11961990   #11961808   #11961372   #11961237   #11961032
+  #11961021   #11958693   #11955113   #11954276   #11954158   #11954157   #11953977   #11953950
+  #11953948   #11953775   #11953595   #11953589   #11952841   #11950748   #11950558   #11950447
+  #11950042   #11949839   #11949739   #11949479   #11949261   #11946716   #11941330   #11940803
+  #11940449   #11940006   #11939992   #11939880   #11939852   #11939846   #11939546   #11939365
+  #11937563   #11934523   #11934441   #11933798   #11933779   #11933757   #11926105   #11925568
+  #11925054   #11921172   #11918674   #11918461   #11918117   #11917745   #11915110   #11914802
+  #11910092   #11909888   #11908547   #11906542   #11906379   #11905009   #11904843   #11903474
+  #11903164   #11902838   #11902830   #11901217   #11899097   #11892187   #11891662   #11888459
+  #11887369   #11886901   #11886440   #11886265   #11885785   #11884353   #11883181   #11883146
+  #11880594   #11878884   #11878131   #11875613   #11871078   #11870217   #11863686   #11862856
+  #11855796   #11843182   #11833330   #11832104   #11826466   #11815070   #11804804   #11804639
+  #11802594   #11801206   #11789314   #11786420   #11785874   #11785305   #11775843   #11769286
+  #11756278   #11753813   #11733214
+
+========================================================================
+  GHOST TICKETS (Blank App duplicates) -- 54 tickets -- AUTO-CLOSE
+========================================================================
+  29 Verified duplicates (paired with a Sage ticket):
+  #12009712   #12009689   #12009605   #12009553   #12009412   #12009365   #12009331   #12009325
+  #12009228   #12008877   #12008805   #12008510   #12007374   #12007037   #12006804   #12006744
+  #12005076   #12005009   #12004953   #12004950   #12004686   #12004605   #12004182   #12004151
+  #12003014   #12002908   #12002869   #12002184   #12001475
+
+  25 Blank abandoned tickets (no Sage pair):
+  #12009593   #12009406   #12009376   #12009123   #12008737   #12008711   #12008660   #12007485
+  #12007330   #12007276   #12007213   #12007155   #12007052   #12007021   #12006907   #12005256
+  #12004993   #12004741   #12004492   #12004261   #12004195   #12004154   #12003220   #12002272
+  #11999270

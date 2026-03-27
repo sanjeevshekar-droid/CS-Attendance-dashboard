@@ -1,0 +1,6320 @@
+version: '1.0'
+description: Database schema documentation for Cityflo. Add descriptions for tables and columns where null.
+generated_from: pgAdmin ERD export
+tables:
+  ad_platform_adcampaign:
+    description: In-app advertising campaign configuration for displaying promotional banners and media to customers. Supports
+      targeting by gender, platform (iOS/Android), ride type, time of day, and specific routes. Campaigns have date ranges
+      and display order.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      name:
+        t: varchar(64)
+      screen:
+        t: varchar(32)
+        desc: 'App screen for ad display: ''home'', ''booking'', ''ride_detail'', ''post_ride'''
+      media_type:
+        t: varchar(1)
+        desc: 'Ad format: ''I''=Image, ''V''=Video, ''G''=GIF'
+      media_url:
+        t: varchar(256)
+        desc: URL to media file (image, video, audio)
+      action_url:
+        t: varchar(256)
+        desc: Deep link or action URL when tapped/clicked
+      start_date:
+        t: date
+        desc: Start date of validity period
+      end_date:
+        t: date
+        desc: End date of validity period
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      enable_filters:
+        t: bool
+        desc: Whether filters enabled
+      gender:
+        t: varchar(1)
+        desc: 'Target by gender: ''M''=Male, ''F''=Female, null=All'
+      platform:
+        t: varchar(1)
+        desc: 'Target platform: ''A''=Android, ''I''=iOS, null=Both'
+      ride_type:
+        t: varchar(1)
+        desc: 'Target by ride type: ''S''=Subscription, ''L''=LitePack, ''O''=Single ride'
+      time_of_day:
+        t: varchar(1)
+        desc: 'Target by commute: ''M''=Morning, ''E''=Evening, null=Both'
+      show_only_with_upcoming_ride:
+        t: bool
+        desc: Only show if customer has upcoming ride
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+  ad_platform_adcampaign_routes:
+    description: Many-to-many relationship linking ad campaigns to specific routes for targeted advertising. Only customers
+      traveling on these routes see the associated ad campaign.
+    columns:
+      id:
+        t: int
+        pk: t
+      adcampaign_id:
+        t: bigint
+        fk: ad_platform_adcampaign(id)
+        desc: Foreign key to ad campaign
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+  ad_platform_adimpressions:
+    description: Tracking table for ad campaign analytics. Records each time a customer views or taps on an ad, including
+      view duration, screen context, and timestamp for measuring campaign effectiveness.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      viewed_time:
+        t: int
+        desc: Duration viewed in seconds
+      tapped:
+        t: bool
+        desc: Whether user tapped/clicked on this
+      from_screen:
+        t: varchar(32)
+        desc: Source screen in app
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      ad_campaign_id:
+        t: bigint
+        fk: ad_platform_adcampaign(id)
+        desc: Foreign key to ad campaign
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      timestamp:
+        t: timestamptz
+        desc: Generic timestamp for the event
+      slug:
+        t: varchar(50)
+        desc: URL-friendly unique identifier
+      position:
+        t: int
+        desc: Position in display order
+  assets_asset:
+    description: Master catalog of physical assets owned by Cityflo such as tablets, devices, uniforms, and equipment. Each
+      asset type has configurable attributes. Status tracks asset lifecycle (active, retired, damaged).
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(200)
+      asset_type:
+        t: int
+        desc: Type of asset (tablet, uniform, etc.)
+      details:
+        t: text
+        desc: Additional details JSON
+      status:
+        t: int
+        desc: Current status of the record (see enum values)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  assets_assetattribute:
+    description: Configurable attributes/properties for asset types. Defines what metadata should be tracked for each asset
+      category (e.g., serial number, color, size for uniforms).
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      value:
+        t: varchar(200)
+        desc: Value for key-value or setting record
+      description:
+        t: text
+        desc: Detailed description or notes
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      asset_id:
+        t: int
+        fk: assets_asset(id)
+        desc: null
+      status:
+        t: int
+        desc: Current status of the record (see enum values)
+  assets_assetitem:
+    description: Individual instances of assets that can be assigned to entities (drivers, vehicles, hubs). Uses GenericForeignKey
+      to link to any content type. Status tracks current condition.
+    columns:
+      id:
+        t: int
+        pk: t
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      status:
+        t: int
+        desc: Current status of the record (see enum values)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      asset_id:
+        t: int
+        fk: assets_asset(id)
+        desc: null
+      content_type_id:
+        t: int
+        fk: django_content_type(id)
+        desc: Django content type for polymorphic relationship
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+  assets_assetitemattribute:
+    description: Actual attribute values for specific asset items. Stores the instance-specific data defined by AssetAttribute
+      templates.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      value:
+        t: varchar(200)
+        desc: Value for key-value or setting record
+      description:
+        t: text
+        desc: Detailed description or notes
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      asset_item_id:
+        t: int
+        fk: assets_assetitem(id)
+        desc: null
+      status:
+        t: int
+        desc: Current status of the record (see enum values)
+  assets_assetitemissuance:
+    description: Records of asset items being issued/assigned to entities. Tracks active assignments using GenericForeignKey.
+      Used for inventory management and accountability.
+    columns:
+      id:
+        t: int
+        pk: t
+      object_id:
+        t: int
+        desc: Primary key of related object (with content_type_id)
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      asset_item_id:
+        t: int
+        fk: assets_assetitem(id)
+        desc: null
+      content_type_id:
+        t: int
+        fk: django_content_type(id)
+        desc: Django content type for polymorphic relationship
+      is_active:
+        t: bool
+  auditlog_logentry:
+    description: Django audit log tracking all changes to critical models. Records actor (user), action type (create/update/delete),
+      timestamp, changes made, and IP address. Essential for compliance and debugging.
+    columns:
+      id:
+        t: int
+        pk: t
+      object_pk:
+        t: varchar(255)
+        desc: String primary key of related object
+      object_id:
+        t: bigint
+        desc: Primary key of related object (with content_type_id)
+      object_repr:
+        t: text
+        desc: String representation of object
+      action:
+        t: smallint
+        desc: Action performed
+      changes:
+        t: jsonb
+        desc: JSON of field changes
+      timestamp:
+        t: timestamptz
+        desc: Generic timestamp for the event
+      actor_id:
+        t: int
+        fk: users_user(id)
+        desc: Foreign key to user who performed this action
+      content_type_id:
+        t: int
+        fk: django_content_type(id)
+        desc: Django content type for polymorphic relationship
+      remote_addr:
+        t: inet
+        desc: Remote IP address
+      additional_data:
+        t: jsonb
+        desc: Additional JSON data for the record
+      serialized_data:
+        t: jsonb
+        desc: Serialized object data JSON
+      cid:
+        t: varchar(255)
+        desc: Correlation/context ID
+      changes_text:
+        t: text
+        desc: Text description of changes
+  b2c_corporate_company:
+    description: Companies offering commute reimbursement to employees. Distinct from B2B corporate routes - these are B2C
+      customers whose employer reimburses travel. Links to email domains for auto-detection and corporate_company for B2B
+      overlap.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      name:
+        t: varchar(100)
+      email_domains:
+        t: varchar(256)
+        desc: Comma-separated list of company email domains
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      is_active:
+        t: bool
+      company_logo:
+        t: varchar(2000)
+        desc: Company logo URL
+      reimbursement_percentage:
+        t: int
+        desc: Percentage of fare reimbursed
+      corporate_company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate company
+      luxe_discount_percentage:
+        t: int
+        desc: Luxe cab discount percentage
+  b2c_corporate_corporatecustomer:
+    description: Customers verified as belonging to a reimbursement company. Tracks work email verification status and reimbursement
+      eligibility. Customer receives discounted fares with employer paying the difference.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      email:
+        t: varchar(254)
+        desc: Email address
+      verified:
+        t: bool
+        desc: Whether this has been verified
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      company_id:
+        t: bigint
+        fk: b2c_corporate_company(id)
+        desc: Foreign key to corporate_company - B2B client
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      is_active:
+        t: bool
+      otp:
+        t: varchar(6)
+        desc: One-time password
+      otp_refresh_time:
+        t: timestamptz
+        desc: Time when OTP was refreshed/resent
+      role:
+        t: varchar(2)
+        desc: User role
+      metadata:
+        t: jsonb
+        desc: JSON metadata with additional contextual information
+  campaigns_campaign:
+    description: Marketing campaigns targeting customer segments for engagement, retention, or reactivation. Supports multiple
+      channels (SMS, Push, Email, WhatsApp). Includes scheduling, segmentation rules, and lifecycle status tracking.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(400)
+      title:
+        t: varchar(400)
+        desc: Title or subject line
+      content:
+        t: text
+        desc: Message or notification content
+      image_url:
+        t: varchar(200)
+        desc: URL to image resource
+      web_url:
+        t: varchar(200)
+        desc: Website URL
+      acknowledge_button_text:
+        t: varchar(50)
+        desc: Text for acknowledgement button
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      enable_back_button:
+        t: bool
+        desc: Whether back button enabled
+      typeform_json:
+        t: jsonb
+        desc: Typeform submission data JSON
+      expiry_time:
+        t: timestamptz
+        desc: Expiration time
+      activation_time:
+        t: timestamptz
+        desc: Time when this record was activated
+      last_modified_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      action_url:
+        t: varchar(200)
+        desc: Deep link or action URL when tapped/clicked
+  campaigns_campaignforcustomer:
+    description: Individual campaign delivery records per customer. Tracks send status, delivery confirmation, and customer
+      response. Used for campaign analytics and preventing duplicate sends.
+    columns:
+      id:
+        t: int
+        pk: t
+      has_seen:
+        t: bool
+        desc: Whether user has seen this notification
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      campaign_id:
+        t: int
+        fk: campaigns_campaign(id)
+        desc: Foreign key to marketing campaign
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      activation_time:
+        t: timestamptz
+        desc: Time when this record was activated
+      content_type_id:
+        t: int
+        fk: django_content_type(id)
+        desc: Django content type for polymorphic relationship
+      object_id:
+        t: int
+        desc: Primary key of related object (with content_type_id)
+      seen_set_by:
+        t: varchar(1)
+        desc: Who marked as seen
+      expiry_time:
+        t: timestamptz
+        desc: Expiration time
+      message:
+        t: text
+        desc: Message content/body
+      title:
+        t: text
+        desc: Title or subject line
+      action_url:
+        t: varchar(200)
+        desc: Deep link or action URL when tapped/clicked
+  campaigns_campaignresponse:
+    description: Customer responses and interactions with campaigns. Records clicks, conversions, and engagement metrics for
+      measuring campaign effectiveness.
+    columns:
+      id:
+        t: int
+        pk: t
+      answers:
+        t: jsonb
+        desc: User responses/answers JSON
+      hidden_fields:
+        t: jsonb
+        desc: Hidden form fields JSON
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      campaign_for_customer_id:
+        t: int
+        fk: campaigns_campaignforcustomer(id)
+        desc: Foreign key to campaign customer mapping
+  campaigns_inappprompt:
+    description: Contextual in-app messages shown to customers based on behavior triggers. Used for onboarding tips, feature
+      announcements, and personalized offers. Supports targeting rules and display frequency limits.
+    columns:
+      id:
+        t: int
+        pk: t
+      title:
+        t: varchar(400)
+        desc: Title or subject line
+      message:
+        t: text
+        desc: Message content/body
+      prompt_type:
+        t: int
+        desc: Type of prompt
+      expiry_time:
+        t: timestamptz
+        desc: Expiration time
+      is_active:
+        t: bool
+      has_seen:
+        t: bool
+        desc: Whether user has seen this notification
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_ride_id:
+        t: int
+        fk: rides_customerride(id)
+        desc: Foreign key to rides_customerride - customer's ride booking
+  campaigns_scheduledcommunications:
+    description: Pre-scheduled messages for automated delivery at specific times. Used for booking reminders, payment due
+      alerts, and subscription renewal notices. Supports multiple channels.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      send_comms:
+        t: bool
+        desc: Flag to enable communications
+      content:
+        t: text
+        desc: Message or notification content
+      customer_numbers_list:
+        t: character varying[](20)
+        desc: List of customer phone numbers
+      scene:
+        t: text
+        desc: UI scene/screen context
+      communication_type:
+        t: varchar(1)
+        desc: Type of communication (sms/email/push)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      scheduled_time:
+        t: timestamptz
+        desc: Scheduled date/time for this action
+      image_url:
+        t: text
+        desc: URL to image resource
+      website_url:
+        t: text
+        desc: Company/business website URL
+      pn_title:
+        t: text
+        desc: Push notification title
+      notification_campaign_id:
+        t: int
+        fk: push_notifs_pushnotificationcampaign(id)
+        desc: null
+      customer_filters_list:
+        t: character varying[](2)
+        desc: Customer segment filters JSON
+  cars_carride:
+    description: Bookings for Luxe Cab premium sedan service. Unlike bus rides, these are on-demand car bookings with pickup/drop
+      locations, driver assignment, fare calculation, and real-time tracking. Status tracks ride lifecycle from booked to
+      completed.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      ride_type:
+        t: varchar(10)
+        desc: 'Service type: ''airport'', ''point_to_point'', ''hourly_rental'''
+      status:
+        t: varchar(10)
+        desc: 'Ride lifecycle: ''requested'', ''driver_assigned'', ''driver_arrived'', ''in_progress'', ''completed'', ''cancelled'''
+      issue:
+        t: varchar(25)
+        desc: Issue or problem description
+      pickup_time:
+        t: timestamptz
+        desc: Scheduled pickup time
+      estimated_duration_minutes:
+        t: int
+        desc: Estimated duration in minutes
+      actual_duration_minutes:
+        t: int
+        desc: Actual duration in minutes
+      base_fare:
+        t: int
+        desc: Base fare before adjustments
+      total_fare:
+        t: int
+        desc: Total fare amount in INR
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      vehicle_issuance_id:
+        t: int
+        fk: vehicles_vehicleissuance(id)
+        desc: Foreign key to vehicles_vehicleissuance - vehicle-driver assignment
+      is_round_trip:
+        t: bool
+        desc: Whether round trip booking
+      cgst:
+        t: int
+        desc: Central GST component (2.5% of taxable amount)
+      igst:
+        t: int
+        desc: Integrated GST for inter-state (5% of taxable amount)
+      sgst:
+        t: int
+        desc: State GST component (2.5% of taxable amount)
+      metadata:
+        t: jsonb
+        desc: JSON metadata with additional contextual information
+      uuid:
+        t: uuid
+        desc: Universally unique identifier (UUID v4)
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - the driver associated with this record
+      extra_charges:
+        t: int
+        desc: Extra charges amount
+      distance_km:
+        t: numeric(10)
+        desc: Distance in kilometers
+      return_time:
+        t: timestamptz
+        desc: Return journey time
+      external_booking_metadata:
+        t: jsonb
+        desc: External booking metadata JSON
+      source:
+        t: varchar(30)
+        desc: Origin/source of the record (app, admin, api, etc.)
+      invoice_number:
+        t: varchar(20)
+        desc: Invoice number
+      luxe_cab_type_id:
+        t: bigint
+        fk: cars_luxecabtype(id)
+        desc: null
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      toll:
+        t: numeric(10)
+        desc: Toll charges for the trip
+      otp_verification:
+        t: varchar(4)
+        desc: OTP verification status
+      rental_type:
+        t: varchar(15)
+        desc: Type of rental service
+      cancellation_reason:
+        t: varchar(25)
+        desc: Reason for cancellation
+  cars_carridestop:
+    description: Intermediate stops for Luxe Cab rides supporting multi-stop journeys. Each stop has location, order, and
+      arrival/departure times.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      stop_type:
+        t: varchar(12)
+        desc: Type of stop (pickup, dropoff, both)
+      location_id:
+        t: int
+        fk: geo_location(id)
+        desc: Foreign key to geo_location - geographic coordinates
+      sequence_number:
+        t: int
+        desc: Sequence number in order
+      scheduled_time:
+        t: timestamptz
+        desc: Scheduled date/time for this action
+      car_ride_id:
+        t: bigint
+        fk: cars_carride(id)
+        desc: null
+      actual_arrival_time:
+        t: timestamptz
+        desc: Actual arrival time at stop
+      actual_departure_time:
+        t: timestamptz
+        desc: Actual departure time from stop
+  cars_carroute:
+    description: Route definitions for Luxe Cab service covering specific geographic zones. Different from bus routes - these
+      define service areas and pricing zones for sedan service.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      vehicle_type:
+        t: varchar(25)
+        desc: Category/type of vehicle
+      ride_type:
+        t: varchar(20)
+        desc: Type of ride (single/return)
+      round_trip:
+        t: bool
+        desc: Whether round trip
+      base_km:
+        t: double
+        desc: Base kilometers included in rental
+      cost_per_km:
+        t: double
+        desc: Cost per kilometer
+      cost_per_extra_km:
+        t: double
+        desc: Cost per extra kilometer
+      base_hr:
+        t: double
+        desc: Base hours included in rental
+      cost_per_hr:
+        t: double
+        desc: Cost per hour
+      cost_per_extra_hr:
+        t: double
+        desc: Cost per extra hour
+      driver_allowance:
+        t: double
+        desc: Driver allowance amount
+      night_allowance:
+        t: double
+        desc: Night shift allowance amount
+      toll:
+        t: double
+        desc: Toll charges for the trip
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      bus_layout_id:
+        t: int
+        fk: vehicles_vehiclelayout(id)
+        desc: null
+      cab_type_id:
+        t: bigint
+        fk: cars_luxecabtype(id)
+        desc: null
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      destination_id:
+        t: bigint
+        fk: cars_carzonelocation(id)
+        desc: null
+      source_id:
+        t: bigint
+        fk: cars_carzonelocation(id)
+        desc: null
+  cars_carzonelocation:
+    description: Geographic zones where Luxe Cab service operates. Uses geohash-based boundaries for pickup/drop eligibility
+      and zone-based pricing.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      name:
+        t: varchar(100)
+      boundary:
+        t: text
+        desc: Geographic boundary
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      center_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+  cars_corporatereferral:
+    description: Corporate referral codes for Luxe Cab service. Companies can distribute codes for employee discounts and
+      usage tracking.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      customer_name:
+        t: varchar(100)
+        desc: Name of the customer
+      customer_email:
+        t: varchar(254)
+        desc: Customer email address
+      customer_mobile_number:
+        t: varchar(10)
+        desc: Customer mobile number
+      company_name:
+        t: varchar(100)
+        desc: Name of the company
+      hr_admin_name:
+        t: varchar(100)
+        desc: HR admin name
+      hr_admin_email:
+        t: varchar(254)
+        desc: HR admin email address
+      hr_admin_mobile_number:
+        t: varchar(10)
+        desc: HR admin mobile number
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  cars_eventformsubmission:
+    description: Form submissions for special events or corporate inquiries about Luxe Cab service. Captures lead information
+      for sales follow-up.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      event_type:
+        t: varchar(20)
+        desc: Type of event that occurred
+      name:
+        t: varchar(100)
+      mobile_number:
+        t: varchar(20)
+        desc: Mobile phone number (10 digits)
+      email:
+        t: varchar(254)
+        desc: Email address
+      event_place:
+        t: varchar(255)
+        desc: Event location name
+      event_place_lat:
+        t: numeric(9)
+        desc: Event location latitude
+      event_place_lng:
+        t: numeric(9)
+        desc: Event location longitude
+      description:
+        t: text
+        desc: Detailed description or notes
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  cars_luxecabtype:
+    description: Categories of vehicles in Luxe Cab fleet (Sedan, SUV, Premium). Each type has different capacity, amenities,
+      and pricing tiers.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      category:
+        t: varchar(20)
+        desc: 'Vehicle tier: ''sedan'', ''suv'', ''premium'''
+      description:
+        t: text
+        desc: Detailed description or notes
+      is_active:
+        t: bool
+      max_passengers:
+        t: int
+        desc: Maximum passenger capacity
+      max_luggage:
+        t: int
+        desc: Maximum luggage capacity
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      city_id:
+        t: int
+        fk: configs_cityconfig(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+  cars_luxedrivercallevent:
+    description: Call interaction logs between Luxe Cab drivers and customers. Records call initiation, duration, and outcome
+      for service quality tracking.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      call_type:
+        t: varchar(8)
+        desc: Type of call
+      mobile_number:
+        t: varchar(10)
+        desc: Mobile phone number (10 digits)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      car_ride_id:
+        t: bigint
+        fk: cars_carride(id)
+        desc: null
+  cars_mmtbooking:
+    description: MakeMyTrip integration bookings for Luxe Cab airport transfers. External marketplace bookings flow through
+      this table with MMT-specific booking IDs and reconciliation data.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      mmt_search_id:
+        t: varchar(100)
+        desc: MakeMyTrip search ID
+      mmt_order_reference_number:
+        t: varchar(100)
+        desc: MakeMyTrip order reference
+      mmt_partner_reference_number:
+        t: varchar(100)
+        desc: MakeMyTrip partner reference
+      mmt_verification_code:
+        t: varchar(10)
+        desc: MakeMyTrip verification code
+      status:
+        t: varchar(20)
+        desc: Current status of the record (see enum values)
+      search_request_data:
+        t: jsonb
+        desc: Search request JSON
+      search_response_data:
+        t: jsonb
+        desc: Search response JSON
+      block_request_data:
+        t: jsonb
+        desc: Block request payload
+      block_response_data:
+        t: jsonb
+        desc: Block response payload
+      paid_request_data:
+        t: jsonb
+        desc: Paid request JSON data
+      paid_response_data:
+        t: jsonb
+        desc: Paid response JSON data
+      created:
+        t: timestamptz
+      updated:
+        t: timestamptz
+        desc: Last updated timestamp
+      car_ride_id:
+        t: bigint
+        fk: cars_carride(id)
+        desc: null
+      reschedule_block_request_data:
+        t: jsonb
+        desc: Reschedule block request JSON
+      reschedule_block_response_data:
+        t: jsonb
+        desc: Reschedule block response JSON
+      reschedule_confirm_request_data:
+        t: jsonb
+        desc: Reschedule confirm request JSON
+      reschedule_confirm_response_data:
+        t: jsonb
+        desc: Reschedule confirm response JSON
+      rescheduled_count:
+        t: int
+        desc: Number of reschedules
+      selected_vehicle_sku_id:
+        t: varchar(100)
+        desc: Selected vehicle SKU ID
+  cars_mmttrackingevent:
+    description: Real-time tracking events for MMT bookings. Syncs location updates between Cityflo driver app and MMT's tracking
+      system.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      event_type:
+        t: varchar(20)
+        desc: Type of event that occurred
+      latitude:
+        t: numeric(9)
+        desc: Latitude coordinate (decimal degrees, WGS84)
+      longitude:
+        t: numeric(9)
+        desc: Longitude coordinate (decimal degrees, WGS84)
+      timestamp:
+        t: bigint
+        desc: Generic timestamp for the event
+      device_id:
+        t: varchar(100)
+        desc: Unique device identifier
+      extra_data:
+        t: jsonb
+        desc: Extra JSON data
+      created:
+        t: timestamptz
+      mmt_booking_id:
+        t: bigint
+        fk: cars_mmtbooking(id)
+        desc: null
+  chat_group:
+    description: Chat groups for in-app messaging, typically route-based communities where customers on the same route can
+      interact. Groups have admins and member limits.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      announcement:
+        t: varchar(200)
+        desc: Announcement message text
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      is_active:
+        t: bool
+  chat_groupaddition:
+    description: Records of users being added to chat groups. Tracks who added whom and when, with approval status for moderated
+      groups.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_ride_id:
+        t: int
+        fk: rides_customerride(id)
+        desc: Foreign key to rides_customerride - customer's ride booking
+      group_id:
+        t: bigint
+        fk: chat_group(id)
+        desc: Foreign key to group
+      user_id:
+        t: int
+        fk: users_user(id)
+        desc: Foreign key to users_user - Django auth user account
+      is_active:
+        t: bool
+  chat_message:
+    description: Individual chat messages in groups. Supports text, images, and reactions. Messages can be reported or deleted
+      by moderators.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      attachments:
+        t: varchar(500)
+        desc: Attachments JSON data
+      deleted:
+        t: bool
+        desc: Whether record is deleted
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      user_id:
+        t: int
+        fk: users_user(id)
+        desc: Foreign key to users_user - Django auth user account
+      group_id:
+        t: bigint
+        fk: chat_group(id)
+        desc: Foreign key to group
+      message:
+        t: text
+        desc: Message content/body
+      message_type:
+        t: varchar(8)
+        desc: Type of message (text, image, template)
+      message_sub_type:
+        t: varchar(64)
+        desc: Sub-type of message
+  configs_cityconfig:
+    description: City-specific configuration parameters controlling business rules, pricing, features, and operational settings.
+      Each city can have different surge pricing rules, booking windows, cancellation policies, and feature flags.
+    columns:
+      id:
+        t: int
+        pk: t
+      customer_ride_cancellation_time_buffer_minutes:
+        t: int
+        desc: Minutes before ride for free cancellation
+      time_buffer_minutes:
+        t: int
+        desc: Buffer time in minutes between stops
+      customer_ride_cancellation_charge_percentage:
+        t: int
+        desc: Cancellation charge percentage
+      customer_support_number:
+        t: varchar(11)
+        desc: Customer support phone number
+      cancellation_policy:
+        t: text
+        desc: Cancellation policy text
+      customer_ride_modification_time_buffer_minutes:
+        t: int
+        desc: Minutes before ride for free modification
+      is_referral_on:
+        t: bool
+        desc: Whether referral program active
+      referrer_capacity:
+        t: int
+        desc: Referrer daily capacity
+      vanilla_registration_bonus_free_rides:
+        t: int
+        desc: Number of free rides given on registration (no promo code)
+      referee_registration_bonus_free_rides:
+        t: int
+        desc: Free rides for referred user on registration
+      referrer_registration_bonus_free_rides:
+        t: int
+        desc: Free rides for referrer on referred registration
+      customer_cancellation_refund_free_rides:
+        t: int
+        desc: Free rides for customer cancellation
+      cityflo_cancellation_refund_free_rides:
+        t: int
+        desc: Free rides for Cityflo-initiated cancellation
+      bus_breakdown_bonus_free_rides:
+        t: int
+        desc: Free rides credited for bus breakdown
+      bus_inconvenience_bonus_free_rides:
+        t: int
+        desc: Free rides credited for inconvenience
+      faqs:
+        t: text
+        desc: FAQs JSON data
+      customer_guidelines:
+        t: text
+        desc: Guidelines for customers
+      facebook_page_url:
+        t: varchar(200)
+        desc: Facebook page URL
+      twitter_page_url:
+        t: varchar(200)
+        desc: Twitter profile URL
+      website_url:
+        t: varchar(200)
+        desc: Company/business website URL
+      expiry_period_cityflo_refund:
+        t: int
+        desc: Expiry period for Cityflo refund in days
+      expiry_period_cityflo_bonus:
+        t: int
+        desc: Expiry period for Cityflo bonus in days
+      expiry_period_referrer_bonus:
+        t: int
+        desc: Expiry period for referrer bonus in days
+      expiry_period_referee_bonus:
+        t: int
+        desc: Expiry period for referee bonus in days
+      expiry_period_registration:
+        t: int
+        desc: Expiry period for registration bonus in days
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      kkc:
+        t: double
+        desc: Krishi Kalyan Cess component
+      sbc:
+        t: double
+        desc: Swachh Bharat Cess component
+      service_tax:
+        t: double
+        desc: Service tax amount (legacy pre-GST)
+      booking_cgst:
+        t: double
+        desc: CGST on booking
+      booking_sgst:
+        t: double
+        desc: SGST on booking
+      cancellation_cgst:
+        t: double
+        desc: CGST on cancellation
+      cancellation_sgst:
+        t: double
+        desc: SGST on cancellation
+      customer_ride_cancellation_charge:
+        t: int
+        desc: Charge for ride cancellation
+      monthly_subscription_pass_free_cancellations_limit:
+        t: int
+        desc: Free cancellations for monthly pass
+      weekly_subscription_pass_free_cancellations_limit:
+        t: int
+        desc: Maximum free cancellations allowed for weekly subscription pass
+      expiry_period_ride_pack:
+        t: int
+        desc: Expiry period for ride pack in days
+      ride_pack_free_rides:
+        t: int
+        desc: Free rides in ride pack
+      expiry_period_hn_ride_pack:
+        t: int
+        desc: Expiry period for HN ride pack in days
+      hn_ride_pack_free_rides:
+        t: int
+        desc: Free rides in HN ride pack
+      referral_image_url:
+        t: varchar(200)
+        desc: Referral share image URL
+      referral_message:
+        t: text
+        desc: Referral message template
+      allow_bookings:
+        t: bool
+        desc: Whether bookings are allowed
+      referrer_single_paid_ride_bonus_free_rides:
+        t: int
+        desc: Free rides for referrer on first paid ride
+      referrer_subscription_pass_bonus_free_rides:
+        t: int
+        desc: Free rides for referrer on subscription
+      is_testimonial_display_on:
+        t: bool
+        desc: Whether testimonial displayed
+      route_invitation_message:
+        t: text
+        desc: Route invitation message
+      b2c_double_seat_booking_feature_end_date:
+        t: date
+        desc: null
+      b2c_double_seat_booking_feature_start_date:
+        t: date
+        desc: null
+      allow_double_bookings:
+        t: bool
+        desc: Whether double seat bookings allowed
+      allowed_occupancy:
+        t: varchar(30)
+        desc: Maximum allowed occupancy
+      should_reserve_double_seats:
+        t: bool
+        desc: Whether to reserve double seats
+      is_explore_routes_on:
+        t: bool
+        desc: Whether explore routes enabled
+      emergency_contact_number:
+        t: varchar(30)
+        desc: Emergency contact number
+      monthly_one_way_discount_percent:
+        t: double
+        desc: Monthly one-way subscription discount
+      monthly_round_discount_percent:
+        t: double
+        desc: Monthly round-trip subscription discount
+      weekly_one_way_discount_percent:
+        t: double
+        desc: Discount percentage for weekly one-way subscription
+      weekly_round_discount_percent:
+        t: double
+        desc: Discount percentage for weekly round-trip subscription
+      watermark_image_url:
+        t: varchar(200)
+        desc: URL to watermark image
+      prebook_window_min:
+        t: int
+        desc: Pre-booking window in minutes
+      apply_lite_reschedule_charge:
+        t: bool
+        desc: Whether to charge for lite pack reschedule
+      luxe_active:
+        t: bool
+        desc: Whether Luxe service is active
+      luxe_metadata:
+        t: jsonb
+        desc: Luxe cab metadata JSON
+  corporate_company:
+    description: B2B corporate clients with dedicated bus routes for employee transportation. Companies have contracts, dedicated
+      routes, and custom billing. Includes GST details for invoicing and contact information for coordination.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      created:
+        t: timestamptz
+      email_domains:
+        t: varchar(256)
+        desc: Comma-separated list of company email domains
+      modified:
+        t: timestamptz
+      credits_balance:
+        t: int
+        desc: Credits remaining balance
+      status:
+        t: int
+        desc: Current status of the record (see enum values)
+      assigned_to_employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      saturday_working:
+        t: bool
+        desc: Whether Saturday working
+      sunday_working:
+        t: bool
+        desc: Whether service operates on Sundays
+      only_odd_staturday_working:
+        t: bool
+        desc: Only odd Saturdays working
+      bus_operator:
+        t: varchar(1)
+        desc: Bus operator name
+      is_primary_cost:
+        t: bool
+        desc: Whether primary cost component
+  corporate_companycontract:
+    description: Contract terms with corporate clients defining service scope, pricing, and duration. Links to revenue contracts
+      for billing calculations.
+    columns:
+      id:
+        t: int
+        pk: t
+      valid_from:
+        t: date
+        desc: Date/time when record becomes valid
+      valid_till:
+        t: date
+        desc: End of validity period
+      revenue_per_ride:
+        t: int
+        desc: Average revenue per ride
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      company_route_slot_id:
+        t: int
+        fk: corporate_companyrouteslot(id)
+        desc: null
+  corporate_companyholidaycalendar:
+    description: Holiday calendars for corporate clients. Bus service is suspended on company-specific holidays. Each company
+      can have custom holiday dates.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(20)
+      date:
+        t: date
+        desc: Calendar date (YYYY-MM-DD)
+      company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate_company - B2B client
+  corporate_companyride:
+    description: Ride records for corporate (B2B) customers. Similar to CustomerRide but for employees on dedicated corporate
+      routes. Tracks boarding, cost allocation, and company billing.
+    columns:
+      id:
+        t: int
+        pk: t
+      ride_date:
+        t: date
+        desc: Date of the ride
+      ride_inactive:
+        t: bool
+        desc: Whether ride is inactive/disabled
+      ride_status:
+        t: int
+        desc: Status of the ride (booked, cancelled, completed)
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      number_of_seats:
+        t: int
+        desc: Total seat count
+      company_route_slot_id:
+        t: int
+        fk: corporate_companyrouteslot(id)
+        desc: null
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - the driver associated with this record
+      vehicle_issuance_id:
+        t: int
+        fk: vehicles_vehicleissuance(id)
+        desc: Foreign key to vehicles_vehicleissuance - vehicle-driver assignment
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      cost:
+        t: numeric(15)
+        desc: Cost in INR
+      revenue:
+        t: numeric(15)
+        desc: Revenue generated from this transaction/ride
+      ride_debits:
+        t: int
+        desc: Debit amount from ride pack for this ride
+  corporate_companyridestoplocationlog:
+    description: GPS location logs for corporate ride stops. Records actual arrival/departure coordinates for compliance and
+      service level agreement tracking.
+    columns:
+      id:
+        t: int
+        pk: t
+      trigger_type:
+        t: int
+        desc: Type of trigger that activated this
+      scheduled_time:
+        t: time without time zone
+        desc: Scheduled date/time for this action
+      delay:
+        t: int
+        desc: Delay time in minutes
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      company_ride_id:
+        t: int
+        fk: corporate_companyride(id)
+        desc: null
+      stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to routes_stop - pickup/dropoff stop location
+      lat:
+        t: double
+        desc: Latitude coordinate (decimal degrees, WGS84)
+      lng:
+        t: double
+        desc: Longitude coordinate (decimal degrees, WGS84)
+      location_source:
+        t: varchar(1)
+        desc: Source of location data (gps, network, manual)
+      location_timestamp:
+        t: timestamptz
+        desc: Timestamp when location was recorded
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+  corporate_companyroute:
+    description: Dedicated bus routes for corporate clients connecting offices to residential areas. Routes are exclusive
+      to company employees and have custom schedules.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(128)
+      short_name:
+        t: varchar(20)
+        desc: Abbreviated short name
+      is_running:
+        t: bool
+        desc: True if currently in operation
+      via:
+        t: varchar(128)
+        desc: Via points/stops on the route
+      time_of_day:
+        t: int
+        desc: 'Commute direction: ''Morning'' (to office) or ''Evening'' (from office)'
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate_company - B2B client
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger alights
+      return_route_id:
+        t: int
+        fk: corporate_companyroute(id)
+        desc: null
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger boards
+      enable_inspection_reminder:
+        t: bool
+        desc: Whether inspection reminders enabled
+  corporate_companyrouteslot:
+    description: Time slots for corporate routes. Each slot is a specific departure time with assigned vehicle capacity and
+      driver.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(128)
+      start_time:
+        t: time without time zone
+        desc: Start time (HH:MM:SS)
+      end_time:
+        t: time without time zone
+        desc: End time (HH:MM:SS)
+      vehicle_category:
+        t: int
+        desc: Vehicle type category (AC, Non-AC, Luxe, etc.)
+      status:
+        t: int
+        desc: Current status of the record (see enum values)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      company_route_id:
+        t: int
+        fk: corporate_companyroute(id)
+        desc: Foreign key to corporate route
+      cost:
+        t: numeric(15)
+        desc: Cost in INR
+      revenue:
+        t: numeric(15)
+        desc: Revenue generated from this transaction/ride
+  corporate_corporateadmin:
+    description: Administrative users from corporate clients who can access dashboards, view employee ride reports, and manage
+      whitelisted employees.
+    columns:
+      id:
+        t: int
+        pk: t
+      email:
+        t: varchar(254)
+        desc: Email address
+      company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate_company - B2B client
+      person_id:
+        t: int
+        fk: users_person(id)
+        desc: Foreign key to users_person - contact person details
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      slug:
+        t: varchar(50)
+        desc: URL-friendly unique identifier
+  corporate_corporatecustomerboardinghistory:
+    description: Historical boarding records for corporate customers. Used for attendance tracking and billing reconciliation
+      with employers.
+    columns:
+      id:
+        t: int
+        pk: t
+      boarding_time:
+        t: timestamptz
+        desc: Time of boarding
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      company_ride_id:
+        t: int
+        fk: corporate_companyride(id)
+        desc: null
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+  corporate_corporaterequest:
+    description: Requests from companies for new corporate routes or service modifications. Tracks inquiry through sales pipeline
+      to contract.
+    columns:
+      id:
+        t: int
+        pk: t
+      email:
+        t: varchar(254)
+        desc: Email address
+      company_name:
+        t: varchar(64)
+        desc: Name of the company
+      mobile_number:
+        t: varchar(50)
+        desc: Mobile phone number (10 digits)
+      personal_name:
+        t: varchar(64)
+        desc: Personal name
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      office_address:
+        t: text
+        desc: Office address text
+      is_contacted:
+        t: bool
+        desc: Whether customer contacted
+      additional_comment:
+        t: text
+        desc: Additional comments or notes
+      number_of_passengers:
+        t: varchar(10)
+        desc: Passenger count
+      designation:
+        t: varchar(64)
+        desc: Job designation/title
+      interested_in:
+        t: varchar(100)
+        desc: Services interested in
+      city:
+        t: varchar(64)
+        desc: City name string
+  corporate_corporaterevenuecontract:
+    description: Revenue and billing contracts with corporate clients. Defines per-ride pricing, monthly commitments, and
+      payment terms.
+    columns:
+      id:
+        t: int
+        pk: t
+      valid_from:
+        t: date
+        desc: Date/time when record becomes valid
+      valid_till:
+        t: date
+        desc: End of validity period
+      monthyly_revenue:
+        t: int
+        desc: Monthly revenue amount (typo preserved)
+      days:
+        t: int
+        desc: Number of days
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+  dbsettings_setting:
+    description: Dynamic application settings stored in database. Key-value pairs for runtime configuration that can be changed
+      without code deployment. Includes feature flags and tunable parameters.
+    columns:
+      id:
+        t: int
+        pk: t
+      module_name:
+        t: varchar(255)
+        desc: Python module name
+      class_name:
+        t: varchar(255)
+        desc: Python class name
+      attribute_name:
+        t: varchar(255)
+        desc: Name of the attribute
+      value:
+        t: varchar(10000)
+        desc: Value for key-value or setting record
+      site_id:
+        t: int
+        fk: django_site(id)
+        desc: Foreign key to Django site
+  devices_driverdevice:
+    description: Driver mobile devices registered with the driver app. Tracks device info, push token for notifications, app
+      version, and last active timestamp. Used for driver communication and app compatibility.
+    columns:
+      id:
+        t: int
+        pk: t
+      manufacturer:
+        t: varchar(64)
+        desc: Vehicle manufacturer name
+      model:
+        t: varchar(64)
+        desc: Model or version identifier
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      sim_id:
+        t: int
+        fk: devices_sim(id)
+        desc: null
+      fcm_token:
+        t: text
+        desc: Firebase Cloud Messaging token for push notifications
+      is_active:
+        t: bool
+      app_version:
+        t: int
+        desc: Mobile app version number
+      device_id:
+        t: varchar(128)
+        desc: Unique device identifier
+      os_sdk_version:
+        t: int
+        desc: OS SDK version number
+      imei:
+        t: varchar(50)
+        desc: Device IMEI number
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - the driver associated with this record
+  devices_driverdeviceinfo:
+    description: Extended device information for driver devices. Captures OS version, device model, network type, and battery
+      level for debugging and support.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(64)
+      timestamp:
+        t: timestamptz
+        desc: Generic timestamp for the event
+      metadata:
+        t: jsonb
+        desc: JSON metadata with additional contextual information
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - the driver associated with this record
+  django_content_type:
+    description: Django content type registry mapping models to their app labels. Used by GenericForeignKey relationships
+      and permission system.
+    columns:
+      id:
+        t: int
+        pk: t
+      app_label:
+        t: varchar(100)
+        desc: Django app label
+      model:
+        t: varchar(100)
+        desc: Model or version identifier
+  geo_city:
+    description: Service city where Cityflo operates with geographic boundaries and operational settings. Mumbai, Delhi, Hyderabad,
+      Pune, Bangalore are primary cities. Controls serviceable area, route map URL, and active status.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      name:
+        t: varchar(64)
+        desc: City name (e.g., 'Mumbai', 'Pune', 'Delhi')
+      state_id:
+        t: int
+        fk: geo_state(id)
+        desc: Foreign key to geo_state - parent state for GST/regulatory context
+      lat:
+        t: double
+        desc: Latitude of city center for geo operations
+      lng:
+        t: double
+        desc: Longitude of city center for geo operations
+      is_active:
+        t: bool
+        desc: Whether city is currently serviceable
+      slug:
+        t: varchar(64)
+        desc: URL-friendly identifier (auto-generated from name)
+      route_map_url:
+        t: varchar(256)
+        desc: URL to city's route map visualization
+      serviceable_radius_kms:
+        t: double
+        desc: 'Radius in kilometers defining serviceable area from city center (default: 30 km)'
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  geo_hub:
+    description: Major geographic hubs serving as route endpoints. Hubs are business districts or residential clusters where
+      multiple routes originate or terminate (e.g., 'Andheri', 'BKC', 'Powai').
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+  geo_location:
+    description: Precise geographic coordinates for stops, customer addresses, and points of interest. Core location entity
+      with PostGIS point, geohash indexing, and automatic city assignment. Referenced by stops, customer saved places, and
+      search results.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      lat:
+        t: double
+        desc: Latitude coordinate
+      lng:
+        t: double
+        desc: Longitude coordinate
+      point:
+        t: geography(Point,4326)
+        desc: PostGIS point geometry for spatial queries (EPSG:4326 WGS84)
+      address:
+        t: varchar(250)
+        desc: Human-readable address from geocoding
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - auto-assigned based on coordinates
+      gmaps_url:
+        t: varchar(200)
+        desc: Google Maps URL for this location
+      geohash:
+        t: varchar(12)
+        desc: 8-character geohash for location-based indexing
+      hub_geohash_id:
+        t: int
+        fk: geo_geohash(id)
+        desc: Foreign key to geo_geohash - 7-character geohash for hub/locality lookup
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  geo_placesdetails:
+    description: Cached Google Places details including address, coordinates, and place metadata. Reduces API calls for frequently
+      accessed locations.
+    columns:
+      id:
+        t: int
+        pk: t
+      place_id:
+        t: varchar(1000)
+        desc: Google Places API place identifier
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      location_id:
+        t: int
+        fk: geo_location(id)
+        desc: Foreign key to geo_location - geographic coordinates
+  geo_placesindex:
+    description: Search index for places enabling fast location lookup. Maps search terms to place IDs for autocomplete functionality.
+    columns:
+      id:
+        t: int
+        pk: t
+      index:
+        t: varchar(200)
+        desc: Array or list index
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  geo_state:
+    description: Indian states/union territories for regulatory compliance. Each state has GST registration details for tax
+      invoicing. Routes and stops are associated with states for tax calculation.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(64)
+      code:
+        t: varchar(64)
+        desc: Short code identifier
+      country:
+        t: varchar(64)
+        desc: Country name
+      gst_number:
+        t: varchar(64)
+        desc: GST registration number for invoicing
+      registered_address:
+        t: varchar(1024)
+        desc: Registered address for business
+      slug:
+        t: varchar(64)
+        desc: URL-friendly unique identifier
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  geo_subhub:
+    description: Sub-divisions of hubs for finer-grained location categorization. A hub like 'Andheri' may have subhubs like
+      'Andheri East', 'Andheri West', 'MIDC'.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      display_name:
+        t: varchar(64)
+        desc: Name shown to users
+      sub_hub_type:
+        t: int
+        desc: Type of sub-hub
+      slug:
+        t: varchar(64)
+        desc: URL-friendly unique identifier
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      hub_id:
+        t: int
+        fk: geo_hub(id)
+        desc: Foreign key to geo_hub - major geographic hub
+  marketing_bannerevent:
+    description: User interaction events with marketing banners. Tracks impressions, clicks, and conversions for banner campaign
+      effectiveness.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(100)
+      expiry_time:
+        t: timestamptz
+        desc: Expiration time
+      priority:
+        t: int
+        desc: Priority level (low, medium, high, urgent)
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  marketing_marketinghub:
+    description: Marketing-focused hub definitions for promotional campaigns. May differ from operational hubs - organized
+      for marketing segmentation.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(24)
+      hub_type:
+        t: int
+        desc: Type of hub
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      description:
+        t: varchar(72)
+        desc: Detailed description or notes
+      superhub_id:
+        t: int
+        fk: marketing_marketingsuperhub(id)
+        desc: null
+      internal_name:
+        t: varchar(100)
+        desc: Internal reference name (not shown to users)
+  marketing_marketingsubhub:
+    description: Sub-hub definitions for marketing purposes. Enables targeted promotions to specific micro-areas within larger
+      hubs.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(24)
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      marketing_hub_id:
+        t: int
+        fk: marketing_marketinghub(id)
+        desc: null
+      description:
+        t: varchar(72)
+        desc: Detailed description or notes
+      internal_name:
+        t: varchar(100)
+        desc: Internal reference name (not shown to users)
+  marketing_marketingsuperhub:
+    description: Super-hub groupings combining multiple hubs for regional marketing campaigns. Used for city-wide or zone-wide
+      promotions.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(24)
+      description:
+        t: varchar(72)
+        desc: Detailed description or notes
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+  marketing_subhubstop:
+    description: Mapping of stops to marketing sub-hubs. Links operational stops to marketing geographic segments.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to routes_stop - pickup/dropoff stop location
+      sub_hub_id:
+        t: int
+        fk: marketing_marketingsubhub(id)
+        desc: null
+      stop_display_name:
+        t: varchar(24)
+        desc: User-friendly display name for stop
+  marketing_whatsappcampaign:
+    description: WhatsApp marketing campaign configurations. Defines message templates, target segments, and scheduling for
+      WhatsApp Business API.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(400)
+      home_object_id:
+        t: int
+        desc: Home location object ID
+      is_sent:
+        t: bool
+        desc: Whether message has been sent
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      bot_flow_home_id:
+        t: int
+        fk: django_content_type(id)
+        desc: null
+      app_link:
+        t: varchar(400)
+        desc: Deep link to app screen
+  payments_autopay:
+    description: UPI AutoPay (recurring mandate) registrations for automatic subscription renewals. Stores mandate ID, max
+      amount, validity period, and status. Enables seamless pass renewals without manual payment.
+    columns:
+      id:
+        t: int
+        pk: t
+      autopay_type:
+        t: varchar(100)
+        desc: Type of autopay (UPI, card, etc.)
+      upi_id:
+        t: varchar(100)
+        desc: UPI virtual payment address
+      app_identifier:
+        t: varchar(100)
+        desc: App bundle/package identifier
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      is_active:
+        t: bool
+      upi_url:
+        t: varchar(512)
+        desc: UPI payment deep link URL
+      name:
+        t: varchar(100)
+      last_payment:
+        t: timestamptz
+        desc: Last payment timestamp
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      threshold_amount:
+        t: int
+        desc: Minimum threshold amount
+      umn:
+        t: varchar(255)
+        desc: UPI mandate number
+      mandate_seq_no:
+        t: varchar(100)
+        desc: UPI mandate sequence number
+      retry_count:
+        t: int
+        desc: Number of retry attempts
+      notification_sent:
+        t: bool
+        desc: Whether notification was sent
+      is_cancelled:
+        t: bool
+        desc: Whether this was cancelled
+      notification_sent_at:
+        t: timestamptz
+        desc: Notification send timestamp
+      plan_name:
+        t: varchar(100)
+        desc: Subscription plan name
+  payments_autopayamount:
+    description: Configured autopay amounts for different subscription types. Defines the debit amounts for weekly/monthly
+      pass auto-renewals.
+    columns:
+      id:
+        t: int
+        pk: t
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      selected:
+        t: bool
+        desc: Whether this option was selected
+      tag:
+        t: varchar(100)
+        desc: Tag or label
+      slug:
+        t: varchar(100)
+        desc: URL-friendly unique identifier
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  payments_autopaytransaction:
+    description: Transaction records for autopay debits. Each renewal attempt creates a transaction with status tracking from
+      initiation to success/failure.
+    columns:
+      transaction_id:
+        t: varchar(255)
+        pk: t
+        desc: Transaction reference ID
+      transaction_status:
+        t: varchar(10)
+        desc: Status of payment transaction
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      autopay_id:
+        t: int
+        fk: payments_autopay(id)
+        desc: Foreign key to autopay setup
+      base_transaction_id:
+        t: int
+        fk: payments_basetransaction(id)
+        desc: null
+      bank_rrn:
+        t: varchar(100)
+        desc: Bank retrieval reference number
+      refund_rrn:
+        t: varchar(100)
+        desc: RRN (Retrieval Reference Number) for refund tracking
+  payments_basetransaction:
+    description: Base transaction records for all payment types. Abstract parent table with common fields (amount, status,
+      timestamps) inherited by specific transaction types.
+    columns:
+      id:
+        t: int
+        pk: t
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      customer_balance:
+        t: int
+        desc: Customer's current balance in wallet/pack
+      status:
+        t: varchar(64)
+        desc: Current status of the record (see enum values)
+      verified:
+        t: bool
+        desc: Whether this has been verified
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+  payments_carsjuspaytransaction:
+    description: Juspay payment gateway transactions for Luxe Cab bookings. Stores Juspay order ID, payment method, and settlement
+      details.
+    columns:
+      id:
+        t: int
+        pk: t
+      order_id:
+        t: varchar(255)
+        desc: Payment gateway order reference ID
+      receipt_id:
+        t: varchar(100)
+        desc: Payment receipt identifier
+      amount:
+        t: numeric(10)
+        desc: Monetary amount in INR (Indian Rupees)
+      status:
+        t: varchar(20)
+        desc: Current status of the record (see enum values)
+      juspay_response:
+        t: jsonb
+        desc: Juspay API response JSON
+      created_at:
+        t: timestamptz
+        desc: Timestamp when record was created
+      updated_at:
+        t: timestamptz
+        desc: Timestamp when record was last updated
+      charged_at:
+        t: timestamptz
+        desc: Payment charge timestamp
+      car_ride_id:
+        t: bigint
+        fk: cars_carride(id)
+        desc: null
+  payments_carsrazorpaytransaction:
+    description: Razorpay payment gateway transactions for Luxe Cab bookings. Contains Razorpay payment ID, order ID, and
+      payment method details.
+    columns:
+      id:
+        t: int
+        pk: t
+      order_id:
+        t: varchar(100)
+        desc: Payment gateway order reference ID
+      receipt_id:
+        t: varchar(100)
+        desc: Payment receipt identifier
+      amount:
+        t: numeric(10)
+        desc: Monetary amount in INR (Indian Rupees)
+      status:
+        t: varchar(20)
+        desc: Current status of the record (see enum values)
+      razorpay_order_data:
+        t: jsonb
+        desc: Razorpay order data JSON
+      created_at:
+        t: timestamptz
+        desc: Timestamp when record was created
+      updated_at:
+        t: timestamptz
+        desc: Timestamp when record was last updated
+      captured_at:
+        t: timestamptz
+        desc: Payment capture timestamp
+      car_ride_id:
+        t: bigint
+        fk: cars_carride(id)
+        desc: null
+  payments_collectpay:
+    description: Cash collection records for offline payments. Used when drivers collect cash from customers for tickets or
+      when corporate clients pay via check.
+    columns:
+      id:
+        t: int
+        pk: t
+      upi_id:
+        t: varchar(100)
+        desc: UPI virtual payment address
+      upi_url:
+        t: varchar(512)
+        desc: UPI payment deep link URL
+      app_identifier:
+        t: varchar(100)
+        desc: App bundle/package identifier
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      umn:
+        t: varchar(255)
+        desc: UPI mandate number
+      is_cancelled:
+        t: bool
+        desc: Whether this was cancelled
+  payments_collectpaytransaction:
+    description: Individual cash collection transaction records. Tracks collection agent, amount, and reconciliation status.
+    columns:
+      transaction_id:
+        t: varchar(255)
+        pk: t
+        desc: Transaction reference ID
+      transaction_status:
+        t: varchar(10)
+        desc: Status of payment transaction
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      base_transaction_id:
+        t: int
+        fk: payments_basetransaction(id)
+        desc: null
+      collectpay_id:
+        t: int
+        fk: payments_collectpay(id)
+        desc: null
+      bank_rrn:
+        t: varchar(100)
+        desc: Bank retrieval reference number
+      refund_rrn:
+        t: varchar(100)
+        desc: RRN (Retrieval Reference Number) for refund tracking
+  payments_customerwalletaudittrail:
+    description: Complete audit trail of wallet balance changes. Every credit, debit, expiry, and adjustment is logged with
+      reason codes for financial reconciliation and dispute resolution.
+    columns:
+      id:
+        t: int
+        pk: t
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      transaction_type:
+        t: varchar(1)
+        desc: 'Wallet operation: ''credit'' (add funds), ''debit'' (use funds), ''refund'', ''expiry'', ''adjustment'''
+      object_id:
+        t: int
+        desc: Primary key of related object (with content_type_id)
+      customer_balance:
+        t: int
+        desc: Customer's current balance in wallet/pack
+      content_type_id:
+        t: int
+        fk: django_content_type(id)
+        desc: Django content type for polymorphic relationship
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      created:
+        t: timestamptz
+      transaction_reason_comment:
+        t: varchar(250)
+        desc: Comment explaining transaction reason
+      transaction_reason_content_type_id:
+        t: int
+        fk: django_content_type(id)
+        desc: null
+      transaction_reason_object_id:
+        t: int
+        desc: Object ID for transaction reason
+      action_type:
+        t: varchar(1)
+        desc: Type of action performed
+      created_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to user who created this record
+  payments_juspaytransaction:
+    description: Juspay payment gateway transactions for bus ride payments. Contains order details, payment status, and settlement
+      information from Juspay.
+    columns:
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      transaction_id:
+        t: varchar(255)
+        pk: t
+        desc: Transaction reference ID
+      refund_rrn:
+        t: varchar(100)
+        desc: RRN (Retrieval Reference Number) for refund tracking
+      transaction_status:
+        t: varchar(10)
+        desc: Status of payment transaction
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      base_transaction_id:
+        t: int
+        fk: payments_basetransaction(id)
+        desc: null
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      refund_amount:
+        t: int
+        desc: Amount refunded to customer
+  payments_razorpaytransaction:
+    description: Razorpay payment gateway transactions for bus ride payments. Contains payment ID, order ID, signature verification,
+      and refund details if applicable.
+    columns:
+      base_transaction_id:
+        t: int
+        pk: t
+        fk: payments_basetransaction(id)
+        desc: null
+      payment_id:
+        t: varchar(40)
+        desc: Razorpay payment ID (pay_XXXXX)
+      razorpay_status:
+        t: varchar(20)
+        desc: Razorpay transaction status
+      is_captured:
+        t: bool
+        desc: Whether payment captured
+      amount_refunded:
+        t: int
+        desc: Total amount refunded
+      refund_status:
+        t: varchar(20)
+        desc: Refund processing status
+      payment_method:
+        t: varchar(20)
+        desc: Payment method used
+      card_id:
+        t: varchar(40)
+        desc: Payment card identifier
+      bank:
+        t: varchar(40)
+        desc: Bank name
+      error_code:
+        t: varchar(20)
+        desc: Error code identifier
+      error_description:
+        t: varchar(250)
+        desc: Detailed error description
+      is_international:
+        t: bool
+        desc: Whether international
+  payments_ridepack:
+    description: Prepaid ride packs purchased by customers (legacy). Predecessor to LitePack model. Bundles of rides at discounted
+      rates.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(100)
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      no_of_rides:
+        t: int
+        desc: Number of rides included/consumed
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      validity:
+        t: int
+        desc: Validity period or status
+      mobile_csv_data:
+        t: varchar(100)
+        desc: CSV data for mobile upload
+      mobile_number:
+        t: text
+        desc: Mobile phone number (10 digits)
+  push_notifs_pushnotificationcampaign:
+    description: Push notification campaign configurations. Defines target audience, message content, scheduling, and deep
+      link actions.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(300)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      notification_content:
+        t: varchar(1000)
+        desc: Notification body content
+      notification_title:
+        t: varchar(100)
+        desc: Notification title
+      image_url:
+        t: varchar(200)
+        desc: URL to image resource
+      last_modified_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      new_notification:
+        t: bool
+        desc: New notification content/flag
+      scene:
+        t: varchar(100)
+        desc: UI scene/screen context
+      web_url:
+        t: varchar(200)
+        desc: Website URL
+  push_notifs_savednotification:
+    description: Notification templates and saved messages for reuse. Standard messages for common events like ride reminders,
+      delays, and promotions.
+    columns:
+      id:
+        t: int
+        pk: t
+      title:
+        t: varchar(400)
+        desc: Title or subject line
+      message:
+        t: text
+        desc: Message content/body
+      image_url:
+        t: varchar(200)
+        desc: URL to image resource
+      expiry_time:
+        t: timestamptz
+        desc: Expiration time
+      slug:
+        t: varchar(400)
+        desc: URL-friendly unique identifier
+      is_active:
+        t: bool
+      category:
+        t: varchar(1)
+        desc: Category classification
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      action:
+        t: varchar(1)
+        desc: Action performed
+      action_text:
+        t: varchar(20)
+        desc: Action button text
+      activation_time:
+        t: timestamptz
+        desc: Time when this record was activated
+      is_shareable:
+        t: bool
+        desc: Whether content is shareable
+      web_url:
+        t: varchar(200)
+        desc: Website URL
+      action_value:
+        t: varchar(300)
+        desc: Value associated with the action
+      shareable_content:
+        t: varchar(400)
+        desc: Content formatted for social sharing
+      name:
+        t: varchar(400)
+      last_modified_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      is_expanded:
+        t: bool
+        desc: Whether UI element expanded
+      action_text_for_weblink:
+        t: varchar(30)
+        desc: Action text for web link
+      ad_campaign_id:
+        t: bigint
+        fk: ad_platform_adcampaign(id)
+        desc: Foreign key to ad campaign
+      secondary_action:
+        t: varchar(1)
+        desc: Secondary action type
+      secondary_action_text:
+        t: varchar(20)
+        desc: Secondary action button text
+      secondary_action_value:
+        t: varchar(300)
+        desc: Secondary action value
+      campaign_csv_url:
+        t: varchar(400)
+        desc: URL to campaign CSV file
+  push_notifs_savednotificationforcustomer:
+    description: Customer-specific notification queue. Notifications waiting to be delivered or displayed in notification
+      center.
+    columns:
+      id:
+        t: int
+        pk: t
+      has_seen:
+        t: bool
+        desc: Whether user has seen this notification
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      saved_notification_id:
+        t: int
+        fk: push_notifs_savednotification(id)
+        desc: null
+      activation_time:
+        t: timestamptz
+        desc: Time when this record was activated
+      expiry_time:
+        t: timestamptz
+        desc: Expiration time
+      message:
+        t: text
+        desc: Message content/body
+      title:
+        t: text
+        desc: Title or subject line
+      secondary_cta_code:
+        t: varchar(500)
+        desc: Secondary CTA identifier
+  rentals_newrentalrequest:
+    description: New format rental/charter bus requests. Customers can request buses for events, weddings, corporate outings
+      with custom routes and schedules.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(64)
+      mobile_number:
+        t: varchar(10)
+        desc: Mobile phone number (10 digits)
+      email:
+        t: varchar(254)
+        desc: Email address
+      start_date_time:
+        t: timestamptz
+        desc: Combined start date and time
+      end_date_time:
+        t: timestamptz
+        desc: Combined end date and time
+      number_of_passengers:
+        t: int
+        desc: Passenger count
+      additional_comment:
+        t: varchar(500)
+        desc: Additional comments or notes
+      source:
+        t: varchar(5)
+        desc: Origin/source of the record (app, admin, api, etc.)
+      travel_distance:
+        t: int
+        desc: Travel distance in kilometers
+      travel_time:
+        t: varchar(20)
+        desc: Travel duration in minutes
+      status:
+        t: varchar(10)
+        desc: Current status of the record (see enum values)
+      amount_cityflo:
+        t: varchar(64)
+        desc: Amount retained by Cityflo
+      amount_operator:
+        t: varchar(64)
+        desc: Amount payable to operator
+      operator_name:
+        t: varchar(100)
+        desc: Name of the operator/vendor
+      internal_remarks:
+        t: varchar(500)
+        desc: Internal notes (not shown to customers)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      dropoff_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      pickup_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+  rentals_rentalrequest:
+    description: Legacy rental bus requests. Historical charter booking requests before new request system.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(64)
+      mobile_number:
+        t: varchar(50)
+        desc: Mobile phone number (10 digits)
+      email:
+        t: varchar(254)
+        desc: Email address
+      additional_comment:
+        t: varchar(500)
+        desc: Additional comments or notes
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      end_date:
+        t: timestamptz
+        desc: End date of validity period
+      number_of_passengers:
+        t: int
+        desc: Passenger count
+      start_date:
+        t: timestamptz
+        desc: Start date of validity period
+      destination:
+        t: varchar(500)
+        desc: Destination location/stop
+      origin:
+        t: varchar(500)
+        desc: Origin location/stop
+      source:
+        t: varchar(5)
+        desc: Origin/source of the record (app, admin, api, etc.)
+      travel_distance:
+        t: int
+        desc: Travel distance in kilometers
+      travel_time:
+        t: varchar(20)
+        desc: Travel duration in minutes
+      internal_remarks:
+        t: varchar(500)
+        desc: Internal notes (not shown to customers)
+      amount_cityflo:
+        t: varchar(64)
+        desc: Amount retained by Cityflo
+      amount_operator:
+        t: varchar(64)
+        desc: Amount payable to operator
+      operator_name:
+        t: varchar(100)
+        desc: Name of the operator/vendor
+      status:
+        t: varchar(10)
+        desc: Current status of the record (see enum values)
+  rides_customerride:
+    description: Customer's booking for a specific vehicle ride. Core booking entity linking customer to a trip with pickup/dropoff
+      stops, payment details, and booking status. Supports subscription, lite pack, promo code, and free ride payment methods.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - customer who booked
+      corporate_customer_id:
+        t: int
+        fk: corporate_corporatecustomer(id)
+        desc: Foreign key to corporate_corporatecustomer - B2B corporate customer if applicable
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to routes_stop - pickup location
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to routes_stop - dropoff location
+      start_stop_time:
+        t: time without time zone
+        desc: Scheduled pickup time at start stop
+      end_stop_time:
+        t: time without time zone
+        desc: Scheduled dropoff time at end stop
+      ride_cost:
+        t: int
+        desc: Base ride cost in INR (before discounts/surge)
+      surge:
+        t: int
+        desc: Surge amount applied to this booking in INR
+      booking_paid_amount:
+        t: int
+        desc: Amount paid at time of booking in INR
+      paid_amount:
+        t: int
+        desc: Final paid amount (can be negative for refunds) in INR
+      seat_fare:
+        t: double
+        desc: Premium seat surcharge in INR
+      customer_balance:
+        t: int
+        desc: Customer wallet balance after this transaction
+      booking_customer_balance:
+        t: int
+        desc: Customer wallet balance at time of booking
+      bus_number:
+        t: varchar(8)
+        desc: Bus number for this ride (e.g., 'CF-001')
+      sgst:
+        t: double
+        desc: State GST component (2.5%)
+      cgst:
+        t: double
+        desc: Central GST component (2.5%)
+      igst:
+        t: double
+        desc: Integrated GST for interstate (5%)
+      tax_breakup:
+        t: jsonb
+        desc: Detailed tax breakdown JSON
+      subscription_per_ride_amount:
+        t: numeric(10,2)
+        desc: Per-ride amount deducted from subscription
+      lite_per_ride_amount:
+        t: int
+        desc: Per-ride amount deducted from lite pack
+      cancellation_reason:
+        t: varchar(2)
+        desc: 'Customer cancellation reason: ''1''=Leave/WFH, ''2''=Different location, ''3''=Timing unavailable, ''4''=Using
+          other mode, ''5''=Other'
+      cancellation_reason_additional_text:
+        t: varchar(4000)
+        desc: Additional cancellation reason text
+      booking_id:
+        t: varchar(50)
+        desc: Unique booking identifier for customer reference
+      transaction_id:
+        t: varchar(50)
+        desc: Payment gateway transaction ID
+      ride_status:
+        t: varchar(1)
+        desc: 'Booking status: ''1''=Booked, ''2''=Cancelled'
+      issue:
+        t: varchar(2)
+        desc: 'Issue/modification type: ''1''=Customer cancel, ''2''=Admin cancel, ''3''=Full refund, ''5''=Breakdown, etc.
+          (21 types)'
+      free_customer_ride_coupon_id:
+        t: int
+        fk: rides_freecustomerridecoupon(id)
+        desc: Foreign key to rides_freecustomerridecoupon - free ride voucher used
+      subscription_pass_id:
+        t: int
+        fk: rides_subscriptionpass(id)
+        desc: Foreign key to rides_subscriptionpass - subscription used for booking
+      promo_code_id:
+        t: int
+        fk: rides_promocode(id)
+        desc: Foreign key to rides_promocode - promo code applied
+      lite_pack_id:
+        t: int
+        fk: rides_litepack(id)
+        desc: Foreign key to rides_litepack - lite pack used for booking
+      is_cancellable:
+        t: bool
+        desc: Whether this ride booking can be cancelled
+      slug:
+        t: uuid
+        desc: Unique UUID identifier for this ride booking
+      seats_booked:
+        t: int
+        desc: Number of seats booked (1 for single, 2 for double)
+      is_double_seat_upgraded:
+        t: bool
+        desc: Whether customer upgraded to double seat
+      seat_id:
+        t: int
+        fk: vehicles_vehiclelayoutseat(id)
+        desc: Foreign key to vehicles_vehiclelayoutseat - specific seat assigned
+      boarding_status:
+        t: varchar(20)
+        desc: 'Boarding verification status: ''uninitiated'', ''initiated'', ''success'', ''failure'''
+      boarding_failure_reason:
+        t: varchar(200)
+        desc: Reason for boarding failure if applicable
+      created:
+        t: timestamptz
+        desc: Timestamp when booking was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when booking was last modified
+  rides_customerrideaudittrail:
+    description: Complete audit trail of customer ride modifications. Every booking, cancellation, seat change, and payment
+      update is logged with timestamps, actors, and before/after values for dispute resolution.
+    columns:
+      id:
+        t: int
+        pk: t
+      bus_number:
+        t: varchar(8)
+        desc: Bus number/identifier
+      start_stop_time:
+        t: time without time zone
+        desc: Departure time from starting stop
+      end_stop_time:
+        t: time without time zone
+        desc: Time at end stop
+      ride_status:
+        t: varchar(1)
+        desc: Status of the ride (booked, cancelled, completed)
+      issue:
+        t: varchar(2)
+        desc: Issue or problem description
+      paid_amount:
+        t: int
+        desc: Amount actually paid by customer
+      tax_breakup:
+        t: jsonb
+        desc: JSON breakdown of tax components (CGST, SGST, IGST)
+      is_cancellable:
+        t: bool
+        desc: Whether cancellation allowed
+      created:
+        t: timestamptz
+      customer_ride_id:
+        t: int
+        fk: rides_customerride(id)
+        desc: Foreign key to rides_customerride - customer's ride booking
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger alights
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger boards
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      customer_balance:
+        t: int
+        desc: Customer's current balance in wallet/pack
+      modified:
+        t: timestamptz
+      ride_cost:
+        t: int
+        desc: Total ride cost
+      surge:
+        t: int
+        desc: Surge multiplier or amount
+      cancellation_reason:
+        t: varchar(1)
+        desc: Reason for cancellation
+      cancellation_reason_additional_text:
+        t: varchar(4000)
+        desc: Additional cancellation reason text
+      created_by_employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      admin_cancellation_reason_id:
+        t: int
+        fk: rides_operationslistssubcategory(id)
+        desc: null
+      protect_self_declaration_signed:
+        t: bool
+        desc: Self-declaration signed flag
+      is_double_seat_upgraded:
+        t: bool
+        desc: Whether upgraded to double seat
+      seats_booked:
+        t: int
+        desc: Number of seats booked
+      vehicle_layout_seat_id:
+        t: int
+        fk: vehicles_vehiclelayoutseat(id)
+        desc: Foreign key to specific seat in layout
+      refund_action:
+        t: varchar(2)
+        desc: Refund action type
+      seat_fare:
+        t: double
+        desc: Fare per seat for this ride
+  rides_freecustomerridecoupon:
+    description: Free ride coupons issued to customers for compensation, promotions, or referrals. Each coupon has validity
+      period and usage restrictions by route or date.
+    columns:
+      id:
+        t: int
+        pk: t
+      expiry_date:
+        t: date
+        desc: Expiration date for this record/offer
+      used:
+        t: bool
+        desc: Whether this has been used/consumed
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      category:
+        t: varchar(2)
+        desc: Category classification
+      content_type_id:
+        t: int
+        fk: django_content_type(id)
+        desc: Django content type for polymorphic relationship
+      object_pk:
+        t: int
+        desc: String primary key of related object
+      associated_cost:
+        t: numeric(15)
+        desc: Associated/linked cost amount
+      initial_associated_cost:
+        t: numeric(15)
+        desc: Initial associated cost amount
+  rides_holidaycalender:
+    description: Holiday calendar defining non-service days. Buses don't run on listed holidays. Affects pass validity calculations
+      (holidays don't count against pass days).
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(20)
+      date:
+        t: date
+        desc: Calendar date (YYYY-MM-DD)
+  rides_holidaycalender_city:
+    description: City-specific holiday assignments. Different cities have different holiday schedules (regional holidays,
+      local festivals).
+    columns:
+      id:
+        t: int
+        pk: t
+      holidaycalender_id:
+        t: int
+        fk: rides_holidaycalender(id)
+        desc: Foreign key to holiday calendar
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+  rides_litepack:
+    description: Also known as Ride Pack. Ride Pack ride bundles - prepaid packages of rides valid for a period (e.g., 5 rides
+      in 30 days, 10 rides in 60 days). Offers per-ride discount compared to single bookings. Status tracks from unpaid through
+      booked to consumed/expired.
+    columns:
+      id:
+        t: int
+        pk: t
+      status:
+        t: varchar(10)
+        desc: 'Pack status: ''unpaid'', ''booked'' (active), ''cancelled'', ''refunded'', ''expired'''
+      plan_slug:
+        t: varchar(48)
+        desc: 'Lite pack plan identifier: ''3-rides-14-days'', ''5-rides-30-days'', ''10-rides-60-days'', ''unlimited-30-days'',
+          etc. You should get active plans on a route from the routes_route table.'
+      start_date:
+        t: date
+        desc: Start date of validity period
+      end_date:
+        t: date
+        desc: End date of validity period
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      rides_allowed:
+        t: int
+        desc: Total rides included in the pack
+      rides_used:
+        t: int
+        desc: Number of rides consumed from the pack
+      tax_breakup:
+        t: jsonb
+        desc: JSON breakdown of tax components (CGST, SGST, IGST)
+      order_id:
+        t: uuid
+        desc: Payment gateway order reference ID
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+      promo_code_id:
+        t: int
+        fk: rides_promocode(id)
+        desc: Foreign key to rides_promocode - promotional discount code
+      refunded_amount:
+        t: int
+        desc: Total refunded amount
+  rides_notifyonzerorequest:
+    description: Customer requests for seat availability notifications. When a ride is full, customers can request notification
+      if seats become available due to cancellations.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      notification_sent:
+        t: bool
+        desc: Whether notification was sent
+      request_type:
+        t: varchar(1)
+        desc: Type of request
+      end_stop_info_id:
+        t: int
+        fk: routes_routeslotstopinfo(id)
+        desc: null
+      start_stop_info_id:
+        t: int
+        fk: routes_routeslotstopinfo(id)
+        desc: null
+      is_active:
+        t: bool
+  rides_notifyonzerorequestlogs:
+    description: Logs of notify-on-zero request processing. Records when notifications were sent and customer responses.
+    columns:
+      id:
+        t: int
+        pk: t
+      seat_available:
+        t: bool
+        desc: Whether seat is available
+      created:
+        t: timestamptz
+      notify_on_zero_request_id:
+        t: int
+        fk: rides_notifyonzerorequest(id)
+        desc: null
+  rides_operationslists:
+    description: Operations checklists and tasks for daily bus operations. Standard procedures for pre-trip checks, incident
+      handling, and end-of-day activities.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      is_active:
+        t: bool
+      name:
+        t: varchar(100)
+      modified:
+        t: timestamptz
+  rides_operationslistscategory:
+    description: Categories for organizing operations lists. Groups related checklists (e.g., 'Pre-Trip', 'Safety', 'Customer
+      Service').
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      is_active:
+        t: bool
+      name:
+        t: varchar(100)
+      modified:
+        t: timestamptz
+  rides_operationslistscategory_lists:
+    description: Many-to-many linking categories to operations lists.
+    columns:
+      id:
+        t: int
+        pk: t
+      operationslistscategory_id:
+        t: int
+        fk: rides_operationslistscategory(id)
+        desc: null
+      operationslists_id:
+        t: int
+        fk: rides_operationslists(id)
+        desc: null
+  rides_operationslistssubcategory:
+    description: Subcategories for finer organization of operations lists.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      is_active:
+        t: bool
+      name:
+        t: varchar(100)
+      priority:
+        t: varchar(1)
+        desc: Priority level (low, medium, high, urgent)
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      help_text:
+        t: varchar(500)
+        desc: Help or instructional text
+      modified:
+        t: timestamptz
+      category_id:
+        t: int
+        fk: rides_operationslistscategory(id)
+        desc: Foreign key to category
+      verbose_message:
+        t: varchar(500)
+        desc: Detailed message text
+  rides_operationslistssubcategory_lists:
+    description: Many-to-many linking subcategories to operations lists.
+    columns:
+      id:
+        t: int
+        pk: t
+      operationslistssubcategory_id:
+        t: int
+        fk: rides_operationslistssubcategory(id)
+        desc: null
+      operationslists_id:
+        t: int
+        fk: rides_operationslists(id)
+        desc: null
+  rides_promocode:
+    description: Promotional discount codes for ride bookings. Codes have validity periods, usage limits (total and per-customer),
+      discount type (flat/percentage), and minimum order requirements. Can be restricted to specific routes.
+    columns:
+      id:
+        t: int
+        pk: t
+      code:
+        t: varchar(20)
+        desc: Promo code string customers enter (uppercase, alphanumeric)
+      end_date:
+        t: date
+        desc: End date of validity period
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      description:
+        t: varchar(100)
+        desc: Detailed description or notes
+      promo_code_type:
+        t: varchar(1)
+        desc: Type of promo code
+      discount_percent:
+        t: double
+        desc: Discount as percentage (0-100)
+      is_global:
+        t: bool
+        desc: Whether applies globally
+      num_allowed:
+        t: int
+        desc: Number of allowed uses
+      allow_only_both_way_pass:
+        t: bool
+        desc: Whether only round-trip passes allowed
+      subscription_promo_duration:
+        t: varchar(2)
+        desc: Duration of promotional subscription period
+      corporate_company_id:
+        t: bigint
+        fk: b2c_corporate_company(id)
+        desc: Foreign key to corporate company
+      booking_count_from:
+        t: int
+        desc: Minimum booking count
+      booking_count_upto:
+        t: int
+        desc: Maximum booking count
+      experiment_count:
+        t: int
+        desc: Number of experiments run
+      corporate_revenue_model:
+        t: jsonb
+        desc: Corporate billing model
+      flat_discout_value:
+        t: int
+        desc: Flat discount value (typo preserved)
+      ridepack_type:
+        t: varchar(100)
+        desc: Type of ride pack
+  rides_promocode_route:
+    description: Many-to-many linking promo codes to eligible routes. Codes without route restrictions apply to all routes.
+    columns:
+      id:
+        t: int
+        pk: t
+      promocode_id:
+        t: int
+        fk: rides_promocode(id)
+        desc: null
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+  rides_promocodealias:
+    description: Alternative codes pointing to the same promotion. Allows multiple code strings (e.g., 'SAVE10', 'DISCOUNT10')
+      to apply identical discount.
+    columns:
+      id:
+        t: int
+        pk: t
+      alias:
+        t: varchar(30)
+        desc: Alternative name or alias
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      promo_code_id:
+        t: int
+        fk: rides_promocode(id)
+        desc: Foreign key to rides_promocode - promotional discount code
+  rides_promocodeforcustomer:
+    description: Promo code usage records per customer. Tracks which customer used which code, when, and for what amount.
+      Enforces per-customer usage limits.
+    columns:
+      id:
+        t: int
+        pk: t
+      expiry_date:
+        t: date
+        desc: Expiration date for this record/offer
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      promo_code_id:
+        t: int
+        fk: rides_promocode(id)
+        desc: Foreign key to rides_promocode - promotional discount code
+      num_allowed:
+        t: int
+        desc: Number of allowed uses
+      num_used:
+        t: int
+        desc: Number of times used
+  rides_reservedseat:
+    description: Temporarily reserved seats during booking flow. Holds seats for customers completing payment to prevent overselling.
+      Expires after timeout if payment not completed.
+    columns:
+      id:
+        t: int
+        pk: t
+      current_seat_label:
+        t: varchar(3)
+        desc: Current seat label/number
+      old_seat_label:
+        t: varchar(3)
+        desc: Previous seat label
+      alloted_by_default:
+        t: bool
+        desc: Whether allocated by default
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_ride_id:
+        t: int
+        fk: rides_customerride(id)
+        desc: Foreign key to rides_customerride - customer's ride booking
+  rides_subscriptionpass:
+    description: Weekly or monthly subscription passes (also known as flexi pass or super saver pass) for unlimited rides
+      on a route. Pass has start/end dates, covers specific route slots, and calculates per-ride cost. Status tracks from
+      unpaid through active to expired. Return passes cover both morning and evening commutes.
+    columns:
+      id:
+        t: int
+        pk: t
+      start_date:
+        t: date
+        desc: Start date of validity period
+      end_date:
+        t: date
+        desc: End date of validity period
+      amount:
+        t: int
+        desc: Monetary amount in INR (Indian Rupees)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      customer_balance:
+        t: int
+        desc: Customer's current balance in wallet/pack
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+      duration:
+        t: varchar(2)
+        desc: 'Pass duration: ''1 - Weekly'' (7 days), ''2 - Monthly'' (30 days)'
+      tax_breakup:
+        t: jsonb
+        desc: JSON breakdown of tax components (CGST, SGST, IGST)
+      promo_code_id:
+        t: int
+        fk: rides_promocode(id)
+        desc: Foreign key to rides_promocode - promotional discount code
+      slug:
+        t: uuid
+        desc: URL-friendly unique identifier
+      referee_customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: null
+      referrer_customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: null
+      return_pass:
+        t: bool
+        desc: Whether includes return pass
+      seats_booked:
+        t: int
+        desc: Number of seats booked
+      meta_data:
+        t: jsonb
+        desc: Metadata JSON
+      return_pass_fk_id:
+        t: int
+        fk: rides_subscriptionpass(id)
+        desc: null
+      refundable:
+        t: bool
+        desc: If this is true, this means it's a flexi pass. If this is false, it's a super saver.
+      pref_sub_days:
+        t: jsonb
+        desc: Preferred subscription days
+      is_trial_pass:
+        t: bool
+        desc: Whether this is a trial/promo pass
+  rides_vehicleissuanceblockedseats:
+    description: Seats blocked/unavailable on specific vehicle issuances. Used when seats are damaged, reserved for crew,
+      or temporarily unavailable. Reduces bookable capacity.
+    columns:
+      id:
+        t: int
+        pk: t
+      expiry_at:
+        t: timestamptz
+        desc: Expiration timestamp
+      is_active:
+        t: bool
+      remarks:
+        t: varchar(100)
+        desc: Free-text notes or comments
+      employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to users_employee - the Cityflo staff member
+      reason_for_action_id:
+        t: int
+        fk: rides_operationslistssubcategory(id)
+        desc: null
+      vehicle_issuance_id:
+        t: int
+        fk: vehicles_vehicleissuance(id)
+        desc: Foreign key to vehicles_vehicleissuance - vehicle-driver assignment
+      vehicle_layout_seat_id:
+        t: int
+        fk: vehicles_vehiclelayoutseat(id)
+        desc: Foreign key to specific seat in layout
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  rides_vehicleride:
+    description: Scheduled instance of a route slot on a specific date - the actual bus departure. Core operational entity
+      representing a real trip with vehicle assignment, seat availability, and status tracking. Links to all customer bookings
+      for that trip.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      vehicle_issuance_id:
+        t: int
+        fk: vehicles_vehicleissuance(id)
+        desc: Foreign key to vehicles_vehicleissuance - vehicle/driver assignment for this ride
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - auto-populated from vehicle_issuance
+      route_slot_id:
+        t: int
+        fk: routes_routeslot(id)
+        desc: Foreign key to routes_routeslot - specific departure time slot
+      date:
+        t: date
+        desc: Date of the ride
+      ride_inactive:
+        t: bool
+        desc: Whether ride is inactive/disabled
+      surge_percent:
+        t: int
+        desc: Surge pricing percentage applied (0 = no surge)
+      trip_ended:
+        t: bool
+        desc: Whether the trip has completed
+      trip_status:
+        t: varchar(1)
+        desc: 'Trip status: ''1''=Start Trip, ''2''=End Trip'
+      ride_status:
+        t: varchar(1)
+        desc: 'Ride status: ''1''=Ok, ''2''=Breakdown, ''3''=Inconvenience, ''4''=Cancelled, ''5''=Not Scheduled, ''6''=Permanent
+          Removal'
+      trip_start_time:
+        t: time without time zone
+        desc: Actual trip start time (from driver app)
+      trip_end_time:
+        t: time without time zone
+        desc: Actual trip end time (from driver app)
+      remarks:
+        t: text
+        desc: Operational notes and remarks
+      ride_debits:
+        t: int
+        desc: Financial debits for the ride
+      number_of_seats:
+        t: int
+        desc: Total seats available (from vehicle layout)
+      extras:
+        t: jsonb
+        desc: Extra metadata including revenue and cost calculations
+      is_b2b_ride:
+        t: bool
+        desc: Whether this is a B2B corporate ride
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  rides_vehiclerideaudittrail:
+    description: Audit trail for vehicle ride modifications. Logs all changes to ride status, driver assignment, vehicle swap,
+      cancellations, and delays with timestamps and reasons.
+    columns:
+      id:
+        t: int
+        pk: t
+      date:
+        t: date
+        desc: Calendar date (YYYY-MM-DD)
+      ride_inactive:
+        t: bool
+        desc: Whether ride is inactive/disabled
+      surge_percent:
+        t: int
+        desc: Surge pricing percentage
+      trip_ended:
+        t: bool
+        desc: Whether trip has ended
+      ride_status:
+        t: varchar(1)
+        desc: 'Ride operational status: ''1''=Ok (running), ''2''=Bus Breakdown, ''3''=Bus Inconvenience (delay), ''4''=Bus
+          Cancelled, ''5''=Bus Not Scheduled, ''6''=Permanent removal'
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      ride_debits:
+        t: int
+        desc: Debit amount from ride pack for this ride
+      number_of_seats:
+        t: int
+        desc: Total available seats on the bus for this ride
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - the driver associated with this record
+      route_slot_id:
+        t: int
+        fk: routes_routeslot(id)
+        desc: Foreign key to routes_routeslot - specific departure time slot
+      vehicle_issuance_id:
+        t: int
+        fk: vehicles_vehicleissuance(id)
+        desc: Foreign key to vehicles_vehicleissuance - vehicle-driver assignment
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      created:
+        t: timestamptz
+      reason_for_action_id:
+        t: int
+        fk: rides_operationslistssubcategory(id)
+        desc: null
+      activity_type:
+        t: varchar(50)
+        desc: Type of activity/action
+      created_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to user who created this record
+      trip_status:
+        t: varchar(1)
+        desc: 'Trip lifecycle: ''1''=Start Trip (departed), ''2''=End Trip (completed)'
+      ride_debits_change:
+        t: int
+        desc: Change in ride debits
+  rides_vehiclerideseatreservation:
+    description: Seat reservations for specific vehicle rides. Manages seat inventory and prevents overbooking. Tracks reservation
+      source (app, admin, corporate).
+    columns:
+      id:
+        t: int
+        pk: t
+      booking_type:
+        t: int
+        desc: Type of booking (single, return, etc.)
+      expiry_at:
+        t: timestamptz
+        desc: Expiration timestamp
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      vehicle_layout_seat_id:
+        t: int
+        fk: vehicles_vehiclelayoutseat(id)
+        desc: Foreign key to specific seat in layout
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      transaction_id:
+        t: varchar(50)
+        desc: Transaction reference ID
+      is_active:
+        t: bool
+      employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to users_employee - the Cityflo staff member
+      reason_for_action_id:
+        t: int
+        fk: rides_operationslistssubcategory(id)
+        desc: null
+      remarks:
+        t: varchar(100)
+        desc: Free-text notes or comments
+      auto_assigned_seat_id:
+        t: int
+        fk: vehicles_vehiclelayoutseat(id)
+        desc: null
+      seat_fare:
+        t: double
+        desc: Fare per seat for this ride
+  routes_b2bvalidstopspair:
+    description: Valid pickup-dropoff stop combinations for B2B corporate routes. Defines which origin-destination pairs are
+      bookable on corporate routes. Includes pricing overrides.
+    columns:
+      id:
+        t: int
+        pk: t
+      start_stop_point:
+        t: geography
+        desc: Starting stop geometry point (PostGIS)
+      end_stop_point:
+        t: geography
+        desc: Ending stop geometry point (PostGIS)
+      number_of_buses:
+        t: int
+        desc: Count of buses required
+      running_route_slots:
+        t: int[]
+        desc: Number of route slots currently running
+      time_of_day:
+        t: varchar(1)
+        desc: 'Commute direction: ''Morning'' (to office) or ''Evening'' (from office)'
+      precomputed_data:
+        t: jsonb
+        desc: Pre-computed data cache JSON
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate_company - B2B client
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger alights
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger boards
+  routes_b2bvalidstopspairroute:
+    description: Links B2B valid stop pairs to specific routes. A stop pair may be valid on multiple corporate routes.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      b2b_valid_stop_pair_id:
+        t: int
+        fk: routes_b2bvalidstopspair(id)
+        desc: null
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+  routes_currenttraveltimebetweenstops:
+    description: Real-time travel time estimates between stops. Updated based on live traffic data for accurate ETA predictions.
+    columns:
+      id:
+        t: int
+        pk: t
+      travel_time:
+        t: int
+        desc: Travel duration in minutes
+      refresh_interval:
+        t: interval
+        desc: Data refresh interval in seconds
+      modified:
+        t: timestamptz
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger alights
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger boards
+      created:
+        t: timestamptz
+      distance:
+        t: int
+        desc: Distance in kilometers
+  routes_customerridefromsearchedplaces:
+    description: Records linking customer rides to their original place searches. Tracks how customers discovered routes -
+      useful for product analytics.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_ride_id:
+        t: int
+        fk: rides_customerride(id)
+        desc: Foreign key to rides_customerride - customer's ride booking
+      searched_places_pair_id:
+        t: int
+        fk: routes_searchedplacespair(id)
+        desc: null
+      valid_stop_pair_id:
+        t: int
+        fk: routes_validstopspair(id)
+        desc: null
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+      pickup_point:
+        t: geometry
+        desc: Pickup point details
+  routes_dynamicprice:
+    description: Dynamic/surge pricing rules for routes. Price multipliers based on demand, time of day, and special events.
+      Applied on top of base fares.
+    columns:
+      id:
+        t: int
+        pk: t
+      price:
+        t: int
+        desc: Price in INR
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger alights
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger boards
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      fixed_cost:
+        t: int
+        desc: Fixed cost component (not variable)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  routes_event:
+    description: Special events affecting routes (marathons, festivals, road closures). Events can cause route diversions,
+      timing changes, or service suspensions.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(64)
+      search_keywords:
+        t: character varying[](32)
+        desc: Search keywords text
+      start_stop_ids:
+        t: int[]
+        desc: List of valid starting stop IDs
+      end_stop_ids:
+        t: int[]
+        desc: List of valid ending stop IDs
+      start_date:
+        t: date
+        desc: Start date of validity period
+      end_date:
+        t: date
+        desc: End date of validity period
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  routes_newroutesuggestion:
+    description: Customer suggestions for new routes. Users can request service to areas not currently covered. Aggregated
+      to identify expansion opportunities.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      dropoff_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      pickup_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      description:
+        t: text
+        desc: Detailed description or notes
+      dropoff_address:
+        t: varchar(256)
+        desc: Drop-off address text
+      pickup_address:
+        t: varchar(256)
+        desc: Pickup address text
+      time_of_day:
+        t: varchar(1)
+        desc: 'Commute direction: ''Morning'' (to office) or ''Evening'' (from office)'
+      timing:
+        t: time without time zone
+        desc: Scheduled timing information
+  routes_recommendedstopspair:
+    description: AI-recommended origin-destination pairs based on customer search patterns. Proactive suggestions for popular
+      but uncovered routes.
+    columns:
+      id:
+        t: int
+        pk: t
+      index:
+        t: int
+        desc: Array or list index
+      distance_to_start_stop:
+        t: int
+        desc: Distance to starting stop in km
+      distance_to_end_stop:
+        t: int
+        desc: Distance to ending stop in km
+      number_of_buses_available:
+        t: int
+        desc: Available bus count
+      placement_group:
+        t: varchar(20)
+        desc: Placement group identifier
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger alights
+      searched_places_pair_id:
+        t: int
+        fk: routes_searchedplacespair(id)
+        desc: null
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger boards
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+      tag:
+        t: varchar(30)
+        desc: Tag or label
+      selected:
+        t: bool
+        desc: Whether this option was selected
+      api_version:
+        t: varchar(10)
+        desc: API version number
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      vsp_data:
+        t: jsonb
+        desc: Valid stops pair data JSON
+  routes_route:
+    description: Transport route between two endpoints with pricing, subscription options, and lifecycle management. Core
+      entity defining bus service paths (e.g., 'Powai to Andheri'). Contains subscription fares, lite pack pricing, and B2B
+      company linkage.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      name:
+        t: varchar(128)
+        desc: Full route name (e.g., 'Powai to Andheri via Western Express Highway')
+      short_name:
+        t: varchar(20)
+        desc: Abbreviated route name for compact display
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - city where route operates
+      is_trial_pass_active:
+        t: bool
+        desc: Whether trial passes are enabled for this route
+      is_occupancy_surge_active:
+        t: bool
+        desc: Whether dynamic surge pricing based on occupancy is active
+      via:
+        t: varchar(128)
+        desc: Via route description (e.g., 'via Western Express Highway')
+      time_of_day:
+        t: varchar(1)
+        desc: 'Time of day category: ''1''=Morning, ''2''=Evening'
+      allow_subscription:
+        t: bool
+        desc: Whether weekly/monthly subscriptions are allowed on this route
+      weekly_subscription_fare_one_way:
+        t: int
+        desc: Weekly subscription price for one-way travel (in INR)
+      monthly_subscription_fare_one_way:
+        t: int
+        desc: Monthly subscription price for one-way travel (in INR)
+      weekly_subscription_fare_return:
+        t: int
+        desc: Weekly subscription price for return/two-way travel (in INR)
+      monthly_subscription_fare_return:
+        t: int
+        desc: Monthly subscription price for return/two-way travel (in INR)
+      is_non_refundable_active:
+        t: bool
+        desc: Whether non-refundable passes are available (discounted price)
+      is_seat_pricing_active:
+        t: bool
+        desc: Whether seat-based premium pricing is active
+      non_refundable_pass_pricing:
+        t: jsonb
+        desc: JSON pricing structure for non-refundable passes
+      return_route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Self-referential FK to linked return route (evening for morning, vice versa)
+      promo_text:
+        t: varchar(50)
+        desc: Promotional text shown to users in route listing
+      slug:
+        t: varchar(128)
+        desc: URL-friendly slug (auto-generated from name)
+      status:
+        t: int
+        desc: 'Route status: 1=ACTIVE, 2=INACTIVE, 3=TEMPORARILY_INACTIVE'
+      lifecycle_status:
+        t: int
+        desc: 'Route lifecycle: 0=WAITLIST, 1=PRELAUNCH, 2=NEWLY_LAUNCHED, 3=RUNNING, 4=REDUCED_FREQUENCY, 5=NOT_APPLICABLE'
+      waitlist_start_date:
+        t: date
+        desc: Date when waitlist started (required if lifecycle_status=WAITLIST)
+      topology:
+        t: jsonb
+        desc: Route topology/geometry data for map rendering
+      subscription_fare_discounts:
+        t: jsonb
+        desc: JSON discounts for subscription types (refundable/non-refundable x weekly/monthly x one-way/two-way)
+      lite_pack_fare:
+        t: jsonb
+        desc: Lite pack pricing configuration for ride bundles
+      is_lite_pack_discount_active:
+        t: bool
+        desc: Whether lite pack discounts are active on this route
+      company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate_company - if set, route is B2B corporate-only
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  routes_routeslot:
+    description: Specific departure time slot for a route (e.g., 'Powai to Andheri 6:30 AM'). Represents a scheduled bus service
+      with timing, pricing, vehicle category, and operational parameters. Multiple slots per route for different timings.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      name:
+        t: varchar(128)
+        desc: Slot name combining route name and start time
+      start_time:
+        t: time without time zone
+        desc: Scheduled departure time from first stop
+      end_time:
+        t: time without time zone
+        desc: Scheduled arrival time at last stop
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - parent route
+      vehicle_category:
+        t: varchar(2)
+        desc: 'Vehicle type: ''01''=Non AC, ''02''=AC, ''03''=AC Volvo'
+      via:
+        t: varchar(128)
+        desc: Via description (can differ from route via for variations)
+      sub_route:
+        t: varchar(128)
+        desc: Sub-route variation identifier
+      sector_id:
+        t: int
+        fk: routes_sector(id)
+        desc: Foreign key to routes_sector - associated sector/sub-route
+      pricing:
+        t: text
+        desc: JSON string with pricing structure for different stop pairs
+      pricing_offset:
+        t: int
+        desc: Pricing adjustment offset applied to base prices
+      discount_info:
+        t: varchar(500)
+        desc: Discount information text shown to users
+      is_express:
+        t: bool
+        desc: Whether this is an express service with fewer stops
+      is_ev_slot:
+        t: bool
+        desc: Whether this slot uses electric vehicle
+      restrict_cancellation:
+        t: bool
+        desc: Whether cancellations are restricted for this slot
+      is_running:
+        t: bool
+        desc: Whether slot is actively running (True) or paused (False)
+      is_b2b_slot:
+        t: bool
+        desc: Whether this is a B2B corporate-only slot (auto-set if route has company)
+      allow_multiple_bookings:
+        t: bool
+        desc: Whether users can book multiple rides on same slot
+      allow_subscription:
+        t: bool
+        desc: Whether subscriptions are allowed for this slot
+      launching_soon:
+        t: bool
+        desc: Whether slot is in 'launching soon' state for waitlist collection
+      selected_days:
+        t: jsonb
+        desc: 'Days of week when slot operates: [0,1,2,3,4] = Mon-Fri'
+      slug:
+        t: varchar(128)
+        desc: URL-friendly slug (auto-generated from name)
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  routes_routeslotstopinfocustomersuggestion:
+    description: Customer suggestions for stop timing adjustments. Feedback on arrival/departure time accuracy used to calibrate
+      schedules.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      end_stop_info_id:
+        t: int
+        fk: routes_routeslotstopinfo(id)
+        desc: null
+      route_slot_suggestion_id:
+        t: int
+        fk: routes_routeslotsuggestion(id)
+        desc: null
+      start_stop_info_id:
+        t: int
+        fk: routes_routeslotstopinfo(id)
+        desc: null
+  routes_routeslotsuggestion:
+    description: Suggestions for new route slots (departure times). Customer-driven demand for additional morning/evening
+      slots.
+    columns:
+      id:
+        t: int
+        pk: t
+      status:
+        t: int
+        desc: Current status of the record (see enum values)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      route_slot_id:
+        t: int
+        fk: routes_routeslot(id)
+        desc: Foreign key to routes_routeslot - specific departure time slot
+  routes_routestopinfo:
+    description: Stop information for routes - which stops are on which routes and in what order. Defines if stop is pickup-only,
+      dropoff-only, or both. Sequence determines bus path.
+    columns:
+      id:
+        t: int
+        pk: t
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      is_pickup_stop:
+        t: bool
+        desc: True if passengers can board at this stop
+      is_dropoff_stop:
+        t: bool
+        desc: True if passengers can alight at this stop
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+      stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to routes_stop - pickup/dropoff stop location
+      is_active:
+        t: bool
+  routes_searchedplacespair:
+    description: Origin-destination pairs searched by customers. Analytics data for demand mapping and route planning. Tracks
+      search volume and conversion to bookings.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      dropoff_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      pickup_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      source:
+        t: varchar(1)
+        desc: Origin/source of the record (app, admin, api, etc.)
+  routes_sector:
+    description: Geographic sectors grouping related routes. Used for operational organization and regional management (e.g.,
+      'Western Suburbs', 'CBD').
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(128)
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+      alias:
+        t: varchar(128)
+        desc: Alternative name or alias
+  routes_stop:
+    description: Physical pickup/dropoff location where customers board/alight buses. Represents a bus stop with geographic
+      location, photos, and state for GST compliance. Core entity linked to routes via RouteStopInfo.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      name:
+        t: varchar(128)
+        desc: Stop name (e.g., 'Powai Plaza', 'Andheri Station East')
+      location_id:
+        t: int
+        fk: geo_location(id)
+        desc: Foreign key to geo_location - precise geographic coordinates
+      stop_category:
+        t: varchar(2)
+        desc: 'Time of day category: ''1''=Morning stops, ''2''=Evening stops'
+      stop_description:
+        t: varchar(128)
+        desc: Detailed description of stop location and landmarks
+      picture_urls:
+        t: varchar(256)[]
+        desc: Array of up to 5 photo URLs showing the stop location
+      state_id:
+        t: int
+        fk: geo_state(id)
+        desc: Foreign key to geo_state - state for GST/regulatory compliance
+      is_pano_view_available:
+        t: bool
+        desc: Whether Google Street View panorama is available for this stop
+      slug:
+        t: varchar(128)
+        desc: URL-friendly slug (auto-generated from name)
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  routes_validstopspair:
+    description: Valid pickup-dropoff combinations for B2C routes. Not all stop combinations are bookable - this defines allowed
+      origin-destination pairs with pricing.
+    columns:
+      id:
+        t: int
+        pk: t
+      end_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger alights
+      start_stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to stop where passenger boards
+      created:
+        t: timestamptz
+      number_of_buses:
+        t: int
+        desc: Count of buses required
+      modified:
+        t: timestamptz
+      running_route_slots:
+        t: int[]
+        desc: Number of route slots currently running
+      time_of_day:
+        t: varchar(1)
+        desc: 'Commute direction: ''Morning'' (to office) or ''Evening'' (from office)'
+      end_stop_point:
+        t: geography
+        desc: Ending stop geometry point (PostGIS)
+      start_stop_point:
+        t: geography
+        desc: Starting stop geometry point (PostGIS)
+  routes_validstopspairroute:
+    description: Links valid stop pairs to routes. A stop pair can be valid on multiple routes with different pricing.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+      valid_stop_pair_id:
+        t: int
+        fk: routes_validstopspair(id)
+        desc: null
+  routes_vehicleridestopinfo:
+    description: Actual stop information for specific vehicle rides. Runtime stop data that may differ from scheduled RouteSlotStopInfo
+      due to diversions or skipped stops.
+    columns:
+      id:
+        t: int
+        pk: t
+      arrival_time:
+        t: time without time zone
+        desc: Expected or actual arrival time
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to routes_stop - pickup/dropoff stop location
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      departure_time:
+        t: time without time zone
+        desc: Expected or actual departure time
+      is_dropoff_stop:
+        t: bool
+        desc: True if passengers can alight at this stop
+      is_pickup_stop:
+        t: bool
+        desc: True if passengers can board at this stop
+  support_customercallreason:
+    description: Hierarchical reasons for customer support calls. Primary categories with sub-reasons for call logging and
+      analytics.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      verbose_name:
+        t: varchar(50)
+        desc: Human-readable verbose name
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      root:
+        t: bool
+        desc: Root/parent identifier
+      is_internal:
+        t: bool
+        desc: Whether this is internal/staff use only
+      base_tag:
+        t: varchar(20)
+        desc: Base/root tag identifier
+  support_customercallreason_sub_reasons:
+    description: Many-to-many self-referential relationship for nested call reasons.
+    columns:
+      id:
+        t: int
+        pk: t
+      from_customercallreason_id:
+        t: int
+        fk: support_customercallreason(id)
+        desc: null
+      to_customercallreason_id:
+        t: int
+        fk: support_customercallreason(id)
+        desc: null
+  support_customercalls:
+    description: Customer support call records. Logs inbound/outbound calls with customer, reason, duration, resolution, and
+      handling agent. Links to rides for context.
+    columns:
+      id:
+        t: int
+        pk: t
+      call_comments:
+        t: text
+        desc: Comments from call
+      voice_recording_url:
+        t: varchar(200)
+        desc: URL to recorded voice call audio
+      call_initiate_time:
+        t: timestamptz
+        desc: Time call was initiated
+      call_duration:
+        t: int
+        desc: Duration of call in seconds
+      call_reason:
+        t: varchar(30)
+        desc: Reason for the call
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to users_employee - the Cityflo staff member
+      call_status:
+        t: varchar(20)
+        desc: Status of phone call (answered, missed, busy)
+      caller_number:
+        t: varchar(10)
+        desc: Phone number of caller
+      follow_up:
+        t: bool
+        desc: Follow-up status/notes
+      last_modified_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      callers_call_duration:
+        t: int
+        desc: Caller's perceived call duration
+      priority:
+        t: varchar(1)
+        desc: Priority level (low, medium, high, urgent)
+      call_category_id:
+        t: int
+        fk: support_customercallscategory(id)
+        desc: null
+      call_sub_category_id:
+        t: int
+        fk: support_customercallssubcategory(id)
+        desc: null
+      call_type:
+        t: varchar(30)
+        desc: 'Call direction: ''inbound'' (customer called), ''outbound'' (we called customer)'
+      call_issue:
+        t: varchar(30)
+        desc: Issue discussed on the call
+      reason_id:
+        t: int
+        fk: support_customercallreason(id)
+        desc: null
+      internal_reason_id:
+        t: int
+        fk: support_customercallreason(id)
+        desc: null
+      tag_by_cityflo_id:
+        t: int
+        fk: support_feedbackreason(id)
+        desc: null
+      tag_by_customer_id:
+        t: int
+        fk: support_feedbackreason(id)
+        desc: null
+      call_source:
+        t: varchar(50)
+        desc: Source of call (inbound/outbound)
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      call_back:
+        t: bool
+        desc: Whether callback requested
+      call_sid:
+        t: varchar(64)
+        desc: Call session ID (Exotel/Twilio)
+  support_customercallscategory:
+    description: Categories for organizing call reasons. High-level groupings like 'Booking Issues', 'Payment Problems', 'Service
+      Feedback'.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      is_active:
+        t: bool
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      color:
+        t: varchar(20)
+        desc: Vehicle color
+  support_customercallssubcategory:
+    description: Subcategories under call categories for detailed classification of support issues.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(140)
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      is_active:
+        t: bool
+      help_text:
+        t: varchar(256)
+        desc: Help or instructional text
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      priority:
+        t: varchar(1)
+        desc: Priority level (low, medium, high, urgent)
+      category_id:
+        t: int
+        fk: support_customercallscategory(id)
+        desc: Foreign key to category
+  support_eventcategories:
+    description: Categories for operational events affecting service. Types of incidents like 'Vehicle Breakdown', 'Traffic
+      Delay', 'Driver Issue'.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      is_active:
+        t: bool
+      help_text:
+        t: varchar(256)
+        desc: Help or instructional text
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  support_eventsubcategories:
+    description: Subcategories for detailed event classification. Specific incident types under each category.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(140)
+      is_active:
+        t: bool
+      help_text:
+        t: varchar(256)
+        desc: Help or instructional text
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      category_id:
+        t: int
+        fk: support_eventcategories(id)
+        desc: Foreign key to category
+  support_eventtrail:
+    description: Trail of operational events during rides. Chronological log of incidents, delays, and issues encountered.
+      Used for root cause analysis.
+    columns:
+      id:
+        t: int
+        pk: t
+      routes:
+        t: character varying[](5)
+        desc: Routes JSON array
+      route_slots:
+        t: character varying[](5)
+        desc: Route slots JSON array
+      stops:
+        t: character varying[](5)
+        desc: JSON array of stops on this route
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      created:
+        t: timestamptz
+      sub_category_id:
+        t: int
+        fk: support_eventsubcategories(id)
+        desc: null
+      category_id:
+        t: int
+        fk: support_eventcategories(id)
+        desc: Foreign key to category
+      employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to users_employee - the Cityflo staff member
+      event_end_date:
+        t: date
+        desc: Event end date
+      event_start_date:
+        t: date
+        desc: Event start date
+      title:
+        t: varchar(300)
+        desc: Title or subject line
+  support_ticket:
+    description: Customer support tickets for issue tracking. Captures customer complaints, requests, and feedback with status
+      lifecycle from open to resolved. Links to rides, payments, and other entities. Supports priority levels and SLA tracking.
+    columns:
+      id:
+        t: int
+        pk: t
+      title:
+        t: varchar(512)
+        desc: Title or subject line
+      status:
+        t: varchar(1)
+        desc: 'Ticket status: ''open'', ''in_progress'', ''pending_customer'', ''resolved'', ''closed'''
+      priority:
+        t: varchar(1)
+        desc: 'Priority level: ''low'', ''medium'', ''high'', ''urgent'''
+      additional_comment:
+        t: text
+        desc: Additional comments or notes
+      rating:
+        t: int
+        desc: Rating score (usually 1-5)
+      source:
+        t: varchar(1)
+        desc: Origin/source of the record (app, admin, api, etc.)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      category_id:
+        t: int
+        fk: support_ticketcategory(id)
+        desc: Foreign key to category
+      creator_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      subcategory_id:
+        t: int
+        fk: support_ticketsubcategory(id)
+        desc: Foreign key to subcategory
+      customer_ride_id:
+        t: int
+        fk: rides_customerride(id)
+        desc: Foreign key to rides_customerride - customer's ride booking
+      assigned_to_employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      skipped:
+        t: bool
+        desc: Whether this step was skipped
+      tag_by_cityflo_id:
+        t: int
+        fk: support_feedbackreason(id)
+        desc: null
+      tag_by_customer_id:
+        t: int
+        fk: support_feedbackreason(id)
+        desc: null
+      auto_closed:
+        t: bool
+        desc: Whether automatically closed
+      collaborator_employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      info_tag:
+        t: varchar(512)
+        desc: Information tag identifier
+      completed_by_ops:
+        t: bool
+        desc: Whether completed by operations team
+  support_ticketcategory:
+    description: Categories for support tickets. High-level issue types like 'Refund Request', 'Service Complaint', 'App Bug'.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(512)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      image_url:
+        t: varchar(256)
+        desc: URL to image resource
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      is_active:
+        t: bool
+  support_ticketchange:
+    description: History of ticket field changes. Audit log of status updates, assignment changes, and priority modifications.
+    columns:
+      id:
+        t: int
+        pk: t
+      field:
+        t: varchar(100)
+        desc: Field name or identifier
+      old_value:
+        t: text
+        desc: Previous/old value
+      new_value:
+        t: text
+        desc: New field value
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      author_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      ticket_id:
+        t: int
+        fk: support_ticket(id)
+        desc: Foreign key to support ticket
+  support_ticketcomment:
+    description: Comments and notes on support tickets. Internal team notes and customer-visible responses. Tracks commenter
+      and visibility.
+    columns:
+      id:
+        t: int
+        pk: t
+      comment:
+        t: text
+        desc: Comment text
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      ticket_id:
+        t: int
+        fk: support_ticket(id)
+        desc: Foreign key to support ticket
+      attachment_urls:
+        t: character varying[](500)
+        desc: JSON array of attachment URLs
+      content_type:
+        t: varchar(1)
+        desc: Content MIME type
+      is_internal:
+        t: bool
+        desc: Whether this is internal/staff use only
+      author_id:
+        t: int
+        fk: users_user(id)
+        desc: null
+  support_ticketsubcategory:
+    description: Subcategories for detailed ticket classification under main categories.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(512)
+      priority:
+        t: varchar(1)
+        desc: Priority level (low, medium, high, urgent)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      category_id:
+        t: int
+        fk: support_ticketcategory(id)
+        desc: Foreign key to category
+      help_text:
+        t: varchar(256)
+        desc: Help or instructional text
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      is_active:
+        t: bool
+  users_customer:
+    description: Main customer/passenger entity for app users who book rides. Contains account status, preferences, credits
+      balance, referral info, and saved locations. Core table for all ride bookings, subscriptions, and payments.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      person_id:
+        t: int
+        fk: users_person(id)
+        desc: Foreign key to users_person - personal identity info
+      email:
+        t: varchar(254)
+        desc: Unique email address for customer communications
+      status:
+        t: varchar(2)
+        desc: 'Registration status: ''01''=Referred, ''02''=Registered Unverified, ''03''=Verified Unreferred, ''04''=Verified
+          Referred, ''09''=Deregistered'
+      activity:
+        t: varchar(2)
+        desc: 'Account activity status: ''01''=Active, ''02''=Flagged, ''03''=Blocked, ''04''=Unblocked, ''05''=Permanently
+          Blocked'
+      credits_balance:
+        t: int
+        desc: Available wallet credits balance for ride payments
+      ghost_credits_balance:
+        t: int
+        desc: Hidden/promotional credits balance (not shown to customer)
+      customers_referral_code:
+        t: varchar(32)
+        desc: Customer's unique referral code to share with others
+      referred_code:
+        t: varchar(32)
+        desc: Referral code customer used during signup (referrer's code)
+      eligible_for_referral_bonus:
+        t: bool
+        desc: Whether customer can receive referral rewards
+      company:
+        t: varchar(128)
+        desc: Company name for corporate customers (self-reported)
+      preferred_profile:
+        t: varchar(1)
+        desc: 'Preferred booking profile: ''1''=Personal, ''2''=Corporate'
+      seats_preference:
+        t: int
+        desc: 'Seating preference: 1=Single seat, 2=Double/shared seat'
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - customer's registered city
+      registration_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: Foreign key to geo_location - location at first registration
+      home_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: Foreign key to geo_location - saved home address
+      office_location_id:
+        t: int
+        fk: geo_location(id)
+        desc: Foreign key to geo_location - saved office address
+      office_start_time:
+        t: time without time zone
+        desc: Customer's office starting time (for commute suggestions)
+      office_end_time:
+        t: time without time zone
+        desc: Customer's office ending time (for commute suggestions)
+      otp:
+        t: varchar(6)
+        desc: Current OTP for authentication/verification
+      otp_refresh_time:
+        t: timestamptz
+        desc: Timestamp when OTP was generated (for expiry check)
+      last_review_requested:
+        t: date
+        desc: Last date when app review was requested from customer
+      searchvectors:
+        t: tsvector
+        desc: PostgreSQL full-text search vector for customer search
+      created:
+        t: timestamptz
+        desc: Timestamp when customer account was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when customer account was last modified
+  users_customeractivity:
+    description: Activity log for customer actions in the app. Tracks significant events like bookings, searches, and profile
+      updates for engagement analysis.
+    columns:
+      id:
+        t: int
+        pk: t
+      device_id:
+        t: varchar(256)
+        desc: Unique device identifier
+      activity_type:
+        t: varchar(2)
+        desc: Type of activity/action
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      google_ads_id:
+        t: varchar(256)
+        desc: Google Ads customer ID
+  users_customerdevice:
+    description: Customer mobile device registrations. Stores FCM token for push notifications, device info for debugging,
+      and app version for compatibility. Customers can have multiple devices.
+    columns:
+      id:
+        t: int
+        pk: t
+      os_type:
+        t: varchar(1)
+        desc: Operating system type
+      manufacturer:
+        t: varchar(64)
+        desc: Vehicle manufacturer name
+      device:
+        t: varchar(64)
+        desc: Device identifier or info
+      model:
+        t: varchar(64)
+        desc: Model or version identifier
+      serial_no:
+        t: varchar(128)
+        desc: Serial number
+      os_version:
+        t: varchar(64)
+        desc: Operating system version
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      app_version_code:
+        t: int
+        desc: App version build code (integer)
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+  users_customerlocation:
+    description: Saved locations for customers (home, office). Frequently used addresses for quick booking. Includes coordinates
+      and address details.
+    columns:
+      id:
+        t: int
+        pk: t
+      lat:
+        t: double
+        desc: Latitude coordinate (decimal degrees, WGS84)
+      lng:
+        t: double
+        desc: Longitude coordinate (decimal degrees, WGS84)
+      location_timestamp:
+        t: timestamptz
+        desc: Timestamp when location was recorded
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+  users_customerproperty:
+    description: Flexible key-value properties for customers. Extensible customer attributes without schema changes. Used
+      for feature flags and custom data.
+    columns:
+      id:
+        t: int
+        pk: t
+      send_promotional_sms:
+        t: bool
+        desc: Flag to enable promotional SMS
+      send_promotional_email:
+        t: bool
+        desc: Flag to enable promotional emails
+      send_applozic_chat_pn:
+        t: bool
+        desc: Flag for in-app chat push notifications
+      send_vibration_alarm_pn:
+        t: bool
+        desc: Flag to send vibration alarm push notification
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      send_whatsapp_communication:
+        t: bool
+        desc: Flag to enable WhatsApp messages
+      has_suspicious_activity:
+        t: bool
+        desc: Whether suspicious activity detected
+  users_driver:
+    description: Bus drivers operating Cityflo vehicles. Contains personal info, license details, employment status, ratings,
+      and bank details for payments. Linked to operator (fleet owner). Training routes track route familiarity.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      contact_number:
+        t: varchar(10)
+        desc: Contact phone number
+      driving_license_number:
+        t: varchar(10)
+        desc: Driving license number
+      date_of_birth:
+        t: date
+        desc: Date of birth
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      user_id:
+        t: int
+        fk: users_user(id)
+        desc: Foreign key to users_user - Django auth user account
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      network_provider:
+        t: varchar(3)
+        desc: Network provider name
+      driver_app_version_code:
+        t: int
+        desc: Driver app version code
+      last_launched_time:
+        t: timestamptz
+        desc: Last app launch timestamp
+      status:
+        t: int
+        desc: 'Driver status: 1=Pending, 2=Active, 3=Inactive, 4=Blacklisted, 5=Rejected'
+      covid_vaccination_count:
+        t: int
+        desc: Number of COVID vaccinations
+      bio:
+        t: varchar(1000)
+        desc: Biography or description text
+      onboarded:
+        t: bool
+        desc: Whether onboarding completed
+      home_state:
+        t: varchar(300)
+        desc: Home state name
+      languages_known:
+        t: varchar(300)
+        desc: Languages known (comma-separated)
+      years_of_experience:
+        t: int
+        desc: Years of driving/work experience
+      badge_no:
+        t: varchar(25)
+        desc: Driver badge number
+      bs6_training:
+        t: bool
+        desc: null
+      digilocker:
+        t: int
+        desc: DigiLocker integration data
+      insurance:
+        t: bool
+        desc: Insurance details
+      medical_checkup:
+        t: bool
+        desc: Medical checkup status
+      onboarded_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+      onboarding_date:
+        t: date
+        desc: Onboarding completion date
+      pvc:
+        t: bool
+        desc: PVC material flag
+      reason_for_exit:
+        t: varchar(40)
+        desc: Exit reason text
+      referred_by:
+        t: varchar(20)
+        desc: Referrer customer ID
+      relative_mobile_number:
+        t: varchar(20)
+        desc: Relative's mobile number
+      relative_name:
+        t: varchar(20)
+        desc: Relative's name
+      soft_skill_session:
+        t: bool
+        desc: Whether soft skill training completed
+      is_backup_driver:
+        t: bool
+        desc: Whether backup driver
+      fleetbase_id:
+        t: varchar(50)
+        desc: External fleet management system ID
+      insurance_expiry:
+        t: date
+        desc: Insurance expiration date
+      medical_checkup_expiry:
+        t: date
+        desc: Medical checkup expiry date
+      uniform:
+        t: bool
+        desc: Uniform issued flag or details
+      uniform_deposit:
+        t: bool
+        desc: Deposit amount for driver uniform
+      operator_id:
+        t: int
+        fk: users_operator(id)
+        desc: Foreign key to users_operator - the fleet operator/vendor
+  users_driver_trained_on_routes:
+    description: Many-to-many linking drivers to routes they're trained/certified on. Drivers can only be assigned to routes
+      they know.
+    columns:
+      id:
+        t: int
+        pk: t
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - the driver associated with this record
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+  users_driverreadinessacknowledge:
+    description: Driver acknowledgment of readiness for duty. Daily check-in confirming vehicle checks completed and ready
+      for service.
+    columns:
+      id:
+        t: int
+        pk: t
+      check_date:
+        t: date
+        desc: Date of vehicle check
+      status:
+        t: varchar(20)
+        desc: Current status of the record (see enum values)
+      channel:
+        t: varchar(10)
+        desc: Communication channel (sms, push, email, whatsapp)
+      acknowledged_at:
+        t: timestamptz
+        desc: Timestamp when acknowledged
+      metadata:
+        t: jsonb
+        desc: JSON metadata with additional contextual information
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      call_issue:
+        t: varchar(30)
+        desc: Issue discussed on the call
+      call_status:
+        t: varchar(20)
+        desc: Status of phone call (answered, missed, busy)
+      call_duration:
+        t: int
+        desc: Duration of call in seconds
+      callers_call_duration:
+        t: int
+        desc: Caller's perceived call duration
+      keypress:
+        t: varchar(2)
+        desc: IVR keypress value
+      message_content:
+        t: text
+        desc: Full message content
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - the driver associated with this record
+      time_of_day:
+        t: varchar(2)
+        desc: 'Commute direction: ''Morning'' (to office) or ''Evening'' (from office)'
+      cf_bus_number:
+        t: character varying
+        desc: Cityflo bus number
+      route_slot_id:
+        t: int
+        fk: routes_routeslot(id)
+        desc: Foreign key to routes_routeslot - specific departure time slot
+      remark:
+        t: varchar(100)
+        desc: Single remark or note
+  users_employee:
+    description: Cityflo employees/staff members. Internal users with roles like Operations, Support, Finance. Links to Django
+      User for authentication and Person for contact details.
+    columns:
+      id:
+        t: int
+        pk: t
+      department:
+        t: varchar(1)
+        desc: Department or team assignment
+      date_of_joining:
+        t: date
+        desc: Employment join date
+      person_id:
+        t: int
+        fk: users_person(id)
+        desc: Foreign key to users_person - contact person details
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      position:
+        t: varchar(1)
+        desc: Position in display order
+      email:
+        t: varchar(254)
+        desc: Email address
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      telegram_id:
+        t: bigint
+        desc: Telegram messenger user ID
+      service_mobile_number:
+        t: varchar(10)
+        desc: Service/support mobile number
+      assign_tickets:
+        t: bool
+        desc: Whether to auto-assign tickets
+      city_access_global:
+        t: bool
+        desc: Whether has global city access
+      exotel_data:
+        t: jsonb
+        desc: Exotel call data JSON
+      is_available:
+        t: bool
+        desc: Whether currently available
+      operating_shift:
+        t: varchar(2)
+        desc: Driver's operating shift (morning, evening, both)
+  users_employeelogs:
+    description: Activity logs for employee actions in admin systems. Audit trail of staff actions for accountability.
+    columns:
+      id:
+        t: int
+        pk: t
+      status:
+        t: bool
+        desc: Current status of the record (see enum values)
+      text:
+        t: varchar(512)
+        desc: Text content
+      employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to users_employee - the Cityflo staff member
+      created:
+        t: timestamptz
+  users_operator:
+    description: Fleet operators/vendors who own buses and employ drivers. Operators contract with Cityflo to provide vehicles.
+      Contains company details, GST info, bank details for settlements, and commission rates.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      address:
+        t: text
+        desc: Full street address
+      contact_person:
+        t: varchar(50)
+        desc: Contact person name
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      gst_number:
+        t: varchar(32)
+        desc: GST registration number for tax invoicing
+      email:
+        t: varchar(254)
+        desc: Email address
+      manager_number:
+        t: varchar(10)
+        desc: Manager phone number
+      owner_mobile_number:
+        t: varchar(10)
+        desc: Owner's mobile phone number
+      bank_account_number:
+        t: varchar(50)
+        desc: Bank account number
+      bank_account_name:
+        t: varchar(50)
+        desc: Bank account holder name
+      ifsc:
+        t: varchar(20)
+        desc: Bank IFSC code
+      pan:
+        t: varchar(15)
+        desc: PAN number
+      accountant_mobile_number:
+        t: varchar(10)
+        desc: Accountant's mobile number
+      created_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to user who created this record
+      gst_held_percent:
+        t: double
+        desc: GST amount withheld percentage
+      gst_percent:
+        t: double
+        desc: GST percentage applicable
+      modified_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to user who last modified this record
+      rcm_applicable:
+        t: bool
+        desc: Whether reverse charge mechanism applies for GST
+      registration_type:
+        t: int
+        desc: Type of registration
+      tds_percent:
+        t: double
+        desc: TDS (Tax Deducted at Source) percentage
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - the city this record belongs to
+      operator_status:
+        t: varchar(1)
+        desc: Operator approval status
+      msme_no:
+        t: varchar(32)
+        desc: MSME registration number
+      telegram_id:
+        t: bigint
+        desc: Telegram messenger user ID
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      fleetbase_id:
+        t: varchar(50)
+        desc: External fleet management system ID
+  users_operator_luxe_cab_type:
+    description: Luxe Cab vehicle types operated by each operator. Links operators to the cab categories in their fleet.
+    columns:
+      id:
+        t: int
+        pk: t
+      operator_id:
+        t: int
+        fk: users_operator(id)
+        desc: Foreign key to users_operator - the fleet operator/vendor
+      luxecabtype_id:
+        t: bigint
+        fk: cars_luxecabtype(id)
+        desc: Foreign key to luxe cab type
+  users_operatorpreference:
+    description: Operator preferences for assignments and operations. Settings for route preferences, timing constraints,
+      and communication preferences.
+    columns:
+      id:
+        t: int
+        pk: t
+      gst_percent:
+        t: double
+        desc: GST percentage applicable
+      gst_held_percent:
+        t: double
+        desc: GST amount withheld percentage
+      tds_percent:
+        t: double
+        desc: TDS (Tax Deducted at Source) percentage
+      rcm_applicable:
+        t: bool
+        desc: Whether reverse charge mechanism applies for GST
+      valid_from:
+        t: date
+        desc: Date/time when record becomes valid
+      valid_till:
+        t: date
+        desc: End of validity period
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      created_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to user who created this record
+      modified_by_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to user who last modified this record
+      operator_id:
+        t: int
+        fk: users_operator(id)
+        desc: Foreign key to users_operator - the fleet operator/vendor
+  users_operatoruser:
+    description: User accounts for operator portal access. Operators can log in to view settlements, driver management, and
+      vehicle assignments.
+    columns:
+      id:
+        t: int
+        pk: t
+      status:
+        t: varchar(20)
+        desc: Current status of the record (see enum values)
+      otp:
+        t: varchar(6)
+        desc: One-time password
+      otp_refresh_time:
+        t: timestamptz
+        desc: Time when OTP was refreshed/resent
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      operator_id:
+        t: int
+        fk: users_operator(id)
+        desc: Foreign key to users_operator - the fleet operator/vendor
+      user_id:
+        t: int
+        fk: users_user(id)
+        desc: Foreign key to users_user - Django auth user account
+  users_person:
+    description: Personal identity information for users. Middle layer between User and role-specific models (Customer, Driver,
+      Employee). Stores name, DOB, gender, and profile picture.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      user_id:
+        t: int
+        fk: users_user(id)
+        desc: Foreign key to users_user - Django auth user account
+      first_name:
+        t: varchar(32)
+        desc: Person's first name (ASCII only)
+      last_name:
+        t: varchar(32)
+        desc: Person's last name (ASCII only)
+      dob:
+        t: date
+        desc: Date of birth
+      gender:
+        t: varchar(1)
+        desc: 'Gender: ''1''=Male, ''2''=Female, ''3''=Other'
+      profile_picture_url:
+        t: varchar(200)
+        desc: URL to profile picture image
+      searchvectors:
+        t: tsvector
+        desc: PostgreSQL full-text search vector for fast name search
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  users_savedplace:
+    description: Customer saved addresses/places for quick booking. Named locations like 'Home', 'Office' with coordinates
+      and full address.
+    columns:
+      id:
+        t: int
+        pk: t
+      place_type:
+        t: varchar(20)
+        desc: Type of place
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      customer_id:
+        t: int
+        fk: users_customer(id)
+        desc: Foreign key to users_customer - the customer this record belongs to
+      location_id:
+        t: int
+        fk: geo_location(id)
+        desc: Foreign key to geo_location - geographic coordinates
+      place_label:
+        t: varchar(20)
+        desc: Place display label
+  users_team:
+    description: Internal teams for employee organization. Groups employees by function (Operations, Support, Finance) or
+      region.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      description:
+        t: varchar(100)
+        desc: Detailed description or notes
+      department:
+        t: varchar(1)
+        desc: Department or team assignment
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      team_lead_id:
+        t: int
+        fk: users_employee(id)
+        desc: null
+  users_teammember:
+    description: Team membership records linking employees to teams with roles and permissions.
+    columns:
+      id:
+        t: int
+        pk: t
+      operating_shift:
+        t: varchar(2)
+        desc: Driver's operating shift (morning, evening, both)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to users_employee - the Cityflo staff member
+      team_id:
+        t: int
+        fk: users_team(id)
+        desc: null
+  users_teammember_assigned_routes:
+    description: Routes assigned to team members for responsibility. Team members own specific routes for operations management.
+    columns:
+      id:
+        t: int
+        pk: t
+      teammember_id:
+        t: int
+        fk: users_teammember(id)
+        desc: Foreign key to team member
+      route_id:
+        t: int
+        fk: routes_route(id)
+        desc: Foreign key to routes_route - the bus route
+  users_user:
+    description: Core authentication model for all users (customers, drivers, employees, operators). Uses mobile number as
+      primary identifier (USERNAME_FIELD). Extends Django's AbstractBaseUser with PermissionsMixin for authentication and
+      authorization.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      password:
+        t: varchar(128)
+        desc: Hashed password for authentication
+      last_login:
+        t: timestamptz
+        desc: Timestamp of last successful login
+      is_superuser:
+        t: bool
+        desc: Designates that this user has all permissions without explicitly assigning them
+      mobile_number:
+        t: varchar(10)
+        desc: Unique 10-digit Indian mobile number - used as username for authentication (USERNAME_FIELD)
+      is_active:
+        t: bool
+        desc: Whether this user account is active. Deactivated instead of deleted
+      is_staff:
+        t: bool
+        desc: Whether user can access Django admin site (employees only)
+      is_test:
+        t: bool
+        desc: Whether this is a test account for development/testing purposes
+      created:
+        t: timestamptz
+        desc: Timestamp when user account was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when user account was last modified
+      searchvectors:
+        t: tsvector
+        desc: PostgreSQL full-text search vector for fast user search
+  vehicle_auto_assign:
+    description: Auto-assignment configurations for vehicle allocation. Rules for automatically assigning available vehicles
+      to routes based on capacity, location, and type preferences.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      is_enabled:
+        t: bool
+        desc: Whether this is enabled
+      from_date:
+        t: date
+        desc: Start date of date range
+      to_date:
+        t: date
+        desc: End date of date range
+      from_time:
+        t: time without time zone
+        desc: Start time of time range
+      to_time:
+        t: time without time zone
+        desc: End time of time range
+      allow_hourly:
+        t: bool
+        desc: Whether hourly rental allowed
+      allow_airport:
+        t: bool
+        desc: Whether airport pickup/drop allowed
+      allow_outstation:
+        t: bool
+        desc: Whether outstation trips allowed
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      vehicle_id:
+        t: int
+        fk: vehicles_vehicle(id)
+        desc: Foreign key to vehicles_vehicle - the bus/vehicle
+  vehicle_auto_assign_allowed_cab_types:
+    description: Cab types allowed in auto-assignment rules. Restricts which vehicle categories can be auto-assigned.
+    columns:
+      id:
+        t: int
+        pk: t
+      vehicleautoassign_id:
+        t: bigint
+        fk: vehicle_auto_assign(id)
+        desc: null
+      luxecabtype_id:
+        t: bigint
+        fk: cars_luxecabtype(id)
+        desc: Foreign key to luxe cab type
+  vehicle_auto_assign_allowed_zones:
+    description: Geographic zones for auto-assignment eligibility. Vehicles in certain zones can be auto-assigned to nearby
+      routes.
+    columns:
+      id:
+        t: int
+        pk: t
+      vehicleautoassign_id:
+        t: bigint
+        fk: vehicle_auto_assign(id)
+        desc: null
+      carzonelocation_id:
+        t: bigint
+        fk: cars_carzonelocation(id)
+        desc: null
+  vehicles_companyvehiclecheck:
+    description: Vehicle inspection checks for corporate/company-owned buses. Similar to VehicleCheck but for company fleet
+      vehicles with additional compliance requirements.
+    columns:
+      id:
+        t: int
+        pk: t
+      check_validity:
+        t: varchar(64)
+        desc: Validity check timestamp
+      validity_days:
+        t: int
+        desc: Number of days valid
+      active:
+        t: bool
+        desc: Whether this record is currently active
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate_company - B2B client
+      vehicle_check_id:
+        t: int
+        fk: vehicles_vehiclecheck(id)
+        desc: null
+  vehicles_operatordebitscredits:
+    description: Debit/credit ledger for operator accounts. Financial transactions with operators including payments, deductions,
+      and adjustments.
+    columns:
+      id:
+        t: int
+        pk: t
+      payment_type:
+        t: varchar(1)
+        desc: Payment method used (card, upi, wallet, netbanking)
+      amount:
+        t: double
+        desc: Monetary amount in INR (Indian Rupees)
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      operator_id:
+        t: int
+        fk: users_operator(id)
+        desc: Foreign key to users_operator - the fleet operator/vendor
+      vehicle_issuance_id:
+        t: int
+        fk: vehicles_vehicleissuance(id)
+        desc: Foreign key to vehicles_vehicleissuance - vehicle-driver assignment
+      date:
+        t: date
+        desc: Calendar date (YYYY-MM-DD)
+  vehicles_operatorpayments:
+    description: Payment records to operators for services. Settlement payments based on trips completed minus deductions.
+    columns:
+      id:
+        t: int
+        pk: t
+      date_for_payment_month:
+        t: date
+        desc: Date for monthly payment
+      payment_type:
+        t: varchar(1)
+        desc: Payment method used (card, upi, wallet, netbanking)
+      status:
+        t: varchar(1)
+        desc: Current status of the record (see enum values)
+      utr_no:
+        t: varchar(32)
+        desc: UTR (Unique Transaction Reference) number
+      amount:
+        t: double
+        desc: Monetary amount in INR (Indian Rupees)
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      operator_id:
+        t: int
+        fk: users_operator(id)
+        desc: Foreign key to users_operator - the fleet operator/vendor
+      payment_category:
+        t: varchar(4)
+        desc: Payment category type
+      source_bank:
+        t: varchar(10)
+        desc: Source bank for transaction
+      status_check_retry:
+        t: int
+        desc: Number of status check retries
+  vehicles_vehicle:
+    description: Physical bus/cab assets with specifications, tracking capabilities, and operational metadata. Core fleet
+      asset tracking vehicle from acquisition through lifecycle. Includes real-time GPS location from Redis cache.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      number:
+        t: varchar(16)
+        desc: Vehicle license plate number (alphanumeric only, unique)
+      chassis_number:
+        t: varchar(20)
+        desc: Vehicle chassis number for identification
+      engine_number:
+        t: varchar(20)
+        desc: Vehicle engine number for identification
+      color:
+        t: varchar(32)
+        desc: Vehicle color (e.g., 'White', 'Blue')
+      make:
+        t: varchar(32)
+        desc: Manufacturer name (e.g., 'Tata', 'Ashok Leyland', 'Volvo')
+      model:
+        t: varchar(32)
+        desc: Vehicle model name
+      number_of_seats:
+        t: int
+        desc: Total bookable seats (auto-calculated from vehicle_layout)
+      double_seats:
+        t: int
+        desc: Number of double/shared seats in vehicle
+      vehicle_type:
+        t: varchar(64)
+        desc: Internal vehicle type classification
+      vehicle_type_display:
+        t: varchar(6)
+        desc: Display type shown to users
+      luxe_cab_type_id:
+        t: int
+        fk: cars_luxecabtype(id)
+        desc: Foreign key to cars_luxecabtype - single cab type (legacy)
+      emission_type:
+        t: varchar(3)
+        desc: 'Emission standard: ''BS4'', ''BS6'', or ''EV'' (Electric)'
+      vehicle_category:
+        t: varchar(2)
+        desc: 'Service category: ''01''=Non AC, ''02''=AC, ''03''=AC Volvo, ''04''=Luxe Cabs'
+      enable_alternate_location_source:
+        t: bool
+        desc: Whether to allow alternate GPS sources for tracking
+      obd_device:
+        t: varchar(20)
+        desc: 'OBD device provider: ''1''=fleetx, ''2''=intangles, ''3''=No Device, ''4''=cautio'
+      vehicle_layout_id:
+        t: int
+        fk: vehicles_vehiclelayout(id)
+        desc: Foreign key to vehicles_vehiclelayout - seat arrangement configuration
+      intrcity:
+        t: bool
+        desc: Whether vehicle is running with IntrCity partner
+      fleetbase_id:
+        t: varchar(50)
+        desc: Fleetbase integration ID for external fleet management
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  vehicles_vehicle_luxe_cab_types:
+    description: Luxe cab type categorization for vehicles. Maps vehicles to their service tier (Sedan, SUV, Premium).
+    columns:
+      id:
+        t: int
+        pk: t
+      vehicle_id:
+        t: int
+        fk: vehicles_vehicle(id)
+        desc: Foreign key to vehicles_vehicle - the bus/vehicle
+      luxecabtype_id:
+        t: bigint
+        fk: cars_luxecabtype(id)
+        desc: Foreign key to luxe cab type
+  vehicles_vehiclechallan:
+    description: Traffic challans/violations for vehicles. Records of fines, violations, and penalties. Includes amount, violation
+      type, and payment status.
+    columns:
+      id:
+        t: int
+        pk: t
+      challan_number:
+        t: varchar(100)
+        desc: Traffic challan number
+      challan_date_time:
+        t: varchar(50)
+        desc: Challan issue timestamp
+      challan_place:
+        t: text
+        desc: Place where challan issued
+      challan_status:
+        t: varchar(50)
+        desc: Status of challan (pending/paid)
+      fine_imposed:
+        t: numeric(10)
+        desc: Whether fine was imposed
+      amount_of_fine_imposed:
+        t: numeric(10)
+        desc: Fine amount imposed
+      received_amount:
+        t: numeric(10)
+        desc: Amount received
+      driver_name:
+        t: varchar(255)
+        desc: Name of the driver
+      dl_number:
+        t: varchar(50)
+        desc: Driving license number
+      owner_name:
+        t: varchar(255)
+        desc: Name of vehicle/asset owner
+      name_of_violator:
+        t: varchar(255)
+        desc: Challan violator name
+      state_code:
+        t: varchar(10)
+        desc: State code (e.g., MH, DL, KA)
+      rto:
+        t: varchar(100)
+        desc: RTO name
+      offence_details:
+        t: jsonb
+        desc: Traffic offence details
+      court_address:
+        t: text
+        desc: Court address for challan
+      sent_to_reg_court:
+        t: varchar(10)
+        desc: Whether sent to regular court
+      sent_to_virtual_court:
+        t: varchar(10)
+        desc: Whether sent to virtual court
+      sent_to_court_on:
+        t: varchar(50)
+        desc: Date sent to court
+      date_of_proceeding:
+        t: varchar(50)
+        desc: Court proceeding date
+      court_name:
+        t: varchar(255)
+        desc: Court name for challan
+      receipt_number:
+        t: varchar(100)
+        desc: Receipt number
+      document_impounded:
+        t: varchar(255)
+        desc: Whether document was impounded
+      department:
+        t: varchar(100)
+        desc: Department or team assignment
+      remark:
+        t: text
+        desc: Single remark or note
+      fetched_on:
+        t: timestamptz
+        desc: Data fetch timestamp
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      vehicle_id:
+        t: int
+        fk: vehicles_vehicle(id)
+        desc: Foreign key to vehicles_vehicle - the bus/vehicle
+  vehicles_vehiclecheck:
+    description: Pre-trip and post-trip vehicle inspection records. Drivers complete checklists covering safety, cleanliness,
+      and mechanical items. Failed checks block trip start.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(128)
+      check_options:
+        t: varchar(255)
+        desc: Available check options JSON
+      check_group:
+        t: varchar(64)
+        desc: Group/category of check items
+      check_type:
+        t: varchar(64)
+        desc: Type of check (pre-trip, post-trip)
+      check_validity:
+        t: varchar(64)
+        desc: Validity check timestamp
+      active:
+        t: bool
+        desc: Whether this record is currently active
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      validity_days:
+        t: int
+        desc: Number of days valid
+  vehicles_vehiclechecklogs:
+    description: Detailed logs of individual check items. Each checklist item result with photos if required.
+    columns:
+      id:
+        t: int
+        pk: t
+      value:
+        t: varchar(64)
+        desc: Value for key-value or setting record
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      updated_by_id:
+        t: int
+        fk: users_user(id)
+        desc: null
+      vehicle_id:
+        t: int
+        fk: vehicles_vehicle(id)
+        desc: Foreign key to vehicles_vehicle - the bus/vehicle
+      vehicle_check_id:
+        t: int
+        fk: vehicles_vehiclecheck(id)
+        desc: null
+      company_id:
+        t: int
+        fk: corporate_company(id)
+        desc: Foreign key to corporate_company - B2B client
+      remarks:
+        t: varchar(64)
+        desc: Free-text notes or comments
+  vehicles_vehicleissuance:
+    description: Assignment of a vehicle to a driver/operator for operational use. Critical for accountability, cost allocation,
+      and operations scheduling. Only one active issuance per driver (except Luxe Cabs). Tracks tax percentages for operator
+      payments.
+    columns:
+      id:
+        t: bigint
+        pk: t
+      vehicle_id:
+        t: int
+        fk: vehicles_vehicle(id)
+        desc: Foreign key to vehicles_vehicle - assigned vehicle (readonly after creation)
+      bus_number:
+        t: varchar(8)
+        desc: Internal bus number/identifier (e.g., 'CF-001')
+      is_active:
+        t: bool
+        desc: Whether this is currently an active vehicle assignment
+      does_utilization_trips:
+        t: bool
+        desc: Whether vehicle does non-revenue/utilization trips
+      driver_id:
+        t: int
+        fk: users_driver(id)
+        desc: Foreign key to users_driver - assigned driver
+      operator_id:
+        t: int
+        fk: users_operator(id)
+        desc: Foreign key to users_operator - fleet operator/contractor
+      issued_on:
+        t: timestamptz
+        desc: Timestamp when vehicle was assigned
+      returned_on:
+        t: timestamptz
+        desc: Timestamp when vehicle was returned (issuance ended)
+      cost_info_json:
+        t: text
+        desc: Legacy cost info as JSON (deprecated)
+      assigned_to_employee_id:
+        t: int
+        fk: users_employee(id)
+        desc: Foreign key to users_employee - employee responsible for this vehicle
+      city_id:
+        t: int
+        fk: geo_city(id)
+        desc: Foreign key to geo_city - operating city (auto-filled from operator)
+      gst_percent:
+        t: double
+        desc: GST percentage for operator payments (5.0, 10.0, 12.0, 18.0)
+      gst_held_percent:
+        t: double
+        desc: GST held/withheld percentage
+      tds_percent:
+        t: double
+        desc: TDS percentage for operator payments (0.75, 1.0, 2.0)
+      vehicle_cost_category_id:
+        t: int
+        fk: vehicles_vehiclecostcategory(id)
+        desc: Foreign key to vehicles_vehiclecostcategory - cost category for calculations
+      created:
+        t: timestamptz
+        desc: Timestamp when record was created
+      modified:
+        t: timestamptz
+        desc: Timestamp when record was last modified
+  vehicles_vehiclelayout:
+    description: Bus seating layout configurations. Defines seat arrangement pattern (2+2, 2+1, etc.), total capacity, and
+      seat positions. Same layout can apply to multiple vehicles.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(50)
+      columns_list:
+        t: varchar(50)
+        desc: List of columns JSON
+      remarks:
+        t: text
+        desc: Free-text notes or comments
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  vehicles_vehiclelayoutseat:
+    description: Individual seat definitions within a layout. Each seat has row, column, type (window/aisle/middle), and bookability
+      status. Supports premium seat pricing.
+    columns:
+      id:
+        t: int
+        pk: t
+      row:
+        t: int
+        desc: Row number/position
+      column:
+        t: int
+        desc: Column name/identifier
+      label:
+        t: varchar(3)
+        desc: Display label text
+      order:
+        t: int
+        desc: Display/sort order (lower numbers appear first)
+      is_seat:
+        t: bool
+        desc: Whether this is a seat
+      seat_preference_tag:
+        t: int
+        desc: Seat preference identifier
+      seat_position_type:
+        t: int
+        desc: Seat position type (window/aisle)
+      double_seat_booking_purpose:
+        t: int
+        desc: Reason for double seat booking
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      adjacent_seat_id:
+        t: int
+        fk: vehicles_vehiclelayoutseat(id)
+        desc: null
+      vehicle_layout_id:
+        t: int
+        fk: vehicles_vehiclelayout(id)
+        desc: Foreign key to vehicles_vehiclelayout - seating arrangement
+  vehicles_vehicleridestoplocationlog:
+    description: GPS location logs at stops during vehicle rides. Periodic location samples for route adherence verification.
+    columns:
+      id:
+        t: int
+        pk: t
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      stop_id:
+        t: int
+        fk: routes_stop(id)
+        desc: Foreign key to routes_stop - pickup/dropoff stop location
+      vehicle_ride_id:
+        t: int
+        fk: rides_vehicleride(id)
+        desc: Foreign key to rides_vehicleride - the scheduled bus trip
+      scheduled_time:
+        t: time without time zone
+        desc: Scheduled date/time for this action
+      trigger_type:
+        t: varchar(1)
+        desc: Type of trigger that activated this
+      delay:
+        t: int
+        desc: Delay time in minutes
+      lat:
+        t: double
+        desc: Latitude coordinate (decimal degrees, WGS84)
+      lng:
+        t: double
+        desc: Longitude coordinate (decimal degrees, WGS84)
+      location_source:
+        t: varchar(1)
+        desc: Source of location data (gps, network, manual)
+      location_timestamp:
+        t: timestamptz
+        desc: Timestamp when location was recorded
+  website_adsuiteenquiry:
+    description: Sales enquiries from advertising suite webpage. Leads interested in advertising on Cityflo buses or app.
+    columns:
+      id:
+        t: int
+        pk: t
+      name:
+        t: varchar(100)
+      mobile_number:
+        t: varchar(16)
+        desc: Mobile phone number (10 digits)
+      email:
+        t: varchar(254)
+        desc: Email address
+      brand_name:
+        t: varchar(100)
+        desc: Brand name
+      channel_name:
+        t: varchar(255)
+        desc: Communication channel name
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  website_b2broutesuggestion:
+    description: B2B route suggestions from corporate website. Companies requesting service to their office locations.
+    columns:
+      id:
+        t: int
+        pk: t
+      mobile_number:
+        t: varchar(10)
+        desc: Mobile phone number (10 digits)
+      email:
+        t: varchar(254)
+        desc: Email address
+      office_reach_time:
+        t: time without time zone
+        desc: Time when passenger reaches office
+      office_leave_time:
+        t: time without time zone
+        desc: Time leaving office
+      home_address:
+        t: varchar(250)
+        desc: Home address text
+      home_address_lat:
+        t: double
+        desc: Home address latitude
+      home_address_lng:
+        t: double
+        desc: Home address longitude
+      mode_of_transport:
+        t: varchar(50)
+        desc: Transport mode preference
+      utm_source:
+        t: varchar(50)
+        desc: UTM source for marketing attribution
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+  website_websiteroutesuggestion:
+    description: B2C route suggestions from public website. Individual users requesting service to new areas.
+    columns:
+      id:
+        t: int
+        pk: t
+      mobile_number:
+        t: varchar(10)
+        desc: Mobile phone number (10 digits)
+      created:
+        t: timestamptz
+      modified:
+        t: timestamptz
+      dropoff_location:
+        t: varchar(100)
+        desc: Drop-off location coordinates
+      pickup_location:
+        t: varchar(100)
+        desc: Pickup location coordinates
+      email:
+        t: varchar(254)
+        desc: Email address
+      work_end_time:
+        t: time without time zone
+        desc: Work day end time preference
+      work_start_time:
+        t: time without time zone
+        desc: Work day start time preference
+      dropoff_location_new_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      pickup_location_new_id:
+        t: int
+        fk: geo_location(id)
+        desc: null
+      name:
+        t: varchar(255)
